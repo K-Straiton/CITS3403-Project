@@ -10,6 +10,7 @@
     --tokyoNight-accent: #c0caf5;
     --tokyoNight-comments: #565f89;
     --IBM-red: #ED4C4C;
+    --IBM-red-active: #b83333;
 }
 
 body {
@@ -22,6 +23,27 @@ body {
     font-weight: 600;
 
 }
+
+.secondary-heading {
+    color: white;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.list-heading {
+    color: white;
+    font-size: 24px;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.info-text {
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
 
 .accent-box-light {
     background-color: var(--tokyoNight-backgroundAccent);
@@ -48,15 +70,31 @@ body {
 
 }
 
-.btn-primary {
+.btn-red {
     background-color: var(--IBM-red);
     border: none;
-
+    color: white;
+    size: 20px;
 }
 
-.btn-primary:hover, .btn-primary:focus,
-.btn-primary:active, .btn-primary:active:focus {
-    background-color: #b83333;
+
+
+
+.btn-red:hover, .btn-red:focus,
+.btn-red:active, .btn-red:active:focus {
+    background-color: var(--IBM-red-active);
+    color: white;
+    size: 20px;
+}
+
+.link-underline-red{
+    color: var(--IBM-red);
+    text-decoration-color: var(--IBM-red);
+}
+
+.link-underline-red:hover, .link-underline-red:focus,
+.link-underline-red:active, .link-underline-red:active:focus {
+    color: var(--IBM-red-active);
 }
 
 .form-control {
