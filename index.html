@@ -11,33 +11,46 @@
     <link href="resources/css/style.css" rel="stylesheet" />
   </head>
   <body>
-    <div class="container">
-      <div class="row g-2">
-        <div class="col-sm-4 mx-auto p-3">
-          <div class="p-3 border">
-            <p>ThinkMad</p>
-            <form>
-              <div class="form-group py-1">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="usernameInupt"
-                  placeholder="Username"
-                />
-              </div>
-              <div class="form-group py-1">
-                <input
-                  type="password"
-                  class="form-control"
-                  id="exampleInputPassword1"
-                  placeholder="Password"
-                />
+    <div class="container-fluid">
+      <div class="row">
+        <div
+          class="col-10 col-sm-7 col-md-5 col-lg-4 mx-auto py-3 my-3 border rounded"
+        >
+          <p class="text-center">ThinkMad</p>
+          <form>
+            <input
+              type="text"
+              class="form-control my-2"
+              id="usernameInupt"
+              placeholder="Username"
+            />
 
-                <button type="submit" class="btn btn-primary my-2">
-                  Submit
-                </button>
-              </div>
-            </form>
+            <input
+              type="text"
+              class="form-control my-2"
+              id="passwordInput"
+              placeholder="Password"
+            />
+
+            <button type="submit" class="btn btn-primary w-100 my-2">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div
+          class="col-10 col-sm-7 col-md-5 col-lg-4 mx-auto mb-3 border rounded"
+        >
+          <div class="row">
+            <div class="col align-self-center">
+              <p class="text-center my-0">New Here?</p>
+            </div>
+            <div class="col">
+              <button type="submit" class="btn btn-primary w-100 my-2">
+                Sign Up
+              </button>
+            </div>
           </div>
         </div>
       </div>
