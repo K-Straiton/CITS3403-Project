@@ -16,6 +16,7 @@
 body {
     background-color: var(--tokyoNight-background);
     font-family: "Fira Code", monospace;
+    color: white;
 }
 
 .main-heading {
