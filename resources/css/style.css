@@ -1,0 +1,117 @@
+:root {
+    --tokyoNight-red: #f7768e;
+    --tokyoNight-orange: #ff9e64;
+    --tokyoNight-yellow: #e0af68 --tokyoNight-green: #9ece6a;
+    --tokyoNight-blue: #2ac3de;
+    --tokyoNight-purple: #bb9af7;
+    --tokyoNight-darkBlue: #7aa2f7;
+    --tokyoNight-backgroundAccent: #24283b;
+    --tokyoNight-background: #1a1b26;
+    --tokyoNight-accent: #c0caf5;
+    --tokyoNight-comments: #565f89;
+    --IBM-red: #ED4C4C;
+    --IBM-red-active: #b83333;
+}
+
+body {
+    background-color: var(--tokyoNight-background);
+    font-family: "Fira Code", monospace;
+    color: white;
+}
+
+.main-heading {
+    color: white;
+    font-size: 32px;
+    font-weight: 600;
+
+}
+
+.secondary-heading {
+    color: white;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.list-heading {
+    color: white;
+    font-size: 24px;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.info-text {
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+
+.accent-box-light {
+    background-color: var(--tokyoNight-backgroundAccent);
+    border: var(--tokyoNight-accent) 2px solid;
+    border-radius: 10px;
+}
+
+.accent-box-dark {
+    background-color: var(--tokyoNight-background);
+    border: var(--tokyoNight-comments) 2px solid;
+    border-radius: 10px;
+}
+
+.white {
+    color: white;
+}
+
+.grey {
+    color: var(--tokyoNight-accent);
+}
+
+.body-text {
+    size: 20px;
+
+}
+
+.btn-red {
+    background-color: var(--IBM-red);
+    border: none;
+    color: white;
+    size: 20px;
+}
+
+
+
+
+.btn-red:hover, .btn-red:focus,
+.btn-red:active, .btn-red:active:focus {
+    background-color: var(--IBM-red-active);
+    color: white;
+    size: 20px;
+}
+
+.link-underline-red{
+    color: var(--IBM-red);
+    text-decoration-color: var(--IBM-red);
+}
+
+.link-underline-red:hover, .link-underline-red:focus,
+.link-underline-red:active, .link-underline-red:active:focus {
+    color: var(--IBM-red-active);
+}
+
+.form-control {
+    background-color: var(--tokyoNight-background);
+    border: solid var(--tokyoNight-comments) 1px;
+    color: white;
+}
+
+.form-control::placeholder {
+    color: var(--tokyoNight-comments);
+}
+
+.form-control:focus {
+    color: white;
+    border-color: var(--tokyoNight-accent);
+    background-color: var(--tokyoNight-background);
+    box-shadow: none;
+}
