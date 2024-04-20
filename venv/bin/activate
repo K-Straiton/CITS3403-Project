@@ -35,7 +35,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/bones/Storage/Uniwork/2024S1/CITS3403/Project/CITS3403-Project/venv"
+VIRTUAL_ENV="/home/bones/Storage/Uniwork/CITS3403-Project/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

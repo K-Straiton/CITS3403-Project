@@ -1,4 +1,4 @@
-#!/home/bones/Storage/Uniwork/2024S1/CITS3403/Project/CITS3403-Project/venv/bin/python3
+#!/home/bones/Storage/Uniwork/CITS3403-Project/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
