@@ -22,7 +22,7 @@ def loginPage():
 def signUpPage():
     form = SignUpForm()
     if form.validate_on_submit():
-        flash('Login requested for user {}, pronouns={}, you def can\'t read my password. Wait. Shi- {}'.format(form.username.data, form.pronouns.data, form.password.data))
+        flash('Sign up requested for user {}, pronouns={}, you def can\'t read my password. Wait. Shi- {}'.format(form.username.data, form.pronouns.data, form.password.data))
         return redirect('/index')
 
     return render_template("sign-up.html", title="Sign Up", form=form)
