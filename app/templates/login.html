@@ -11,7 +11,6 @@
 
     <link href="../static/style.css" rel="stylesheet" >
 
-    <link href="resources/css/style.css" rel="stylesheet" >
     <link rel="preconnect" href="https://fonts.googleapis.com" >
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
     <link
@@ -28,24 +27,19 @@
           <div class="row">
             <div class="col py-3 my-3 border rounded">
               <p class="text-center">ThinkMad</p>
-              <form>
-                <input
-                  type="text"
-                  class="form-control my-2"
-                  id="usernameInupt"
-                  placeholder="Username"
-                >
-
-                <input
-                  type="text"
-                  class="form-control my-2"
-                  id="passwordInput"
-                  placeholder="Password"
-                >
-
-                <button type="submit" class="btn btn-primary w-100 my-2">
-                  Log In
-                </button>
+              <form name='login', action="", method='post'>
+              {{form.hidden_tag()}}
+                {{form.username(placeholder="Username", size=8, class="form-control my-2", id="usernameInput", type="text")}}
+                {% for error in form.username.errors %}
+                <span style="color:red;">[{{ error}}</span>
+                {% endfor %}
+            
+                {{form.password(placeholder="Password", size=8, class="form-control my-2", id="passwordInput", type="password")}}
+                {% for error in form.password.errors %}
+                <span style="color:red;">[{{ error}}</span>
+                {% endfor %}
+                
+                {{form.logIn(type="submit", class="btn btn-primary w-100 my-2")}}
               </form>
             </div>
           </div>

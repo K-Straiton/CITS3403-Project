@@ -1,15 +1,19 @@
 from flask import render_template
 from app import app
+from app.forms import *
+
 
 @app.route('/')
 @app.route('/index')
 def index():
 	return render_template("index.html")
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def loginPage():
-	return render_template("login.html")
+	form = SignInForm()
+	return render_template("login.html", title='Log In', form=form)
 
 @app.route('/sign-up')
 def signUpPage():
-    return render_template("sign-up.html")
+    form = SignUpForm()
+    return render_template("sign-up.html", title="Sign Up", form=form)

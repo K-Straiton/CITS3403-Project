@@ -16,12 +16,26 @@
                             <p class="text-center">ThinkMad</p>
                             <form>
                                 <label class="form-label" for="signUpUsername">Username:</label><br>
-                                <input class="form-control" type="text" id="signUpUsername" placeholder="Username"><br>
+                                {{form.hidden_tag()}}
+                                {{form.username(placeholder="Username", size=8, class="form-control", id="signUpUsername", type="text")}}
+                                {% for error in form.username.errors %}
+                                <span style="color:red;">[{{ error}}</span>
+                                {% endfor %}
+                            
+                                <!-- <input class="form-control" type="text" id="signUpUsername" placeholder="Username"><br> -->
                                 <label class="form-label" for="signUpPassword">Password:</label><br>
-                                <input class="form-control" type="password" id="signUpPassword" placeholder="Password"><br>
+                                {{form.password(placeholder="Password", size=8, class="form-control", id="signUpPassword", type="password")}}
+                                {% for error in form.password.errors %}
+                                <span style="color:red;">[{{ error}}</span>
+                                {% endfor %}
+                                <!-- <input class="form-control" type="password" id="signUpPassword" placeholder="Password"><br> -->
                                 <label class="form-label" for="signUpConfirmPassword">Confirm password:</label>
-                                <input class="form-control" type="password" id="signUpConfirmPassword" placeholder="Confirm password"><br>
-                                <p class="p-0 m-0">Pronouns:</p>
+                                {{form.password(placeholder="Confirm password", size=8, class="form-control", id="signUpConfirmPassword", type="password")}}
+                                {% for error in form.password.errors %}
+                                <span style="color:red;">[{{ error}}</span>
+                                {% endfor %}
+                                <!-- <input class="form-control" type="password" id="signUpConfirmPassword" placeholder="Confirm password"><br> -->
+                                <p class="p-0 m-0">Pronouns:</p> <!-- STILL NEED TO ADD PRONOUNS TO FORM FOR SIGNUP-->
                                 <div class="form-check d-flex flex-wrap justify-content-around">
                                     <div class="mx-2">
                                         <input type="radio" id="signUpPronounsSheHer" name="signUpPronouns">
