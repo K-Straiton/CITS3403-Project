@@ -25,6 +25,17 @@
           class="col-10 col-sm-7 col-md-5 col-lg-4 mx-auto align-self-center"
         >
           <div class="row">
+            <!-- REMOVE / MAKE A BETTER INCORRECT USERNAME/PASSWORD -->
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+    
             <div class="col py-3 my-3 border rounded">
               <p class="text-center">ThinkMad</p>
               <form name='login', action="", method='post'>
@@ -38,7 +49,7 @@
                 {% for error in form.password.errors %}
                 <span style="color:red;">[{{ error}}</span>
                 {% endfor %}
-                
+                {{form.remember_me()}} {{ form.remember_me.label }}
                 {{form.logIn(type="submit", class="btn btn-primary w-100 my-2")}}
               </form>
             </div>
