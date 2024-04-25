@@ -11,6 +11,8 @@
     --tokyoNight-comments: #565f89;
     --IBM-red: #ED4C4C;
     --IBM-red-active: #b83333;
+    --IBM-blue: #4086F0;
+    --IBM-green: #1FC156;
 }
 
 body {
@@ -19,17 +21,21 @@ body {
     color: white;
 }
 
-.main-heading {
-    color: white;
-    font-size: 32px;
-    font-weight: 600;
 
+.text-muted {
+    color: var(--tokyoNight-accent) !important;
 }
 
-.secondary-heading {
-    color: white;
-    font-size: 28px;
-    font-weight: 600;
+.text-red {
+    color: var(--IBM-red)
+}
+
+.text-green {
+    color: var(--IBM-green)
+}
+
+.text-blue {
+    color: var(--IBM-blue)
 }
 
 .list-heading {
@@ -114,4 +120,15 @@ body {
     border-color: var(--tokyoNight-accent);
     background-color: var(--tokyoNight-background);
     box-shadow: none;
+}
+
+.profileTabs .nav-link {
+    border: 2px solid var(--tokyoNight-comments);
+    color: white;
+}
+
+.profileTabs .nav-link.active {
+    border: 2px solid var(--tokyoNight-comments);
+    background-color: var(--tokyoNight-comments);
+    color: white;
 }
