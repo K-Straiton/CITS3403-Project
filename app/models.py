@@ -14,6 +14,8 @@ class User(db.Model):
     
     pronouns: so.Mapped[str] = so.mapped_column(sa.String(20))
 
+    ThinkPads: so.Mapped[int] = so.mapped_column()
+
     posts: so.WriteOnlyMapped['Post'] = so.relationship(
         back_populates='author')
 
@@ -32,3 +34,18 @@ class Post(db.Model):
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)
+    
+
+class Comments(db.Model):
+    id: so.Mapped[int] = so.mapped_column(primary_key=True)
+    subject: so.Mapped[str] = so.mapped_column(sa.String(140))
+    body: so.Mapped[str] = so.mapped_column(sa.String(140))
+    timestamp: so.Mapped[datetime] = so.mapped_column(
+        index=True, default=lambda: datetime.now(timezone.utc))
+    user_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(User.id),
+                                               index=True)
+
+    author: so.Mapped[User] = so.relationship(back_populates='posts')
+
+    def __repr__(self):
+        return '<Comments {}>'.format(self.body)
