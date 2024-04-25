@@ -17,7 +17,7 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def loginPage():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('profilePage', name=current_user.username, pronouns=current_user.pronouns, thinkpads=current_user.ThinkPads))
     form = SignInForm()
     if form.validate_on_submit():
         user = db.session.scalar(sa.select(User).where(User.username == form.username.data))
@@ -25,7 +25,7 @@ def loginPage():
             flash('Invalid username or password {}'.format(form.remember_me.data))
             return redirect(url_for('loginPage'))
         login_user(user, remember=form.remember_me.data)
-        return redirect(url_for('index'))
+        return redirect(url_for('profilePage', name=user.username, pronouns=user.pronouns, thinkpads=user.ThinkPads))
 #    if form.validate_on_submit():
 #        # hashedPassword = generate_password_hash('form.username.data')
 #        # password = generate_password_hash('test')
@@ -52,5 +52,6 @@ def signUpPage():
 def profilePage():
     name = request.args.get('name', None)
     pronouns = request.args.get('pronouns')
+    thinkpads = request.args.get('thinkpads')
 
-    return render_template("profile.html", name=name, pronouns=pronouns)
+    return render_template("profile.html", name=name, pronouns=pronouns, thinkpads=thinkpads)
