@@ -15,10 +15,15 @@
                         <div class="col py-3 my-3 border rounded">
                             <p class="text-center">ThinkMad</p>
                             <form name="signUp", action="", method="post">
-                                <label class="form-label" for="signUpUsername">Username:</label><br>
                                 {{form.hidden_tag()}}
+                                <label class="form-label" for="signUpUsername">Username:</label><br>
                                     {{form.username(placeholder="Username", size=8, class="form-control", id="signUpUsername", type="text")}}
                                     {% for error in form.username.errors %}
+                                    <span style="color:red;">[{{ error}}</span>
+                                    {% endfor %}
+                                    <label class="form-label" for="signUpEmail">Email:</label><br>
+                                    {{form.email(placeholder="Email", size=8, class="form-control", id="signUpEmail", type="text")}}
+                                    {% for error in form.email.errors %}
                                     <span style="color:red;">[{{ error}}</span>
                                     {% endfor %}
                                     <!-- <input class="form-control" type="text" id="signUpUsername" placeholder="Username"><br> -->
@@ -29,7 +34,7 @@
                                     {% endfor %}
                                     <!-- <input class="form-control" type="password" id="signUpPassword" placeholder="Password"><br> -->
                                     <label class="form-label" for="signUpConfirmPassword">Confirm password:</label>
-                                    {{form.password(placeholder="Confirm password", size=8, class="form-control", id="signUpConfirmPassword", type="password")}}
+                                    {{form.password2(placeholder="Confirm password", size=8, class="form-control", id="signUpConfirmPassword", type="password")}}
                                     {% for error in form.password.errors %}
                                     <span style="color:red;">[{{ error}}</span>
                                     {% endfor %}
