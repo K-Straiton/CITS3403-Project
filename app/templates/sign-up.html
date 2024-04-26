@@ -21,37 +21,44 @@
               <img src="/static/ThinkMad.svg" class="d-block mx-auto my-3" />
               <form name="signUp" , action="" , method="post">
                 {{form.hidden_tag()}}
-                <label class="form-label my-0" for="signUpUsername"
-                  >Username:</label
-                ><br />
-                {{form.username(placeholder="Username", size=8,
-                class="form-control mb-2", id="signUpUsername", type="text")}}
+                <div class="form-floating">
+                  {{form.username(placeholder="Username", size=8,
+                  class="form-control mb-2", id="signUpUsername", type="text")}}
+                  <label class="my-0" for="signUpUsername">Username</label>
+                </div>
                 {% for error in form.username.errors %}
                 <span style="color: red">[{{ error}}</span>
                 {% endfor %}
-                <label class="form-label my-0" for="signUpEmail">Email:</label
-                ><br />
-                {{form.email(placeholder="Email", size=8, class="form-control
-                mb-2", id="signUpEmail", type="text")}} {% for error in
-                form.email.errors %}
+                <div class="form-floating">
+                  {{form.email(placeholder="Email", size=8, class="form-control
+                  mb-2", id="signUpEmail", type="text")}}
+                  <label class="form-label my-0" for="signUpEmail">Email</label>
+                </div>
+                {% for error in form.email.errors %}
                 <span style="color: red">[{{ error}}</span>
                 {% endfor %}
                 <!-- <input class="form-control" type="text" id="signUpUsername" placeholder="Username"><br> -->
-                <label class="form-label my-0" for="signUpPassword"
-                  >Password:</label
-                ><br />
-                {{form.password(placeholder="Password", size=8,
-                class="form-control mb-2", id="signUpPassword",
-                type="password")}} {% for error in form.password.errors %}
+                <div class="form-floating">
+                  {{form.password(placeholder="Password", size=8,
+                  class="form-control mb-2", id="signUpPassword",
+                  type="password")}}
+                  <label class="form-label my-0" for="signUpPassword"
+                    >Password</label
+                  >
+                </div>
+                {% for error in form.password.errors %}
                 <span style="color: red">[{{ error}}</span>
                 {% endfor %}
                 <!-- <input class="form-control" type="password" id="signUpPassword" placeholder="Password"><br> -->
-                <label class="form-label my-0" for="signUpConfirmPassword"
-                  >Confirm password:</label
-                >
-                {{form.password2(placeholder="Confirm password", size=8,
-                class="form-control mb-2", id="signUpConfirmPassword",
-                type="password")}} {% for error in form.password.errors %}
+                <div class="form-floating">
+                  {{form.password2(placeholder="Confirm password", size=8,
+                  class="form-control mb-2", id="signUpConfirmPassword",
+                  type="password")}}
+                  <label class="form-label my-0" for="signUpConfirmPassword"
+                    >Confirm password</label
+                  >
+                </div>
+                {% for error in form.password.errors %}
                 <span style="color: red">[{{ error}}</span>
                 {% endfor %}
                 <!-- <input class="form-control" type="password" id="signUpConfirmPassword" placeholder="Confirm password"><br> -->
@@ -89,5 +96,10 @@
         </div>
       </div>
     </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
