@@ -49,7 +49,7 @@
                 {% for error in form.password.errors %}
                 <span style="color:red;">[{{ error}}</span>
                 {% endfor %}
-                {{form.remember_me()}} {{ form.remember_me.label }}
+                {{form.remember_me(class="my-2")}} {{ form.remember_me.label }}
                 {{form.logIn(type="submit", class="btn btn-primary w-100 my-2")}}
               </form>
             </div>
