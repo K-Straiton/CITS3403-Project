@@ -65,20 +65,13 @@ body {
     border-radius: 10px;
 }
 
-.white {
-    color: white;
-}
-
-.grey {
-    color: var(--tokyoNight-accent);
-}
 
 .body-text {
     size: 20px;
 
 }
 
-.btn-red {
+.btn-primary {
     background-color: var(--IBM-red);
     border: none;
     color: white;
@@ -88,8 +81,8 @@ body {
 
 
 
-.btn-red:hover, .btn-red:focus,
-.btn-red:active, .btn-red:active:focus {
+.btn-primary:hover, .btn-primary:focus,
+.btn-primary:active, .btn-primary:active:focus {
     background-color: var(--IBM-red-active);
     color: white;
     size: 20px;

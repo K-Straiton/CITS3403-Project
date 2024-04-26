@@ -36,8 +36,8 @@
             {% endif %}
             {% endwith %}
     
-            <div class="col py-3 my-3 border rounded">
-              <p class="text-center">ThinkMad</p>
+            <div class="col py-3 my-3 accent-box-light">
+              <img src="/static/ThinkMad.svg" class="d-block mx-auto my-3">
               <form name='login', action="", method='post'>
               {{form.hidden_tag()}}
                 {{form.username(placeholder="Username", size=8, class="form-control my-2", id="usernameInput", type="text")}}
@@ -55,7 +55,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col mb-3 border rounded">
+            <div class="col accent-box-dark">
               <div class="row">
                 <div class="col align-self-center">
                   <p class="text-center my-0">New Here?</p>
@@ -69,6 +69,9 @@
                 </div>
               </div>
             </div>
+            <row>
+              <img src="/static/cowsay.svg" class="d-block mx-auto">
+            </row>
           </div>
         </div>
       </div>
