@@ -4,6 +4,8 @@ from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, In
 import sqlalchemy as sa
 from app import db
 from app.models import User
+from wtforms import TextAreaField
+from wtforms.validators import Length
 
 class SignInForm(FlaskForm):
 	username = StringField("Username",validators=[DataRequired()])
@@ -30,3 +32,8 @@ class SignUpForm(FlaskForm):
 			User.email == email.data))
 		if user is not None:
 			raise ValidationError('Please use a different email address.')
+
+class PostForm(FlaskForm):
+    post = TextAreaField('Say something', validators=[
+        DataRequired(), Length(min=1, max=140)])
+    submit = SubmitField('Submit')
