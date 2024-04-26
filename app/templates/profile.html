@@ -58,3 +58,13 @@
         ></script>
     </body>
 </html>
+
+
+<!-- Code for changing login button to logout if logged in
+<div>
+    {% if current_user.is_anonymous %}
+    <a href="{{ url_for('login') }}">Login</a>
+    {% else %}
+    <a href="{{ url_for('logout') }}">Logout</a>
+    {% endif %}
+</div> -->
