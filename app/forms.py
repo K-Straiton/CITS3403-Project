@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, BooleanField, PasswordField, SubmitField, RadioField
-from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, InputRequired
+from wtforms import StringField, BooleanField, PasswordField, SubmitField, RadioField, TextAreaField
+from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, InputRequired, Length
 import sqlalchemy as sa
 from app import db
 from app.models import User
@@ -30,3 +30,7 @@ class SignUpForm(FlaskForm):
 			User.email == email.data))
 		if user is not None:
 			raise ValidationError('Please use a different email address.')
+
+class newPost(FlaskForm):
+    post = TextAreaField('Write Post Placeholder', validators=[DataRequired(), Length(min=1, max=500)])
+    submit = SubmitField('Post!')

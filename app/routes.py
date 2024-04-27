@@ -5,7 +5,7 @@ from app.forms import *
 from flask_login import current_user, login_user
 import sqlalchemy as sa
 from app import db
-from app.models import User
+from app.models import User, Post
 
 from flask_login import logout_user
 
@@ -60,13 +60,24 @@ def signUpPage():
     return render_template("sign-up.html", title="Sign Up", form=form)
 
 
-@app.route('/profile')
+@app.route('/profile', methods=['GET', 'POST'])
 def profilePage():
-    name = request.args.get('name', None)
-    pronouns = request.args.get('pronouns')
-    thinkpads = request.args.get('thinkpads')
-
-    return render_template("profile.html", name=name, pronouns=pronouns, thinkpads=thinkpads)
+    if current_user.is_authenticated:
+        name = request.args.get('name', None)
+        pronouns = request.args.get('pronouns')
+        thinkpads = request.args.get('thinkpads')
+        form = newPost()
+        if form.validate_on_submit():
+            post = Post(body=form.post.data, author=current_user)
+            db.session.add(post)
+            db.session.commit()
+            flash('Your post is now live!')
+            flash('yippeee')
+    else:
+            name="notloggedin"
+            pronouns='Unknown'
+            thinkpads="unknown"
+    return render_template("profile.html", name=name, pronouns=pronouns, thinkpads=thinkpads, form=form)
 
 @app.route('/logout')
 def logout():
