@@ -60,17 +60,13 @@ def signUpPage():
     return render_template("sign-up.html", title="Sign Up", form=form)
 
 
-@app.route('/profile', methods=['GET', 'POST'])
+@app.route('/profile')
 def profilePage():
     name = request.args.get('name', None)
     pronouns = request.args.get('pronouns')
     thinkpads = request.args.get('thinkpads')
-    form = editThinkPadCount()
-    if form.is_submitted:
-        flash("form submitted")
-        return redirect(url_for('loginPage')) 
 
-    return render_template("profile.html", title="Profile.html", name=name, pronouns=pronouns, thinkpads=thinkpads, form=form)
+    return render_template("profile.html", name=name, pronouns=pronouns, thinkpads=thinkpads)
 
 @app.route('/logout')
 def logout():
