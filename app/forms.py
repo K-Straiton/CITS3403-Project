@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, BooleanField, PasswordField, SubmitField, RadioField
+from wtforms import StringField, BooleanField, PasswordField, SubmitField, RadioField, IntegerField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, InputRequired
 import sqlalchemy as sa
 from app import db
@@ -28,5 +28,10 @@ class SignUpForm(FlaskForm):
 	def validate_email(self, email):
 		user = db.session.scalar(sa.select(User).where(
 			User.email == email.data))
+		
 		if user is not None:
 			raise ValidationError('Please use a different email address.')
+
+class editThinkPadCount(FlaskForm):
+	ThinkPadCount = IntegerField("Number of ThinkPads", validators=[DataRequired()])
+	editCount = SubmitField("Submit")

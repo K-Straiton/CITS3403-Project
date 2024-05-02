@@ -34,8 +34,8 @@
             </ul>
             {% endif %} {% endwith %}
 
-            <div class="col py-3 my-3 accent-box-light">
-              <img src="/static/ThinkMad.svg" class="d-block mx-auto my-3" />
+            <div class="col my-3 pb-1 accent-box-light">
+              <img src="/static/ThinkMad.svg" class="d-block mx-auto my-4" />
               <form name="login" , action="" , method="post">
                 {{form.hidden_tag()}}
                 <div class="form-floating">
@@ -62,12 +62,12 @@
                 <span style="color: red">[{{ error}}</span>
                 {% endfor %} {{form.remember_me(class="my-3")}} {{
                 form.remember_me.label }} {{form.logIn(type="submit", class="btn
-                btn-primary w-100 my-2")}}
+                btn-primary w-100 mb-2")}}
               </form>
             </div>
           </div>
           <div class="row">
-            <div class="col accent-box-dark">
+            <div class="col accent-box-dark py-1">
               <div class="row">
                 <div class="col align-self-center">
                   <p class="text-center my-0">New Here?</p>

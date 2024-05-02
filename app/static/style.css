@@ -122,6 +122,16 @@ body {
 
 .profileTabs .nav-link.active {
     border: 2px solid var(--tokyoNight-comments);
-    background-color: var(--tokyoNight-comments);
+    background-color: var(w--tokyoNight-comments);
     color: white;
+}
+
+
+
+.form-floating > input + label:after {
+    background: var(--tokyoNight-background) !important;
+}
+
+input:focus + label {
+  color: white !important;
 }
