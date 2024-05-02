@@ -135,3 +135,7 @@ body {
 input:focus + label {
   color: white !important;
 }
+
+input + label {
+    color: white !important;
+}
