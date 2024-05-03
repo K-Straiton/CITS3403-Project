@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ThinkMad Login</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
-    />
+    >
 
-    <link href="../static/style.css" rel="stylesheet" />
+    <link href="../static/style.css" rel="stylesheet" >
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" >
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
     <link
       href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap"
       rel="stylesheet"
-    />
+    >
   </head>
   <body>
     <div class="container-fluid vh-100">
@@ -26,48 +26,36 @@
         >
           <div class="row">
             <!-- REMOVE / MAKE A BETTER INCORRECT USERNAME/PASSWORD -->
-            {% with messages = get_flashed_messages() %} {% if messages %}
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
             <ul>
-              {% for message in messages %}
-              <li>{{ message }}</li>
-              {% endfor %}
-            </ul>
-            {% endif %} {% endwith %}
-
-            <div class="col my-3 pb-1 accent-box-light">
-              <img src="/static/ThinkMad.svg" class="d-block mx-auto my-4" />
-              <form name="login" , action="" , method="post">
-                {{form.hidden_tag()}}
-                <div class="form-floating">
-                  {{form.username(placeholder="Username", size=8,
-                  class="form-control my-2", id="usernameInput", type="text")}}
-                  <label class="form-label my-0" for="usernameInput"
-                    >Username</label
-                  >
-                </div>
-                {% for error in form.username.errors %}
-                <span style="color: red">[{{ error}}</span>
+                {% for message in messages %}
+                <li>{{ message }}</li>
                 {% endfor %}
-
-                <div class="form-floating">
-                  {{form.password(placeholder="Password", size=8,
-                  class="form-control my-2", id="passwordInput",
-                  type="password")}}
-                  <label class="form-label my-0" for="passwordInput"
-                    >Password</label
-                  >
-                </div>
-
+            </ul>
+            {% endif %}
+            {% endwith %}
+    
+            <div class="col py-3 my-3 border rounded">
+              <p class="text-center">ThinkMad</p>
+              <form name='login', action="", method='post'>
+              {{form.hidden_tag()}}
+                {{form.username(placeholder="Username", size=8, class="form-control my-2", id="usernameInput", type="text")}}
+                {% for error in form.username.errors %}
+                <span style="color:red;">[{{ error}}</span>
+                {% endfor %}
+            
+                {{form.password(placeholder="Password", size=8, class="form-control my-2", id="passwordInput", type="password")}}
                 {% for error in form.password.errors %}
-                <span style="color: red">[{{ error}}</span>
-                {% endfor %} {{form.remember_me(class="my-3")}} {{
-                form.remember_me.label }} {{form.logIn(type="submit", class="btn
-                btn-primary w-100 mb-2")}}
+                <span style="color:red;">[{{ error}}</span>
+                {% endfor %}
+                {{form.remember_me()}} {{ form.remember_me.label }}
+                {{form.logIn(type="submit", class="btn btn-primary w-100 my-2")}}
               </form>
             </div>
           </div>
           <div class="row">
-            <div class="col accent-box-dark py-1">
+            <div class="col mb-3 border rounded">
               <div class="row">
                 <div class="col align-self-center">
                   <p class="text-center my-0">New Here?</p>
@@ -81,9 +69,6 @@
                 </div>
               </div>
             </div>
-            <row>
-              <img src="/static/cowsay.svg" class="d-block mx-auto" />
-            </row>
           </div>
         </div>
       </div>

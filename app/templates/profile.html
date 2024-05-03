@@ -54,17 +54,6 @@
                             <button><a href="{{ url_for('logout') }}">Logout</a>
                             {% endif %}</button>
                         </div> 
-                        <div>
-                            <form name="editCount", action="", method="post">
-                                {{form.hidden_tag()}}
-                                {{form.ThinkPadCount(placeholder="Username", size=8, class="form-control my-2", id="usernameInput", type="number")}}
-                                {{form.editCount(type="submit")}}
-
-                            </form>
-                        </div>
-
-                    </div>
-
 
                     </div>
                 </div>
