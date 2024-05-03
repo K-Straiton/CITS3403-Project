@@ -132,3 +132,9 @@ body {
     background-color: var(--tokyoNight-comments);
     color: white;
 }
+
+.modal-content {
+    background-color: var(--tokyoNight-background);
+    color: white;
+}
+
