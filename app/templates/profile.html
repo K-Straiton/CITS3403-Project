@@ -54,7 +54,10 @@
                             <button><a href="{{ url_for('logout') }}">Logout</a>
                             {% endif %}</button>
                         </div> 
-
+                        <form name="editCount" action="" method="post">
+                            {{form.count(placeholder="Count", size=8, class="form-control", id="signUpUsername")}}
+                            {{form.editCount(type="submit", class="btn btn-primary w-100 d-grid")}}
+                        </form>
                     </div>
                 </div>
             </div>

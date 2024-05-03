@@ -60,13 +60,15 @@ def signUpPage():
     return render_template("sign-up.html", title="Sign Up", form=form)
 
 
-@app.route('/profile')
+@app.route('/profile', methods=['GET', 'POST'])
 def profilePage():
     name = request.args.get('name', None)
     pronouns = request.args.get('pronouns')
     thinkpads = request.args.get('thinkpads')
+    
+    form=EditThinkPadCount()
 
-    return render_template("profile.html", name=name, pronouns=pronouns, thinkpads=thinkpads)
+    return render_template("profile.html", title="Profile", name=name, pronouns=pronouns, thinkpads=thinkpads, form=form)
 
 @app.route('/logout')
 def logout():
