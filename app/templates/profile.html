@@ -37,7 +37,7 @@
                 <p class="text-center">Responses</p>
               </div>
               <div class="col text-center">
-                <p class=" text-red fs-4 fw-bolder">{{thinkpads}}</p>
+                <p class="text-red fs-4 fw-bolder">{{thinkpads}}</p>
                 <p>ThinkPads</p>
 
                 <button
@@ -69,13 +69,12 @@
                       class="btn-close btn-close-white white"
                       data-bs-dismiss="modal"
                       aria-label="Close"
-
                     ></button>
                   </div>
                   <div class="modal-body">
-                    <form name="editCount" action="" method="post">
-                      {{form.count(placeholder="Count", size=8,
-                      class="form-control", id="signUpUsername")}}
+                    <form name="changeNumber" action="" method="post">
+                      {{form.hidden_tag()}} {{form.count(placeholder="Count",
+                      size=8, class="form-control", id="signUpUsername")}}
                       {{form.editCount(type="submit", class="btn btn-primary
                       w-100 d-grid")}}
                     </form>

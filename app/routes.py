@@ -68,6 +68,14 @@ def profilePage():
     
     form=EditThinkPadCount()
 
+    if form.validate_on_submit():
+        thinkpads=form.count.data
+        flash("thinkpad number: {}".format(thinkpads))
+        
+        logout_user()
+        flash("")
+        return redirect(url_for('loginPage'))
+
     return render_template("profile.html", title="Profile", name=name, pronouns=pronouns, thinkpads=thinkpads, form=form)
 
 @app.route('/logout')
