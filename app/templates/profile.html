@@ -49,23 +49,11 @@
                         
                         <div>
                             {% if current_user.is_anonymous %}
-                            <button><a href="{{ url_for('login') }}">Login</a>
+                            <button><a href="{{ url_for('loginPage') }}">Login</a>
                             {% else %}</button>
                             <button><a href="{{ url_for('logout') }}">Logout</a>
                             {% endif %}</button>
                         </div> 
-                        <div>
-                            <form name="editCount", action="", method="post">
-                                {{form.hidden_tag()}}
-                                {{form.ThinkPadCount(placeholder="Username", size=8, class="form-control my-2", id="usernameInput", type="number")}}
-                                {{form.editCount(type="submit")}}
-
-                            </form>
-                        </div>
-
-                    </div>
-
-
                     </div>
                 </div>
             </div>
