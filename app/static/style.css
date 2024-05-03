@@ -65,13 +65,20 @@ body {
     border-radius: 10px;
 }
 
+.white {
+    color: white;
+}
+
+.grey {
+    color: var(--tokyoNight-accent);
+}
 
 .body-text {
     size: 20px;
 
 }
 
-.btn-primary {
+.btn-red {
     background-color: var(--IBM-red);
     border: none;
     color: white;
@@ -81,8 +88,8 @@ body {
 
 
 
-.btn-primary:hover, .btn-primary:focus,
-.btn-primary:active, .btn-primary:active:focus {
+.btn-red:hover, .btn-red:focus,
+.btn-red:active, .btn-red:active:focus {
     background-color: var(--IBM-red-active);
     color: white;
     size: 20px;
@@ -122,20 +129,6 @@ body {
 
 .profileTabs .nav-link.active {
     border: 2px solid var(--tokyoNight-comments);
-    background-color: var(w--tokyoNight-comments);
+    background-color: var(--tokyoNight-comments);
     color: white;
-}
-
-
-
-.form-floating > input + label:after {
-    background: var(--tokyoNight-background) !important;
-}
-
-input:focus + label {
-  color: white !important;
-}
-
-input + label {
-    color: white !important;
 }
