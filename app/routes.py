@@ -21,7 +21,6 @@ from urllib.parse import urlsplit
 def indexPage():
     return render_template("index.html")
 
-
 @app.route('/login', methods=['GET', 'POST'])
 def loginPage():
     if current_user.is_authenticated:
@@ -78,9 +77,7 @@ def profilePage():
             flash('Your post is now live!')
             flash('yippeee')
     else:
-            name="notloggedin"
-            pronouns='Unknown'
-            thinkpads="unknown"
+        return redirect(url_for('loginPage'))
     return render_template("profile.html", name=name, pronouns=pronouns, thinkpads=thinkpads, form=form)
 
 @app.route('/logout')
