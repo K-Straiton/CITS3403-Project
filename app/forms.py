@@ -5,6 +5,7 @@ import sqlalchemy as sa
 from app import db
 from app.models import User
 
+
 class SignInForm(FlaskForm):
 	username = StringField("Username",validators=[DataRequired()])
 	password = StringField("Password",validators=[DataRequired()])
@@ -33,5 +34,6 @@ class SignUpForm(FlaskForm):
 			raise ValidationError('Please use a different email address.')
 
 class newPost(FlaskForm):
-    post = TextAreaField('Write Post Placeholder', validators=[DataRequired(), Length(min=1, max=500)])
+    title = TextAreaField('Write Title Placeholder', validators=[DataRequired(), Length(min=1, max=130)])
+    post = TextAreaField('Write Post Placeholder', validators=[DataRequired(), Length(min=1, max=1400)])
     submit = SubmitField('Post!')
