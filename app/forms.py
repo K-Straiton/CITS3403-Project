@@ -28,6 +28,7 @@ class SignUpForm(FlaskForm):
 	def validate_email(self, email):
 		user = db.session.scalar(sa.select(User).where(
 			User.email == email.data))
+		
 		if user is not None:
 			raise ValidationError('Please use a different email address.')
 
