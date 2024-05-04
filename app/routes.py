@@ -34,7 +34,7 @@ def loginPage():
             flash('Invalid username or password {}'.format(form.remember_me.data))
             return redirect(url_for('loginPage'))
         login_user(user, remember=form.remember_me.data)
-        return redirect(url_for('profilePage', name=user.username, pronouns=user.pronouns, thinkpads=user.ThinkPads))
+        return redirect(url_for('profilePage'))
 #    if form.validate_on_submit():
 #        # hashedPassword = generate_password_hash('form.username.data')
 #        # password = generate_password_hash('test')
@@ -58,7 +58,7 @@ def explore():
 @app.route('/sign-up', methods=['GET', 'POST'])
 def signUpPage():
     if current_user.is_authenticated:
-        return redirect(url_for('profilePage', name=current_user.username, pronouns=current_user.pronouns, thinkpads=current_user.ThinkPads))
+        return redirect(url_for('profilePage'))
     form = SignUpForm()
     if form.validate_on_submit():
         user = User(username=form.username.data, email=form.email.data, pronouns=form.pronouns.data, ThinkPads=0)
@@ -80,9 +80,10 @@ def signUpPage():
 @app.route('/profile', methods=['GET', 'POST'])
 def profilePage():
     if current_user.is_authenticated:
-        name = request.args.get('name', None)
-        pronouns = request.args.get('pronouns')
-        thinkpads = request.args.get('thinkpads')
+        # name = request.args.get('name', None)
+        name = current_user.username
+        pronouns = current_user.pronouns
+        thinkpads = current_user.ThinkPads
         postsNum = db.session.scalars(sa.select((func.count())).select_from(Post).where(Post.user_id==current_user.id)).all()[0]
         form = newPost()
         if form.validate_on_submit():
