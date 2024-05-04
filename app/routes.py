@@ -18,6 +18,10 @@ from urllib.parse import urlsplit
 #	return render_template("index.html")
 @app.route('/index', methods=['GET', 'POST'])
 @app.route('/', methods=['GET', 'POST'])
+def indexPage():
+    return render_template(index.html)
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def loginPage():
     if current_user.is_authenticated:

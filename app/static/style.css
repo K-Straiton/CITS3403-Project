@@ -1,7 +1,8 @@
 :root {
     --tokyoNight-red: #f7768e;
     --tokyoNight-orange: #ff9e64;
-    --tokyoNight-yellow: #e0af68 --tokyoNight-green: #9ece6a;
+    --tokyoNight-yellow: #e0af68;
+    --tokyoNight-green: #9ece6a;
     --tokyoNight-blue: #2ac3de;
     --tokyoNight-purple: #bb9af7;
     --tokyoNight-darkBlue: #7aa2f7;
@@ -138,4 +139,20 @@ input:focus + label {
 
 input + label {
     color: white !important;
+}
+
+.posts-homepage {
+    background: var(--tokyoNight-backgroundAccent) !important;
+}
+
+.X220-button {
+    background: var(--IBM-red) !important;
+}
+
+.Arch-button {
+    background: var(--tokyoNight-darkBlue) !important;
+}
+
+.Hardware-button {
+    background: var(--tokyoNight-yellow) !important;
 }
