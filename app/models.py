@@ -37,7 +37,7 @@ class Post(db.Model):
     user_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(User.id), index=True)
     author: so.Mapped[User] = so.relationship(back_populates='posts')
     def __repr__(self):
-        return '<Post {}>'.format(self.body)
+        return '<Post {}>'.format(self.title, self.body)
     
 
 class Comments(db.Model):

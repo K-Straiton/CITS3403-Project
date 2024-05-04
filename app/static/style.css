@@ -145,14 +145,25 @@ input + label {
     background: var(--tokyoNight-backgroundAccent) !important;
 }
 
-.X220-button {
+.X220-badge {
     background: var(--IBM-red) !important;
+    color: white;
+    font-family: "Fira Code", monospace;
+    size: 20px;
+
 }
 
-.Arch-button {
+.Arch-badge {
     background: var(--tokyoNight-darkBlue) !important;
+    color: white;
+    font-family: "Fira Code", monospace;
+    size: 20px;
 }
 
-.Hardware-button {
+.Hardware-badge {
     background: var(--tokyoNight-yellow) !important;
+    color: white;
+    font-family: "Fira Code", monospace;
+    size: 20px;
+
 }
