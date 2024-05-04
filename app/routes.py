@@ -19,7 +19,7 @@ from urllib.parse import urlsplit
 @app.route('/index', methods=['GET', 'POST'])
 @app.route('/', methods=['GET', 'POST'])
 def indexPage():
-    return render_template(index.html)
+    return render_template("index.html")
 
 
 @app.route('/login', methods=['GET', 'POST'])
