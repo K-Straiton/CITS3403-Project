@@ -4,3 +4,5 @@ __pycache__/
 app/__pycache__/
 .devdbrc
 .termdbms/
+app.db
+migrations/
