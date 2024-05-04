@@ -42,7 +42,7 @@
 
                 <button
                   type="button"
-                  class="btn btn-primary"
+                  class="btn btn-secondary"
                   data-bs-toggle="modal"
                   data-bs-target="#editThinkPadCount"
                 >
@@ -73,7 +73,9 @@
                   </div>
                   <div class="modal-body">
                     <form name="changeNumber" action="" method="post">
-                      {{form.hidden_tag()}} {{form.count(placeholder="Count",
+                      {{form.hidden_tag()}}
+                      
+                      {{form.count(placeholder="Number of ThinkPads",
                       size=8, class="form-control", id="signUpUsername")}}
                       {{form.editCount(type="submit", class="btn btn-primary
                       w-100 d-grid")}}

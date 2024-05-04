@@ -70,9 +70,10 @@ def profilePage():
 
     if form.validate_on_submit():
         thinkpads=form.count.data
-        #flash("thinkpad number: {}".format(thinkpads))
-        #logout_user()
-        #return redirect(url_for('loginPage'))
+        user = User.query.filter_by(username=name).first()
+        user.ThinkPads = thinkpads
+        db.session.commit()
+        
 
     return render_template("profile.html", title="Profile", name=name, pronouns=pronouns, thinkpads=thinkpads, form=form)
 
