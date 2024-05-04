@@ -18,6 +18,8 @@ It uses a question and response system, with users being able to create an accou
 
 ## How to Launch
 
+For the following steps make sure you are in the root directory of the repository.
+
 1. Create a python virtual environment
 ```
 python -m venv .venv
@@ -45,5 +47,11 @@ flask db upgrade
 5. Run the app
 ```
 flask run
+```
+6. Add dummy data to the server
+    - Once the flask app is running, open a new terminal in the same directory.
+    - Then run the following command
+```
+flask add_data
 ```
 ## How to Run Tests
