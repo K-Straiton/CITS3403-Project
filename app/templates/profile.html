@@ -27,7 +27,7 @@
                                 <p class="text-center">Responses</p>
                             </div>
                             <div class="col">
-                                <p class="text-center text-red fs-4 fw-bolder">99</p>
+                                <p class="text-center text-red fs-4 fw-bolder"> {{thinkpads}}</p>
                                 <p class="text-center">ThinkPads</p>
                             </div>
                         </div>
@@ -46,7 +46,14 @@
                                 <div class="tab-pane fade" id="profileResponsesContent" role="tabpanel">Placeholder for responses</div>
                             </div>
                         </div>
-
+                        
+                        <div>
+                            {% if current_user.is_anonymous %}
+                            <button><a href="{{ url_for('loginPage') }}">Login</a>
+                            {% else %}</button>
+                            <button><a href="{{ url_for('logout') }}">Logout</a>
+                            {% endif %}</button>
+                        </div> 
                     </div>
                 </div>
             </div>
@@ -58,3 +65,4 @@
         ></script>
     </body>
 </html>
+

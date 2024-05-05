@@ -1,72 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>ThinkMad Sign Up</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <link href="../static/style.css" rel="stylesheet">
-    </head>
-    <body>
-        <div class="container-fluid vh-100">
-            <div class="row d-flex justify-content-center h-100">
-                <div class="col-10 col-sm-7 col-md-5 col-lg-4 align-self-center">
-                    <div class="row">
-                        <div class="col py-3 my-3 border rounded">
-                            <p class="text-center">ThinkMad</p>
-                            <form name="signUp", action="", method="post">
-                                <label class="form-label" for="signUpUsername">Username:</label><br>
-                                {{form.hidden_tag()}}
-                                    {{form.username(placeholder="Username", size=8, class="form-control", id="signUpUsername", type="text")}}
-                                    {% for error in form.username.errors %}
-                                    <span style="color:red;">[{{ error}}</span>
-                                    {% endfor %}
-                                    <!-- <input class="form-control" type="text" id="signUpUsername" placeholder="Username"><br> -->
-                                    <label class="form-label" for="signUpPassword">Password:</label><br>
-                                    {{form.password(placeholder="Password", size=8, class="form-control", id="signUpPassword", type="password")}}
-                                    {% for error in form.password.errors %}
-                                    <span style="color:red;">[{{ error}}</span>
-                                    {% endfor %}
-                                    <!-- <input class="form-control" type="password" id="signUpPassword" placeholder="Password"><br> -->
-                                    <label class="form-label" for="signUpConfirmPassword">Confirm password:</label>
-                                    {{form.password(placeholder="Confirm password", size=8, class="form-control", id="signUpConfirmPassword", type="password")}}
-                                    {% for error in form.password.errors %}
-                                    <span style="color:red;">[{{ error}}</span>
-                                    {% endfor %}
-                                    <!-- <input class="form-control" type="password" id="signUpConfirmPassword" placeholder="Confirm password"><br> -->
-
-                                    <p class="p-0 m-0">Pronouns:</p> <!-- STILL NEED TO ADD PRONOUNS TO FORM FOR SIGNUP-->
-                                    <div class="form-check d-flex flex-wrap justify-content-around">
-                                        {% for subfield in form.pronouns %}
-                                            <tr>
-                                                <td>{{ subfield }}</td>
-                                                <td> {{subfield.label}} </td>
-                                            </tr>
-                                        {% endfor %}
-                                    </div>
-                                    <br> 
-                                    <div class="d-grid">
-                                        {{form.signUp(type="submit", class="btn btn-primary w-100 d-grid")}}
-                                    </div>
-                            </form>
-                        </div> 
-                    </div>
-                    <div class="row">
-                        <div class="col mb-3 border rounded">
-                            <div class="row">
-                                <div class="col align-self-center">
-                                    <p class="text-center my-2">Already have an account?</p>
-                                </div>
-                                <div class="col align-self-center">
-                                    <div class="d-grid">
-                                        <button class="btn btn-secondary my-2">Log in</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ThinkMad Sign Up</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link href="../static/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container-fluid vh-100">
+      <div class="row d-flex justify-content-center h-100">
+        <div class="col-10 col-sm-7 col-md-5 col-lg-4 align-self-center">
+          <div class="row">
+            <div class="col my-3 pb-1 accent-box-light">
+              <img src="/static/ThinkMad.svg" class="d-block mx-auto my-4" />
+              <form name="signUp" , action="" , method="post">
+                {{form.hidden_tag()}}
+                <div class="form-floating">
+                  {{form.username(placeholder="Username", size=8,
+                  class="form-control mb-2", id="signUpUsername", type="text")}}
+                  <label class="my-0" for="signUpUsername">Username</label>
                 </div>
+                {% for error in form.username.errors %}
+                <span style="color: red">[{{ error}}</span>
+                {% endfor %}
+                <div class="form-floating">
+                  {{form.email(placeholder="Email", size=8, class="form-control
+                  mb-2", id="signUpEmail", type="text")}}
+                  <label class="form-label my-0" for="signUpEmail">Email</label>
+                </div>
+                {% for error in form.email.errors %}
+                <span style="color: red">[{{ error}}</span>
+                {% endfor %}
+                <!-- <input class="form-control" type="text" id="signUpUsername" placeholder="Username"><br> -->
+                <div class="form-floating">
+                  {{form.password(placeholder="Password", size=8,
+                  class="form-control mb-2", id="signUpPassword",
+                  type="password")}}
+                  <label class="form-label my-0" for="signUpPassword"
+                    >Password</label
+                  >
+                </div>
+                {% for error in form.password.errors %}
+                <span style="color: red">[{{ error}}</span>
+                {% endfor %}
+                <!-- <input class="form-control" type="password" id="signUpPassword" placeholder="Password"><br> -->
+                <div class="form-floating">
+                  {{form.password2(placeholder="Confirm password", size=8,
+                  class="form-control mb-2", id="signUpConfirmPassword",
+                  type="password")}}
+                  <label class="form-label my-0" for="signUpConfirmPassword"
+                    >Confirm password</label
+                  >
+                </div>
+                {% for error in form.password.errors %}
+                <span style="color: red">[{{ error}}</span>
+                {% endfor %}
+                <!-- <input class="form-control" type="password" id="signUpConfirmPassword" placeholder="Confirm password"><br> -->
+
+                <p class="p-0 m-0">Pronouns:</p>
+                <!-- STILL NEED TO ADD PRONOUNS TO FORM FOR SIGNUP-->
+                <div class="form-check d-flex flex-wrap justify-content-around">
+                  {% for subfield in form.pronouns %}
+                  <div class="me-3">
+                    <p>{{ subfield }} {{subfield.label}}</p>
+                  </div>
+                  {% endfor %}
+                </div>
+                <div class="d-grid">
+                  {{form.signUp(type="submit", class="btn btn-primary w-100
+                  d-grid mb-2")}}
+                </div>
+              </form>
             </div>
+          </div>
+          <div class="row">
+            <div class="col mb-3 accent-box-dark">
+              <div class="row">
+                <div class="col align-self-center">
+                  <p class="text-center my-2">Already have an account?</p>
+                </div>
+                <div class="col align-self-center">
+                  <a href="/login">
+                    <button class="btn btn-secondary my-2 w-100">Log in</button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-    </body>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
