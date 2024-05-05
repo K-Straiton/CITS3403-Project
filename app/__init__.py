@@ -14,4 +14,8 @@ login.login_view = 'login'
 
 from app import routes, models, forms
 
-
+from .helper import add_dummy_data
+   
+@app.cli.command("add_data")
+def add_data():
+    add_dummy_data()
