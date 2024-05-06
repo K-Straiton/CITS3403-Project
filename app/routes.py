@@ -18,10 +18,10 @@ from urllib.parse import urlsplit
 #@app.route('/index')
 #def index():
 #	return render_template("index.html")
-@app.route('/index', methods=['GET', 'POST'])
-@app.route('/', methods=['GET', 'POST'])
-def indexPage():
-    return render_template("index.html")
+# @app.route('/index', methods=['GET', 'POST'])
+# @app.route('/', methods=['GET', 'POST'])
+# def indexPage():
+#     return render_template("index.html")
 
 @app.route('/login', methods=['GET', 'POST'])
 def loginPage():
@@ -46,12 +46,7 @@ def loginPage():
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 def index():
-    # ...
-    posts = db.session.scalars(current_user.following_posts()).all()
-    return render_template("index.html", title='Home Page', form=form, posts=posts)
-def explore():
-    query = sa.select(Post).order_by(Post.timestamp.desc())
-    posts = db.session.scalars(query).all()
+    posts = db.session.scalars(sa.select(Post).order_by(Post.timestamp.desc())).all()
     return render_template('index.html', title='Home Page', posts=posts)
 
 
