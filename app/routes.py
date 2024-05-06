@@ -85,7 +85,6 @@ def profilePage():
         pronouns = current_user.pronouns
         thinkpads = current_user.ThinkPads
         postsNum = db.session.scalars(sa.select((func.count())).select_from(Post).where(Post.user_id==current_user.id)).all()[0]
-        # postsNum = db.session.scalars(sa.select((func.count())).select_from(Post).where(Post.user_id==current_user.id)).all()[0]
         form = newPost()
         if form.validate_on_submit():
             post = Post(title=form.title.data, body=form.post.data, author=current_user)
