@@ -91,6 +91,22 @@ def profilePage():
         return redirect(url_for('loginPage'))
     return render_template("profile.html", name=name, postsNum=postsNum, pronouns=pronouns, thinkpads=thinkpads, form=form)
 
+@app.route('/post-view', methods=['GET', 'POST'])
+def postview():
+    posts = db.session.scalars(sa.select(Post).order_by(Post.timestamp.desc())).all()
+    return render_template('post-view.html', title='Post View', posts=posts)
+
+@app.route('/post/<username>')
+@login_required
+def user(username):
+    user = db.first_or_404(sa.select(User).where(User.username == username))
+    posts = [
+        {'author': user, 'body': 'Test post #1'},
+        {'author': user, 'body': 'Test post #2'}
+    ]
+    return render_template('user.html', user=user, posts=posts)
+
+
 @app.route('/logout')
 def logout():
     logout_user()
