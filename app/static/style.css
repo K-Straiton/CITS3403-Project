@@ -1,7 +1,8 @@
 :root {
     --tokyoNight-red: #f7768e;
     --tokyoNight-orange: #ff9e64;
-    --tokyoNight-yellow: #e0af68 --tokyoNight-green: #9ece6a;
+    --tokyoNight-yellow: #e0af68; 
+    --tokyoNight-green: #9ece6a;
     --tokyoNight-blue: #2ac3de;
     --tokyoNight-purple: #bb9af7;
     --tokyoNight-darkBlue: #7aa2f7;
@@ -122,14 +123,29 @@ body {
 
 .profileTabs .nav-link.active {
     border: 2px solid var(--tokyoNight-comments);
-    background-color: var(w--tokyoNight-comments);
+    background-color: var(--tokyoNight-comments);
     color: white;
 }
 
 
 
 .form-floating > input + label:after {
-    background: var(--tokyoNight-background) !important;
+    background: transparent !important;
+}
+
+input:auto-fill {
+    /* background: var(--tokyoNight-comments) */
+    background: red;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-text-fill-color: white;
+    background-color: transparent !important;
+    -webkit-box-shadow: 0 0 0 50px var(--tokyoNight-comments) inset;
+    transition: background-color 0s ease-in-out 0s;
 }
 
 input:focus + label {
