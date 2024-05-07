@@ -5,7 +5,7 @@ from app.forms import *
 from flask_login import current_user, login_user
 import sqlalchemy as sa
 from app import db
-from app.models import User, Post
+from app.models import User, Post, Comments
 from sqlalchemy import func, select
 from flask_login import logout_user
 from sqlalchemy.orm import Session
@@ -79,7 +79,7 @@ def profilePage():
         name = current_user.username
         pronouns = current_user.pronouns
         thinkpads = current_user.ThinkPads
-        postsNum = db.session.scalars(sa.select((func.count())).select_from(Post).where(Post.user_id==current_user.id)).all()[0]
+        postsNum = db.session.scalars(sa.select((func.count())).select_from(Post).where(Post.user_id==current_user.id)).first()
         form = newPost()
         if form.validate_on_submit():
             post = Post(title=form.title.data, body=form.post.data, author=current_user)
@@ -89,22 +89,23 @@ def profilePage():
             return redirect(url_for('profilePage'))
     else:
         return redirect(url_for('loginPage'))
-    return render_template("profile.html", name=name, postsNum=postsNum, pronouns=pronouns, thinkpads=thinkpads, form=form)
+    posts = db.session.scalars(sa.select(Post).select_from(Post).where(Post.user_id==current_user.id).order_by(Post.timestamp.desc())).all()
+    return render_template("profile.html", name=name, postsNum=postsNum, pronouns=pronouns, thinkpads=thinkpads, form=form, posts=posts)
 
-@app.route('/post-view', methods=['GET', 'POST'])
-def postview():
-    posts = db.session.scalars(sa.select(Post).order_by(Post.timestamp.desc())).all()
-    return render_template('post-view.html', title='Post View', posts=posts)
+@app.route('/post/<post_id>', methods=['GET', 'POST'])
+def postview(post_id):
+    post = db.session.scalars(sa.select(Post).where(Post.id==post_id)).first()
+    commentdb = db.session.scalars(sa.select(Comments).select_from(Comments).where(Comments.post_id==post_id)).first()
+    commentpostid = Comments.post_id
+    stringpost_id = post_id
+    form = newComment()
+    if form.validate_on_submit():
+        comment = Comments(body=form.commentBody.data, post_id=post_id, user_id=current_user.id)
+        db.session.add(comment)
+        db.session.commit()
+        return redirect(url_for('postview'))
+    return render_template('post-view.html', title='Post View', post=post, form=form, comments=commentdb, string1=commentpostid, string2=stringpost_id)
 
-@app.route('/post/<username>')
-@login_required
-def user(username):
-    user = db.first_or_404(sa.select(User).where(User.username == username))
-    posts = [
-        {'author': user, 'body': 'Test post #1'},
-        {'author': user, 'body': 'Test post #2'}
-    ]
-    return render_template('user.html', user=user, posts=posts)
 
 
 @app.route('/logout')

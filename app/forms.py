@@ -34,6 +34,10 @@ class SignUpForm(FlaskForm):
 			raise ValidationError('Please use a different email address.')
 
 class newPost(FlaskForm):
-    title = TextAreaField('Write Title Placeholder', validators=[DataRequired(), Length(min=1, max=130)])
+    title = TextAreaField('Write Title Placeholder', validators=[DataRequired(), Length(min=1, max=140)])
     post = TextAreaField('Write Post Placeholder', validators=[DataRequired(), Length(min=1, max=1400)])
     submit = SubmitField('Post!')
+
+class newComment(FlaskForm):
+	commentBody = TextAreaField('Write comment placeholder', validators=[DataRequired(), Length(min=1, max=1400)])
+	submit = SubmitField('Reply!')
