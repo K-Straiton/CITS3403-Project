@@ -54,7 +54,7 @@ flask run
 ```
 7. Add dummy data to the server
     - Once the flask app is running, open a new terminal in the same directory.
-	- Activate the python virtual enviroment in the new terminal
+    - Activate the python virtual enviroment in the new terminal
     - Then run the following command
 ```
 flask add_data
