@@ -1,7 +1,7 @@
 :root {
     --tokyoNight-red: #f7768e;
     --tokyoNight-orange: #ff9e64;
-    --tokyoNight-yellow: #e0af68; 
+    --tokyoNight-yellow: #e0af68;
     --tokyoNight-green: #9ece6a;
     --tokyoNight-blue: #2ac3de;
     --tokyoNight-purple: #bb9af7;
@@ -133,11 +133,6 @@ body {
     background: transparent !important;
 }
 
-input:auto-fill {
-    /* background: var(--tokyoNight-comments) */
-    background: red;
-}
-
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -154,4 +149,31 @@ input:focus + label {
 
 input + label {
     color: white !important;
+}
+
+.posts-homepage {
+    background: var(--tokyoNight-backgroundAccent) !important;
+}
+
+.X220-badge {
+    background: var(--IBM-red) !important;
+    color: white;
+    font-family: "Fira Code", monospace;
+    size: 20px;
+
+}
+
+.Arch-badge {
+    background: var(--tokyoNight-darkBlue) !important;
+    color: white;
+    font-family: "Fira Code", monospace;
+    size: 20px;
+}
+
+.Hardware-badge {
+    background: var(--tokyoNight-yellow) !important;
+    color: white;
+    font-family: "Fira Code", monospace;
+    size: 20px;
+
 }
