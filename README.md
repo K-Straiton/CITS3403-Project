@@ -32,7 +32,11 @@ source .venv/bin/activate
 ```
 pip install -r requirements.txt
 ```
-4. Create the database
+4. Create the secret key enviroment variable
+```
+export FLASK_SECRET_KEY='<SECRET_KEY_OF_YOUR_CHOICE>'
+```
+5. Create the database
 ```
 flask db init
 ```
@@ -44,12 +48,13 @@ flask db migrate
 ```
 flask db upgrade
 ```
-5. Run the app
+6. Run the app
 ```
 flask run
 ```
-6. Add dummy data to the server
+7. Add dummy data to the server
     - Once the flask app is running, open a new terminal in the same directory.
+	- Activate the python virtual enviroment in the new terminal
     - Then run the following command
 ```
 flask add_data
