@@ -145,3 +145,29 @@ input + label {
 .bg-dark {
     background-color: var(--tokyoNight-backgroundAccent) !important;
 }
+
+.nav-link {
+    color: white !important;
+}
+
+.dash-link:hover {
+    color: var(--IBM-green) !important;
+}
+
+.profile-link:hover {
+    color: var(--IBM-blue) !important;
+}
+
+.top-search {
+    border: 2px solid var(--tokyoNight-comments);
+    color: white;
+}
+
+.search-button {
+    border: none;
+    color: var(--IBM-red);
+}
+
+.search-button:hover, .search-button:active, .search-button:active:focus {
+    color: var(--IBM-red-active);
+}

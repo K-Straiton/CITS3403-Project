@@ -32,43 +32,28 @@
           aria-controls="navbarSupportedContent"
           aria-expanded="false"
           aria-label="Toggle navigation"
-        >
-          <i class="fas fa-bars"></i>
+        >☰</i>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <form class="d-flex align-items-center w-100 ms-4 ">
+          <form class="d-flex align-items-center ms-auto pt-3 pt-md-0">
             <input
-              class="form-control me-2"
+              class="form-control me-2 top-search"
               type="search"
               placeholder="Search"
               aria-label="Search"
             />
-            <button class="btn btn-outline-success" type="submit">
-              Search
-            </button>
+            <button class="btn search-button" type="submit">🔍︎</button>
           </form>
           <ul class="navbar-nav ms-auto align-items-center">
             <li class="nav-item">
-              <a class="nav-link mx-2" href="#!"
-                ><i class="fas fa-heart pe-2"></i>Home</a
+              <a class="nav-link dash-link mx-2" href="#!"
+                ><i class="fas fa-heart pe-2"></i>Dashboard</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link mx-2" href="#!"
-                ><i class="fas fa-plus-circle pe-2"></i>Post</a
+              <a class="nav-link mx-2 profile-link" href="#!"
+                ><i class="fas fa-plus-circle pe-2"></i>Profile</a
               >
-            </li>
-
-            <li class="nav-item">
-              {% if current_user.is_anonymous %}
-              <a class="fas fa-plus-circle pe-2" href="{{ url_for('loginPage') }}"
-                >Sign in</a
-              >
-              {% else %}
-              <a class="fas fa-plus-circle pe-2" href="{{ url_for('loginPage')}}"
-                >Profile</a
-              >
-              {% endif %}
             </li>
           </ul>
         </div>
