@@ -4,6 +4,7 @@ from app.forms import *
 #from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import current_user, login_user
 import sqlalchemy as sa
+import sqlalchemy.orm as so
 from app import db
 from app.models import User, Post, Comments
 from sqlalchemy import func, select
@@ -90,18 +91,21 @@ def profilePage():
     else:
         return redirect(url_for('loginPage'))
     posts = db.session.scalars(sa.select(Post).select_from(Post).where(Post.user_id==current_user.id).order_by(Post.timestamp.desc())).all()
-    return render_template("profile.html", name=name, postsNum=postsNum, pronouns=pronouns, thinkpads=thinkpads, form=form, posts=posts)
+    return render_template("profile.html", nasqlalcemyme=name, postsNum=postsNum, pronouns=pronouns, thinkpads=thinkpads, form=form, posts=posts)
 
 @app.route('/post/<post_id>', methods=['GET', 'POST'])
 def postview(post_id):
     post = db.session.scalars(sa.select(Post).where(Post.id==post_id)).first()
     commentdb = db.session.scalars(sa.select(Comments).select_from(Comments).where(Comments.post_id==post_id)).all()
+    # commentdb = db.session.scalars(sa.select(Comments).select_from(Comments).where(Comments.post_id==post_id).order_by(Comments.timestamp.desc())).all()
     form = newComment()
     if form.validate_on_submit():
+        if not current_user.is_authenticated:
+            return redirect(url_for('loginPage'))
         comment = Comments(body=form.commentBody.data, post_id=post_id, user_id=current_user.id)
         db.session.add(comment)
         db.session.commit()
-        return redirect(url_for('postview'))
+        return redirect(url_for('postview', post_id=post_id))
     return render_template('post-view.html', title='Post View', post=post, form=form, comments=commentdb)
 
 

@@ -23,15 +23,26 @@
 
         <hr class="mx-auto align-self-center">
 
+        <div class="align-self-center mt-5 w-75 mx-auto "> 
+            <form action="" method="post">
+                {{ form.hidden_tag() }}
+                <p>
+                    {{ form.commentBody.label }}<br>
+                    {{ form.commentBody(cols=32, rows=4, class="form-control my-2") }}<br>
+                    {% for error in form.commentBody.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>{{ form.submit() }}</p>
+            </form>
+        </div>
 
         <div>
-            {{comments}}
             {% block content %}
                 {% for comment in comments %}
                     {% include '_comments.html' %}
                 {% endfor %}
             {% endblock %}  
-            
         </div>
     
         <div> 
