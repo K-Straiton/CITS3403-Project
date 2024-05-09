@@ -20,6 +20,8 @@ class User(UserMixin, db.Model):
     ThinkPads: so.Mapped[int] = so.mapped_column()
 
     posts: so.WriteOnlyMapped['Post'] = so.relationship(back_populates='author')
+    userComments: so.WriteOnlyMapped['Comments'] = so.relationship(back_populates='commentPoster')
+
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 
@@ -42,12 +44,11 @@ class Post(db.Model):
 
 class Comments(db.Model):
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
-    post_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(Post.id))
+    post_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(Post.id), index=True)
     body: so.Mapped[str] = so.mapped_column(sa.String(1400))
     timestamp: so.Mapped[datetime] = so.mapped_column(index=True, default=lambda: datetime.now(timezone.utc))
     user_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(User.id), index=True)
-
-    # author: so.Mapped[User] = so.relationship(back_populates='posts')
+    commentPoster: so.Mapped[User] = so.relationship(back_populates='userComments')
 
     def __repr__(self):
         return '<Comments {}>'.format(self.body)

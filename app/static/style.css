@@ -153,6 +153,8 @@ input + label {
 
 .posts-homepage {
     background: var(--tokyoNight-backgroundAccent) !important;
+    border: solid var(--tokyoNight-comments) 2px !important;
+
 }
 
 .X220-badge {
@@ -176,4 +178,14 @@ input + label {
     font-family: "Fira Code", monospace;
     size: 20px;
 
+}
+
+.card {
+    border: solid var(--tokyoNight-comments) 1px;
+    color: white;
+
+}
+
+hr {
+    width: 80%;
 }
