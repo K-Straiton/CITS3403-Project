@@ -95,16 +95,14 @@ def profilePage():
 @app.route('/post/<post_id>', methods=['GET', 'POST'])
 def postview(post_id):
     post = db.session.scalars(sa.select(Post).where(Post.id==post_id)).first()
-    commentdb = db.session.scalars(sa.select(Comments).select_from(Comments).where(Comments.post_id==post_id)).first()
-    commentpostid = Comments.post_id
-    stringpost_id = post_id
+    commentdb = db.session.scalars(sa.select(Comments).select_from(Comments).where(Comments.post_id==post_id)).all()
     form = newComment()
     if form.validate_on_submit():
         comment = Comments(body=form.commentBody.data, post_id=post_id, user_id=current_user.id)
         db.session.add(comment)
         db.session.commit()
         return redirect(url_for('postview'))
-    return render_template('post-view.html', title='Post View', post=post, form=form, comments=commentdb, string1=commentpostid, string2=stringpost_id)
+    return render_template('post-view.html', title='Post View', post=post, form=form, comments=commentdb)
 
 
 
