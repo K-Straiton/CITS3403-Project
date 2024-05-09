@@ -46,8 +46,9 @@ def loginPage():
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 def index():
+    form=newPost()
     posts = db.session.scalars(sa.select(Post).order_by(Post.timestamp.desc())).all()
-    return render_template('index.html', title='Home Page', posts=posts)
+    return render_template('index.html', title='Home Page', posts=posts, form=form)
 
 
 @app.route('/sign-up', methods=['GET', 'POST'])
