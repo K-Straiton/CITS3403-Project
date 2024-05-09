@@ -5,9 +5,11 @@ from app.forms import *
 from flask_login import current_user, login_user
 import sqlalchemy as sa
 from app import db
-from app.models import User
-
+from app.models import User, Post
+from sqlalchemy import func, select
 from flask_login import logout_user
+from sqlalchemy.orm import Session
+from sqlalchemy.orm import sessionmaker
 
 from flask import request
 from urllib.parse import urlsplit
@@ -16,20 +18,23 @@ from urllib.parse import urlsplit
 #@app.route('/index')
 #def index():
 #	return render_template("index.html")
-@app.route('/index', methods=['GET', 'POST'])
-@app.route('/', methods=['GET', 'POST'])
+# @app.route('/index', methods=['GET', 'POST'])
+# @app.route('/', methods=['GET', 'POST'])
+# def indexPage():
+#     return render_template("index.html")
+
 @app.route('/login', methods=['GET', 'POST'])
 def loginPage():
     if current_user.is_authenticated:
-        return redirect(url_for('profilePage', name=current_user.username, pronouns=current_user.pronouns, thinkpads=current_user.ThinkPads))
+        return redirect(url_for('profilePage'))
     form = SignInForm()
     if form.validate_on_submit():
         user = db.session.scalar(sa.select(User).where(User.username == form.username.data))
         if user is None or not user.check_password(form.password.data):
-            flash('Invalid username or password {}'.format(form.remember_me.data))
+            flash('Invalid username or password')
             return redirect(url_for('loginPage'))
         login_user(user, remember=form.remember_me.data)
-        return redirect(url_for('profilePage', name=user.username, pronouns=user.pronouns, thinkpads=user.ThinkPads))
+        return redirect(url_for('profilePage'))
 #    if form.validate_on_submit():
 #        # hashedPassword = generate_password_hash('form.username.data')
 #        # password = generate_password_hash('test')
@@ -38,10 +43,17 @@ def loginPage():
 #        return redirect('/index')
     return render_template("login.html", title='Log In', form=form)
 
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
+def index():
+    posts = db.session.scalars(sa.select(Post).order_by(Post.timestamp.desc())).all()
+    return render_template('index.html', title='Home Page', posts=posts)
+
+
 @app.route('/sign-up', methods=['GET', 'POST'])
 def signUpPage():
     if current_user.is_authenticated:
-        return redirect(url_for('profilePage', name=current_user.username, pronouns=current_user.pronouns, thinkpads=current_user.ThinkPads))
+        return redirect(url_for('profilePage'))
     form = SignUpForm()
     if form.validate_on_submit():
         user = User(username=form.username.data, email=form.email.data, pronouns=form.pronouns.data, ThinkPads=0)
@@ -60,13 +72,24 @@ def signUpPage():
     return render_template("sign-up.html", title="Sign Up", form=form)
 
 
-@app.route('/profile')
+@app.route('/profile', methods=['GET', 'POST'])
 def profilePage():
-    name = request.args.get('name', None)
-    pronouns = request.args.get('pronouns')
-    thinkpads = request.args.get('thinkpads')
-
-    return render_template("profile.html", name=name, pronouns=pronouns, thinkpads=thinkpads)
+    if current_user.is_authenticated:
+        # name = request.args.get('name', None)
+        name = current_user.username
+        pronouns = current_user.pronouns
+        thinkpads = current_user.ThinkPads
+        postsNum = db.session.scalars(sa.select((func.count())).select_from(Post).where(Post.user_id==current_user.id)).all()[0]
+        form = newPost()
+        if form.validate_on_submit():
+            post = Post(title=form.title.data, body=form.post.data, author=current_user)
+            db.session.add(post)
+            db.session.commit()
+            flash('Your post is now live!')
+            return redirect(url_for('profilePage'))
+    else:
+        return redirect(url_for('loginPage'))
+    return render_template("profile.html", name=name, postsNum=postsNum, pronouns=pronouns, thinkpads=thinkpads, form=form)
 
 @app.route('/logout')
 def logout():

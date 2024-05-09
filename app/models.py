@@ -31,20 +31,19 @@ class User(UserMixin, db.Model):
 
 class Post(db.Model):
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
-    body: so.Mapped[str] = so.mapped_column(sa.String(140))
+    title: so.Mapped[str] = so.mapped_column(sa.String(140))
+    body: so.Mapped[str] = so.mapped_column(sa.String(1400))
     timestamp: so.Mapped[datetime] = so.mapped_column(index=True, default=lambda: datetime.now(timezone.utc))
     user_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(User.id), index=True)
-
     author: so.Mapped[User] = so.relationship(back_populates='posts')
-
     def __repr__(self):
-        return '<Post {}>'.format(self.body)
+        return '<Post {}>'.format(self.title, self.body)
     
 
 class Comments(db.Model):
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
-    subject: so.Mapped[str] = so.mapped_column(sa.String(140))
-    body: so.Mapped[str] = so.mapped_column(sa.String(140))
+    post_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(Post.id))
+    body: so.Mapped[str] = so.mapped_column(sa.String(1400))
     timestamp: so.Mapped[datetime] = so.mapped_column(index=True, default=lambda: datetime.now(timezone.utc))
     user_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(User.id), index=True)
 
