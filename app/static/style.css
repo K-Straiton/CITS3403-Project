@@ -154,6 +154,7 @@ input + label {
 
 .posts-homepage {
     background: var(--tokyoNight-backgroundAccent) !important;
+    border: var(--tokyoNight-comments) 2px solid;
 }
 
 .X220-badge {
