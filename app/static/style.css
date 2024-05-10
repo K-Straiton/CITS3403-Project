@@ -20,6 +20,7 @@ body {
     background-color: var(--tokyoNight-background);
     font-family: "Fira Code", monospace;
     color: white;
+    padding-top: 50px;
 }
 
 
@@ -192,6 +193,50 @@ input + label {
     border-top: 2px solid var(--tokyoNight-backgroundAccent);
 }
 
+.modal-content {
+    background: var(--tokyoNight-background)
+}
+
+.modal-header {
+    border-bottom: 2px solid var(--tokyoNight-backgroundAccent);
+}
+
+.modal-footer {
+    border-top: 2px solid var(--tokyoNight-backgroundAccent);
+}
+
+
+.bg-dark {
+    background-color: var(--tokyoNight-backgroundAccent) !important;
+}
+
+.nav-link {
+    color: white !important;
+}
+
+.dash-link:hover {
+    color: var(--IBM-green) !important;
+}
+
+.profile-link:hover {
+    color: var(--IBM-blue) !important;
+}
+
+.top-search {
+    border: 2px solid var(--tokyoNight-comments);
+    color: white;
+}
+
+.search-button {
+    border: none;
+    color: var(--IBM-red);
+}
+
+.search-button:hover, .search-button:active, .search-button:active:focus {
+    color: var(--IBM-red-active);
+
+} 
+
 .card {
     border: solid var(--tokyoNight-comments) 1px;
     color: white;
@@ -201,3 +246,4 @@ input + label {
 hr {
     width: 80%;
 }
+
