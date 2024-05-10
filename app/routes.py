@@ -4,8 +4,9 @@ from app.forms import *
 #from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import current_user, login_user
 import sqlalchemy as sa
+import sqlalchemy.orm as so
 from app import db
-from app.models import User, Post
+from app.models import User, Post, Comments
 from sqlalchemy import func, select
 from flask_login import logout_user
 from sqlalchemy.orm import Session
@@ -63,7 +64,11 @@ def index():
         return redirect(url_for('loginPage'))
 
     posts = db.session.scalars(sa.select(Post).order_by(Post.timestamp.desc())).all()
-    return render_template('index.html', title='Home Page', posts=posts, form=form)
+    length = len(posts)+1
+    commentsList = [0]*length
+    for post in posts:
+        commentsList[post.id] = db.session.scalars(sa.select(func.count()).select_from(Comments).where(post.id==Comments.post_id)).all()[0]
+    return render_template('index.html', title='Home Page', posts=posts, comments=commentsList, form=form)
 
 
 @app.route('/sign-up', methods=['GET', 'POST'])
@@ -78,12 +83,6 @@ def signUpPage():
         db.session.commit()
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('loginPage'))
-    #     # Username = form.username.data
-    #     # Pronouns = form.pronouns.data
-    #     # session['Username'] = form.username.data
-    #     # session['Pronouns'] = form.pronouns.data
-    #     # return redirect(url_for('.profileFunc', Username=Username, Pronouns=Pronouns))
-    #     return redirect(url_for('profilePage', name=form.username.data, pronouns=form.pronouns.data))
 
     return render_template("sign-up.html", title="Sign Up", form=form)
 
@@ -95,7 +94,7 @@ def profilePage():
         name = current_user.username
         pronouns = current_user.pronouns
         thinkpads = current_user.ThinkPads
-        postsNum = db.session.scalars(sa.select((func.count())).select_from(Post).where(Post.user_id==current_user.id)).all()[0]
+        postsNum = db.session.scalars(sa.select((func.count())).select_from(Post).where(Post.user_id==current_user.id)).first()
         form = newPost()
         if form.validate_on_submit():
             post = Post(title=form.title.data, body=form.post.data, author=current_user)
@@ -105,7 +104,26 @@ def profilePage():
             return redirect(url_for('profilePage'))
     else:
         return redirect(url_for('loginPage'))
-    return render_template("profile.html", name=name, postsNum=postsNum, pronouns=pronouns, thinkpads=thinkpads, form=form)
+    posts = db.session.scalars(sa.select(Post).select_from(Post).where(Post.user_id==current_user.id).order_by(Post.timestamp.desc())).all()
+    return render_template("profile.html", name=name, postsNum=postsNum, pronouns=pronouns, thinkpads=thinkpads, form=form, posts=posts)
+
+@app.route('/post/<post_id>', methods=['GET', 'POST'])
+def postview(post_id):
+    post = db.session.scalars(sa.select(Post).where(Post.id==post_id)).first()
+    commentdb = db.session.scalars(sa.select(Comments).select_from(Comments).where(Comments.post_id==post_id).order_by(Comments.timestamp.desc())).all()
+    commentNumber = db.session.scalars(sa.select(func.count()).select_from(Comments).where(post_id==Comments.post_id)).all()[0]
+    # commentdb = db.session.scalars(sa.select(Comments).select_from(Comments).where(Comments.post_id==post_id).order_by(Comments.timestamp.desc())).all()
+    form = newComment()
+    if form.validate_on_submit():
+        if not current_user.is_authenticated:
+            return redirect(url_for('loginPage'))
+        comment = Comments(body=form.commentBody.data, post_id=post_id, user_id=current_user.id)
+        db.session.add(comment)
+        db.session.commit()
+        return redirect(url_for('postview', post_id=post_id))
+    return render_template('post-view.html', title='Post View', post=post, form=form, comments=commentdb, commentNumber=commentNumber)
+
+
 
 @app.route('/logout')
 def logout():
