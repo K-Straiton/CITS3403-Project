@@ -21,7 +21,7 @@
             <p class="text-center">Questions</p>
           </div>
           <div class="col">
-            <p class="text-center text-green fs-4 fw-bolder">0</p>
+            <p class="text-center text-green fs-4 fw-bolder">{{commentsNum}}</p>
             <p class="text-center">Responses</p>
           </div>
           <div class="col">
@@ -80,7 +80,9 @@
               id="profileResponsesContent"
               role="tabpanel"
             >
-              Placeholder for responses
+            {% for comment in comments %}
+            <p>{{ comment.commentPoster.username }} says: <b>{{ comment.body }}</b></p>
+            {% endfor %}
             </div>
           </div>
         </div>
