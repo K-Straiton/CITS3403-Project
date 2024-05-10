@@ -1,18 +1,15 @@
 {% extends "default.html" %}
 {% block page_title %}ThinkMad Home{% endblock %}
 {% block body_content %}
-        <div id="post-scrollable-content" class="container-xl  align-self-center" style="height: 100vh; ">
-            {% block content %}
-                {% for post in posts %}
-                    {% include '_post.html' %}
-                {% endfor %}
-            {% endblock %}  
-        </div>
-<!--  
-        <h5 class="card-title">Card title</h5>
-                <p class ="align-self-center"> > Username user > 20:47 April 04 > 42 Replies </p>   
-                <a href="#" class="badge X220-badge ">X220</a>
-                <a href="#" class="badge Arch-badge">Arch</a>
-                <a href="#" class="badge Hardware-badge">Hardware Issue</a> -->
-
+<div class="d-flex justify-content-center mt-5">
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newPostModal">New Post +</button>
+</div>
+{% include '_new-post-modal.html' %}
+<div id="post-scrollable-content" class="container-xl  align-self-center" style="height: 100vh; ">
+    {% block content %}
+        {% for post in posts %}
+            {% include '_post.html' %}
+        {% endfor %}
+    {% endblock %}  
+</div>
 {%  endblock %}

@@ -181,6 +181,30 @@ input + label {
 
 }
 
+.modal-content {
+    background: var(--tokyoNight-background)
+}
+
+.modal-header {
+    border-bottom: 2px solid var(--tokyoNight-backgroundAccent);
+}
+
+.modal-footer {
+    border-top: 2px solid var(--tokyoNight-backgroundAccent);
+}
+
+.modal-content {
+    background: var(--tokyoNight-background)
+}
+
+.modal-header {
+    border-bottom: 2px solid var(--tokyoNight-backgroundAccent);
+}
+
+.modal-footer {
+    border-top: 2px solid var(--tokyoNight-backgroundAccent);
+}
+
 
 .bg-dark {
     background-color: var(--tokyoNight-backgroundAccent) !important;
@@ -212,6 +236,7 @@ input + label {
     color: var(--IBM-red-active);
 
 } 
+
 .card {
     border: solid var(--tokyoNight-comments) 1px;
     color: white;

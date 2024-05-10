@@ -71,7 +71,7 @@
               id="profileQuestionsContent"
               role="tabpanel"
             >
-              Placeholder for questions {% for post in posts %}
+              {% for post in posts %}
               <p>{{ post.author.username }} says: <b>{{ post.body }}</b></p>
               {% endfor %}
             </div>
@@ -93,21 +93,6 @@
           <button>
             <a href="{{ url_for('logout') }}">Logout</a> {% endif %}
           </button>
-        </div>
-        <div>
-          <form action="" method="post">
-            {{ form.hidden_tag() }}
-            <p>
-              {{form.title.label}} <br />
-              {{form.title(cols=32, class="form-control my-2")}}<br />
-              {{ form.post.label }}<br />
-              {{ form.post(cols=32, rows=4, class="form-control my-2") }}<br />
-              {% for error in form.post.errors %}
-              <span style="color: red">[{{ error }}]</span>
-              {% endfor %}
-            </p>
-            <p>{{ form.submit() }}</p>
-          </form>
         </div>
       </div>
     </div>

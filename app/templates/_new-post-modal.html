@@ -1,0 +1,20 @@
+<div class="modal fade" id="newPostModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" data-bs-theme="dark">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">New Post</h1>
+          <button type="button" class="btn-close" data-bs-theme="dark" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="" method="post">
+            {{ form.hidden_tag() }}
+              <label class="form-label visually-hidden" for="newPostTitleInput">Title</label>
+              {{form.title(placeholder="Title", class="form-control ", id="newPostTitleInput", rows=2)}}
+              <label class="form-label visually-hidden" for="newPostBodyInput">Body</label>
+              {{form.post(placeholder="Body", class="form-control my-3", id="newPostBodyInput", rows=10)}}
+              {{form.submit(class="btn btn-primary w-100 mb-2")}}
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>

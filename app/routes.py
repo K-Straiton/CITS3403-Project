@@ -47,12 +47,28 @@ def loginPage():
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 def index():
+    if current_user.is_authenticated:
+        # name = request.args.get('name', None)
+        name = current_user.username
+        pronouns = current_user.pronouns
+        thinkpads = current_user.ThinkPads
+        postsNum = db.session.scalars(sa.select((func.count())).select_from(Post).where(Post.user_id==current_user.id)).all()[0]
+        form=newPost()
+        if form.validate_on_submit():
+            post = Post(title=form.title.data, body=form.post.data, author=current_user)
+            db.session.add(post)
+            db.session.commit()
+            flash('Your post is now live!')
+            return redirect(url_for('index'))
+    else:
+        return redirect(url_for('loginPage'))
+
     posts = db.session.scalars(sa.select(Post).order_by(Post.timestamp.desc())).all()
     length = len(posts)+1
     commentsList = [0]*length
     for post in posts:
         commentsList[post.id] = db.session.scalars(sa.select(func.count()).select_from(Comments).where(post.id==Comments.post_id)).all()[0]
-    return render_template('index.html', title='Home Page', posts=posts, comments=commentsList)
+    return render_template('index.html', title='Home Page', posts=posts, comments=commentsList, form=form)
 
 
 @app.route('/sign-up', methods=['GET', 'POST'])
