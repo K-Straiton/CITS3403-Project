@@ -8,9 +8,12 @@
         <div class="modal-body">
           <form action="" method="post">
             {{ form.hidden_tag() }}
-            {{form.title(placeholder="Title", class="form-control", id="newPostTitleInput", rows=2)}}
-            {{form.post(placeholder="Body", class="form-control", id="newPostBodyInput", rows=10)}}
-            {{form.submit(class="btn btn-primary w-100 mb-2")}}
+              <label class="form-label visually-hidden" for="newPostTitleInput">Title</label>
+              {{form.title(placeholder="Title", class="form-control ", id="newPostTitleInput", rows=2)}}
+              <label class="form-label visually-hidden" for="newPostBodyInput">Body</label>
+              {{form.post(placeholder="Body", class="form-control my-3", id="newPostBodyInput", rows=10)}}
+              {{form.submit(class="btn btn-primary w-100 mb-2")}}
+            </form>
         </div>
       </div>
     </div>
