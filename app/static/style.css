@@ -154,7 +154,8 @@ input + label {
 
 .posts-homepage {
     background: var(--tokyoNight-backgroundAccent) !important;
-    border: var(--tokyoNight-comments) 2px solid;
+    border: solid var(--tokyoNight-comments) 2px !important;
+
 }
 
 .X220-badge {
@@ -209,4 +210,12 @@ input + label {
 
 .search-button:hover, .search-button:active, .search-button:active:focus {
     color: var(--IBM-red-active);
+.card {
+    border: solid var(--tokyoNight-comments) 1px;
+    color: white;
+
+}
+
+hr {
+    width: 80%;
 }

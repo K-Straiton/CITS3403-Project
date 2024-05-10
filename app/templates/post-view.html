@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>ThinkMad Profile</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link href="../static/style.css" rel="stylesheet">
+        {{ moment.include_moment() }} <!--This will always need to be added to any file that uses it - maybe move it into navbar or something-->
+    </head>
+    <body>
+        <div class="align-self-center mt-5 w-75 mx-auto ">
+        <div class="card posts-homepage mt-5 border rounded w-75 mx-auto align-self-center">
+            <div class="card-body">
+                <h5 class="card-title"><a href="{{ url_for('postview', post_id=post.id)}}" > {{ post.title }} </a> </h5>
+                <a href="#" class="rounded-pill X220-badge btn btn-primary ">X220</a>
+                <a href="#" class="rounded-pill Arch-badge btn btn-primary">Arch</a>
+                <a href="#" class="rounded-pill Hardware-badge btn btn-primary">Hardware Issue</a>
+                <p class="align-self-center mt-2"> > {{ post.author.username }} > {{moment(post.timestamp).format('MMMM Do YYYY h:mm a')}} > {{commentNumber}} Replies </p>   
+                <p class="align-self-center mt-2">{{post.body}}</p>
+            </div>
+        </div>
+
+        <hr class="mx-auto align-self-center">
+
+        <div class="align-self-center mt-5 w-75 mx-auto "> 
+            <form action="" method="post">
+                {{ form.hidden_tag() }}
+                <p>
+                    {{ form.commentBody.label }}<br>
+                    {{ form.commentBody(cols=32, rows=4, class="form-control my-2") }}<br>
+                    {% for error in form.commentBody.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>{{ form.submit() }}</p>
+            </form>
+        </div>
+
+        <div>
+            {% block content %}
+                {% for comment in comments %}
+                    {% include '_comments.html' %}
+                {% endfor %}
+            {% endblock %}  
+        </div>
+    
+        <div> 
+ 
+
+        </div>
+
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+            crossorigin="anonymous"
+        ></script>
+
+        
+
+    </body>
+</html>
+
