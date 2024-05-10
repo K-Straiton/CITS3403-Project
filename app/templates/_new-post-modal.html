@@ -6,11 +6,10 @@
           <button type="button" class="btn-close" data-bs-theme="dark" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form>
+          <form action="" method="post">
             {{form.title(placeholder="Title", class="form-control", id="newPostTitleInput", rows=2)}}
             {{form.post(placeholder="Body", class="form-control", id="newPostBodyInput", rows=10)}}
-            {{form.submit()}}
-            <button type="button" class="btn btn-primary">Ok</button>
+            {{form.submit(type="submit", class="btn btn-primary w-100 mb-2")}}
           </form>
         </div>
       </div>
