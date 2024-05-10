@@ -7,10 +7,10 @@
         </div>
         <div class="modal-body">
           <form action="" method="post">
+            {{ form.hidden_tag() }}
             {{form.title(placeholder="Title", class="form-control", id="newPostTitleInput", rows=2)}}
             {{form.post(placeholder="Body", class="form-control", id="newPostBodyInput", rows=10)}}
-            {{form.submit(type="submit", class="btn btn-primary w-100 mb-2")}}
-          </form>
+            {{form.submit(class="btn btn-primary w-100 mb-2")}}
         </div>
       </div>
     </div>

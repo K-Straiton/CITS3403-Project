@@ -58,7 +58,7 @@ def index():
             db.session.add(post)
             db.session.commit()
             flash('Your post is now live!')
-            return redirect(url_for('profilePage'))
+            return redirect(url_for('index'))
     else:
         return redirect(url_for('loginPage'))
 
