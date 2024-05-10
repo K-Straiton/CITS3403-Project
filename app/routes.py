@@ -95,6 +95,7 @@ def profilePage():
         pronouns = current_user.pronouns
         thinkpads = current_user.ThinkPads
         postsNum = db.session.scalars(sa.select((func.count())).select_from(Post).where(Post.user_id==current_user.id)).first()
+        commentsNum = db.session.scalars(sa.select((func.count())).select_from(Comments).where(Comments.user_id==current_user.id)).first()
         form = newPost()
         if form.validate_on_submit():
             post = Post(title=form.title.data, body=form.post.data, author=current_user)
@@ -105,7 +106,8 @@ def profilePage():
     else:
         return redirect(url_for('loginPage'))
     posts = db.session.scalars(sa.select(Post).select_from(Post).where(Post.user_id==current_user.id).order_by(Post.timestamp.desc())).all()
-    return render_template("profile.html", name=name, postsNum=postsNum, pronouns=pronouns, thinkpads=thinkpads, form=form, posts=posts)
+    comments = db.session.scalars(sa.select(Comments).select_from(Comments).where(Comments.user_id==current_user.id).order_by(Comments.timestamp.desc())).all()
+    return render_template("profile.html", name=name, postsNum=postsNum, commentsNum=commentsNum, pronouns=pronouns, thinkpads=thinkpads, form=form, posts=posts, comments=comments)
 
 @app.route('/post/<post_id>', methods=['GET', 'POST'])
 def postview(post_id):
