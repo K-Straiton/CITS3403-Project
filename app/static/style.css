@@ -210,6 +210,8 @@ input + label {
 
 .search-button:hover, .search-button:active, .search-button:active:focus {
     color: var(--IBM-red-active);
+
+} 
 .card {
     border: solid var(--tokyoNight-comments) 1px;
     color: white;
@@ -219,3 +221,4 @@ input + label {
 hr {
     width: 80%;
 }
+
