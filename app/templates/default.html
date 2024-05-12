@@ -54,10 +54,9 @@
             <li class="nav-item">
               {% if current_user.is_anonymous %}
               <a class="nav-link mx-2 profile-link text-nowrap" href="{{ url_for('loginPage') }}"
-                ><i class="fas fa-plus-circle pe-2 "></i>Log In
-              </a>
+                ><i class="fas fa-plus-circle pe-2 "></i>Log In</a>
               {% else %}
-              <a class="nav-link mx-2 profile-link" href="{{ url_for('loginPage') }}"
+              <a class="nav-link mx-2 profile-link text-nowrap" href="{{ url_for('profilePage') }}"
                 ><i class="fas fa-plus-circle pe-2"></i>Profile</a>
               {% endif %} 
             </li>
