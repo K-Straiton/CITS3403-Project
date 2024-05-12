@@ -86,16 +86,6 @@
             </div>
           </div>
         </div>
-
-        <div>
-          {% if current_user.is_anonymous %}
-          <button>
-            <a href="{{ url_for('loginPage') }}">Login</a> {% else %}
-          </button>
-          <button>
-            <a href="{{ url_for('logout') }}">Logout</a> {% endif %}
-          </button>
-        </div>
       </div>
     </div>
   </div>

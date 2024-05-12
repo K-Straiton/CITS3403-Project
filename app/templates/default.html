@@ -17,7 +17,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top bg-dark navbar-dark">
       <div class="container">
-        <a class="navbar-brand mx-2" href="#"
+        <a class="navbar-brand mx-2" href="/"
           ><img
             id="ThinkMad-logo"
             src="/static/ThinkMad.svg"
@@ -47,18 +47,21 @@
           </form>
           <ul class="navbar-nav ms-auto align-items-center pt-3 pt-lg-0">
             <li class="nav-item">
-              <a class="nav-link dash-link mx-2" href="/"
-                ><i class="fas fa-heart pe-2"></i>Home</a
-              >
+              {% if current_user.is_anonymous %}
+              <a class="nav-link dash-link mx-2 text-nowrap" href="{{ url_for('loginPage') }}"
+                >Log In</a>
+              {% else %}
+              <a class="nav-link dash-link mx-2 text-nowrap" href="{{ url_for('profilePage') }}"
+                >Profile</a>
+              {% endif %} 
             </li>
             <li class="nav-item">
               {% if current_user.is_anonymous %}
-              <a class="nav-link mx-2 profile-link text-nowrap" href="{{ url_for('loginPage') }}"
-                ><i class="fas fa-plus-circle pe-2 "></i>Log In
-              </a>
+              <a class="nav-link profile-link mx-2 text-nowrap" href="{{ url_for('signUpPage') }}"
+                >Sign Up</a>
               {% else %}
-              <a class="nav-link mx-2 profile-link" href="{{ url_for('loginPage') }}"
-                ><i class="fas fa-plus-circle pe-2"></i>Profile</a>
+              <a class="nav-link profile-link mx-2 text-nowrap" href="{{ url_for('logout') }}"
+                >Sign Out</a>
               {% endif %} 
             </li>
           </ul>

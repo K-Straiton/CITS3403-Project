@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, session, url_for, request
+from flask import render_template, redirect, session, url_for, request
 from app import app
 from app.forms import *
 #from werkzeug.security import generate_password_hash, check_password_hash
@@ -34,33 +34,26 @@ def loginPage():
         if user is None or not user.check_password(form.password.data):
             return redirect(url_for('loginPage'))
         login_user(user, remember=form.remember_me.data)
-        return redirect(url_for('profilePage'))
+        return redirect(url_for('index'))
 #    if form.validate_on_submit():
 #        # hashedPassword = generate_password_hash('form.username.data')
 #        # password = generate_password_hash('test')
 #        # if(check_password_hash(password, form.password.data)):
-#        flash('Login requested for user {}, you def can\'t read my password. Wait. Shi- {}'.format(form.username.data, form.password.data))
 #        return redirect('/index')
     return render_template("login.html", title='Log In', form=form)
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 def index():
-    if current_user.is_authenticated:
-        # name = request.args.get('name', None)
-        name = current_user.username
-        pronouns = current_user.pronouns
-        thinkpads = current_user.ThinkPads
-        postsNum = db.session.scalars(sa.select((func.count())).select_from(Post).where(Post.user_id==current_user.id)).all()[0]
-        form=newPost()
-        if form.validate_on_submit():
+    form=newPost()
+    if form.validate_on_submit():
+        if current_user.is_authenticated:
             post = Post(title=form.title.data, body=form.post.data, author=current_user)
             db.session.add(post)
             db.session.commit()
             return redirect(url_for('index'))
-    else:
-        return redirect(url_for('loginPage'))
-
+        else:
+            return redirect(url_for('loginPage'))
     posts = db.session.scalars(sa.select(Post).order_by(Post.timestamp.desc())).all()
     length = len(posts)+1
     commentsList = [0]*length
