@@ -32,7 +32,6 @@ def loginPage():
     if form.validate_on_submit():
         user = db.session.scalar(sa.select(User).where(User.username == form.username.data))
         if user is None or not user.check_password(form.password.data):
-            flash('Invalid username or password')
             return redirect(url_for('loginPage'))
         login_user(user, remember=form.remember_me.data)
         return redirect(url_for('profilePage'))
@@ -58,7 +57,6 @@ def index():
             post = Post(title=form.title.data, body=form.post.data, author=current_user)
             db.session.add(post)
             db.session.commit()
-            flash('Your post is now live!')
             return redirect(url_for('index'))
     else:
         return redirect(url_for('loginPage'))
@@ -81,7 +79,6 @@ def signUpPage():
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
-        flash('Congratulations, you are now a registered user!')
         return redirect(url_for('loginPage'))
 
     return render_template("sign-up.html", title="Sign Up", form=form)
@@ -101,7 +98,6 @@ def profilePage():
             post = Post(title=form.title.data, body=form.post.data, author=current_user)
             db.session.add(post)
             db.session.commit()
-            flash('Your post is now live!')
             return redirect(url_for('profilePage'))
     else:
         return redirect(url_for('loginPage'))
@@ -139,7 +135,6 @@ def logout():
 #         user = db.session.scalar(
 #             sa.select(User).where(User.username == form.username.data))
 #         if user is None or not user.check_password(form.password.data):
-#             flash('Invalid username or password')
 #             return redirect(url_for('login'))
 #         login_user(user, remember=form.remember_me.data)
 #         next_page = request.args.get('next')
