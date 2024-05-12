@@ -34,7 +34,7 @@ def loginPage():
         if user is None or not user.check_password(form.password.data):
             return redirect(url_for('loginPage'))
         login_user(user, remember=form.remember_me.data)
-        return redirect(url_for('profilePage'))
+        return redirect(url_for('index'))
 #    if form.validate_on_submit():
 #        # hashedPassword = generate_password_hash('form.username.data')
 #        # password = generate_password_hash('test')
