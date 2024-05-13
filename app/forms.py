@@ -1,9 +1,10 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, BooleanField, PasswordField, SubmitField, RadioField, IntegerField
-from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, InputRequired, NumberRange
+from wtforms import StringField, BooleanField, PasswordField, SubmitField, RadioField, TextAreaField
+from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, InputRequired, Length
 import sqlalchemy as sa
 from app import db
 from app.models import User
+
 
 class SignInForm(FlaskForm):
 	username = StringField("Username",validators=[DataRequired()])
@@ -32,6 +33,11 @@ class SignUpForm(FlaskForm):
 		if user is not None:
 			raise ValidationError('Please use a different email address.')
 
-class EditThinkPadCount(FlaskForm):
-    count = IntegerField("Count", validators=[DataRequired(), NumberRange(min=0, max=99)])
-    editCount = SubmitField("Submit")
+class newPost(FlaskForm):
+    title = TextAreaField('Write Title Placeholder', validators=[DataRequired(), Length(min=1, max=140)])
+    post = TextAreaField('Write Post Placeholder', validators=[DataRequired(), Length(min=1, max=1400)])
+    submit = SubmitField('Post!')
+
+class newComment(FlaskForm):
+	commentBody = TextAreaField('Write comment placeholder', validators=[DataRequired(), Length(min=1, max=1400)])
+	submit = SubmitField('Reply!')

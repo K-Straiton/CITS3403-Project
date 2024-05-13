@@ -18,4 +18,45 @@ It uses a question and response system, with users being able to create an accou
 
 ## How to Launch
 
+For the following steps make sure you are in the root directory of the repository.
+
+1. Create a python virtual environment
+```
+python -m venv .venv
+```
+2. Activate the environment
+```
+source .venv/bin/activate
+```
+3. Install the requirements
+```
+pip install -r requirements.txt
+```
+4. Create the secret key enviroment variable
+```
+export FLASK_SECRET_KEY='<SECRET_KEY_OF_YOUR_CHOICE>'
+```
+5. Create the database
+```
+flask db init
+```
+
+```
+flask db migrate
+```
+
+```
+flask db upgrade
+```
+6. Run the app
+```
+flask run
+```
+7. Add dummy data to the server
+    - Once the flask app is running, open a new terminal in the same directory.
+    - Activate the python virtual enviroment in the new terminal
+    - Then run the following command
+```
+flask add_data
+```
 ## How to Run Tests

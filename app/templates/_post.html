@@ -1,0 +1,14 @@
+<div>
+    {{ moment.include_moment() }} <!--This will always need to be added to any file that uses it - maybe move it into navbar or something-->
+    <a href="{{ url_for('postview', post_id=post.id)}}" >
+    <div class="card posts-homepage mt-5 rounded w-75 mx-auto align-self-center">
+        <div class="card-body">
+            <h5 class="card-title"><a href="{{ url_for('postview', post_id=post.id)}}" > {{ post.title }} </a> </h5>
+            <a href="#" class="rounded-pill X220-badge btn btn-primary ">X220</a>
+            <a href="#" class="rounded-pill Arch-badge btn btn-primary">Arch</a>
+            <a href="#" class="rounded-pill Hardware-badge btn btn-primary">Hardware Issue</a>
+            <p class="align-self-center mt-2"> > {{ post.author.username }} > {{moment(post.timestamp).fromNow()}} > {{comments[post.id]}} Replies </p>   
+        </div>
+    </div>
+
+</div>

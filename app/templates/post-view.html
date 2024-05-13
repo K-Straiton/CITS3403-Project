@@ -1,0 +1,45 @@
+{% extends "default.html" %} 
+{% block page_title %}ThinkMad - {{post.title}}{% endblock %}
+{% block body_content %}
+        <div class="align-self-center mt-5 w-75 mx-auto ">
+        <div class="card posts-homepage mt-5 border rounded w-75 mx-auto align-self-center">
+            <div class="card-body">
+                <h5 class="card-title"><a href="{{ url_for('postview', post_id=post.id)}}" > {{ post.title }} </a> </h5>
+                <a href="#" class="rounded-pill X220-badge btn btn-primary ">X220</a>
+                <a href="#" class="rounded-pill Arch-badge btn btn-primary">Arch</a>
+                <a href="#" class="rounded-pill Hardware-badge btn btn-primary">Hardware Issue</a>
+                <p class="align-self-center mt-2"> > {{ post.author.username }} > {{moment(post.timestamp).format('MMMM Do YYYY h:mm a')}} > {{commentNumber}} Replies </p>   
+                <p class="align-self-center mt-2">{{post.body}}</p>
+            </div>
+        </div>
+
+        <hr class="mx-auto align-self-center">
+
+        <div class="align-self-center mt-5 w-75 mx-auto "> 
+            <form action="" method="post">
+                {{ form.hidden_tag() }}
+                <p>
+                    {{ form.commentBody.label }}<br>
+                    {{ form.commentBody(cols=32, rows=4, class="form-control my-2") }}<br>
+                    {% for error in form.commentBody.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>{{ form.submit() }}</p>
+            </form>
+        </div>
+
+        <div>
+            {% block content %}
+                {% for comment in comments %}
+                    {% include '_comments.html' %}
+                {% endfor %}
+            {% endblock %}  
+        </div>
+    
+        <div> 
+ 
+
+        </div>
+
+{% endblock %}
