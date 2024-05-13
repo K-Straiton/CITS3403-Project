@@ -118,21 +118,22 @@ def postview(post_id):
 @app.context_processor
 def base():
     form = SearchForm()
-    return dict(form=form)
+    return dict(searchform=form)
 
 #Create a Search function
 @app.route('/search', methods=['POST'])
 def search():
-    form = SearchForm()
-    posts = Post.query
-    if form.validate_on_submit():
+    searchform = SearchForm()
+    post = db.session.scalars(sa.select(Post))
+    if searchform.validate_on_submit():
         #Get data from submitted form
-        posts.searched = form.searched.data
+        searched = searchform.textToSearch.data
         #Query the database
-        posts = posts.filter(Post.body.like('%' + posts.searched + '%'))
-
-        posts = posts.order_by(Post.title).all()
-        return render_template("search.html", form=form, searched = posts.searched, posts = posts)
+        # posts = posts.filter(Post.body.like('%' + posts.searched + '%'))
+        posts = post.query.filter(post.columnName.contains(searched))
+        # posts = posts.order_by(Post.title).all()
+        return render_template("search.html", searchform=searchform, searched=searched, posts=posts)
+    
 
 
 @app.route('/logout')
