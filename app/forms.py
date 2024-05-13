@@ -41,3 +41,7 @@ class newPost(FlaskForm):
 class newComment(FlaskForm):
 	commentBody = TextAreaField('Write comment placeholder', validators=[DataRequired(), Length(min=1, max=1400)])
 	submit = SubmitField('Reply!')
+
+class SearchForm(FlaskForm):
+	textToSearch = StringField('Search Field Placeholder', validators=[DataRequired(), Length(min=1, max=1400)])
+	submitSearch = SubmitField('🔍︎')

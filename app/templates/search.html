@@ -1,0 +1,14 @@
+{% extends "default.html" %}
+{% block page_title %}ThinkMad Home{% endblock %}
+{% block body_content %}
+
+<div id="post-scrollable-content" class="container-xl  align-self-center" style="height: 100vh; ">
+    {% block content %}
+        {% for post in posts2 %}
+            {% include '_post.html' %}
+        {% endfor %} 
+    {% endblock %}  
+</div>
+{%  endblock %}
+
+

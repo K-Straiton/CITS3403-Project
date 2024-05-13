@@ -61,8 +61,20 @@ def index():
     commentsList = [0]*length
     for post in posts:
         commentsList[post.id] = db.session.scalars(sa.select(func.count()).select_from(Comments).where(post.id==Comments.post_id)).all()[0]
+    searchform = SearchForm()
+    if searchform.validate_on_submit():
+        #Get data from submitted form
+        searched = searchform.textToSearch.data
+        #Query the database
+        posts2 = Post.query.filter(Post.body.contains(searched))
+        return render_template("search.html", searchform=searchform, searched=searched, posts2=posts2, title='Home Page', posts=posts, comments=commentsList, form=form)
     return render_template('index.html', title='Home Page', posts=posts, comments=commentsList, form=form)
 
+# Pass Stuff to Navbar
+@app.context_processor
+def base():
+    searchform = SearchForm()
+    return dict(searchform=searchform)
 
 @app.route('/sign-up', methods=['GET', 'POST'])
 def signUpPage():
@@ -117,8 +129,6 @@ def postview(post_id):
         db.session.commit()
         return redirect(url_for('postview', post_id=post_id))
     return render_template('post-view.html', title='Post View', post=post, form=form, comments=commentdb, commentNumber=commentNumber)
-
-
 
 @app.route('/logout')
 def logout():
