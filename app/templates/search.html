@@ -2,9 +2,6 @@
 {% block page_title %}ThinkMad Home{% endblock %}
 {% block body_content %}
 
-<div class="d-flex justify-content-center mt-5">
-    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newPostModal">New Post +</button>
-</div>
 <div id="post-scrollable-content" class="container-xl  align-self-center" style="height: 100vh; ">
     {% block content %}
         {% for post in posts2 %}
