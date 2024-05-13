@@ -38,8 +38,8 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-          <form method="post" action="{{ url_for('search')}}"  class="d-flex align-items-center w-100 ms-3 ms-lg-5 me-3 pt-3 pt-lg-0">
-            {{form.hidden_tag()}}
+          <form method="post" action="{{ url_for('index')}}"  class="d-flex align-items-center w-100 ms-3 ms-lg-5 me-3 pt-3 pt-lg-0">
+            {{searchform.hidden_tag()}}
             {{searchform.textToSearch(placeholder="Search", size=8,
               class="form-control me-2 top-search", type="text")}}
   

@@ -59,6 +59,15 @@ def index():
     commentsList = [0]*length
     for post in posts:
         commentsList[post.id] = db.session.scalars(sa.select(func.count()).select_from(Comments).where(post.id==Comments.post_id)).all()[0]
+    searchform = SearchForm()
+    if searchform.validate_on_submit():
+        #Get data from submitted form
+        searched = searchform.textToSearch.data
+        #Query the database
+        # posts = posts.filter(Post.body.like('%' + posts.searched + '%'))
+        posts2 = Post.query.filter(Post.body.contains(searched))
+        # posts = posts.order_by(Post.title).all()
+        return render_template("search.html", searchform=searchform, searched=searched, posts2=posts2, title='Home Page', posts=posts, comments=commentsList, form=form)
     return render_template('index.html', title='Home Page', posts=posts, comments=commentsList, form=form)
 
 
@@ -117,20 +126,20 @@ def postview(post_id):
 # Pass Stuff to Navbar
 @app.context_processor
 def base():
-    form = SearchForm()
-    return dict(searchform=form)
+    searchform = SearchForm()
+    return dict(searchform=searchform)
 
 #Create a Search function
 @app.route('/search', methods=['POST'])
 def search():
     searchform = SearchForm()
-    post = db.session.scalars(sa.select(Post))
+    post = sa.select(Post)
     if searchform.validate_on_submit():
         #Get data from submitted form
         searched = searchform.textToSearch.data
         #Query the database
         # posts = posts.filter(Post.body.like('%' + posts.searched + '%'))
-        posts = post.query.filter(post.columnName.contains(searched))
+        posts = Post.query.filter(Post.body.contains(searched))
         # posts = posts.order_by(Post.title).all()
         return render_template("search.html", searchform=searchform, searched=searched, posts=posts)
     
