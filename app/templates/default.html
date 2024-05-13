@@ -35,8 +35,11 @@
           aria-label="Toggle navigation"
         >☰</i>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <form class="d-flex align-items-center w-100 ms-3 ms-lg-5 me-3 pt-3 pt-lg-0">
+
+          <form method="POST" action="{{ url_for('search')}}"  class="d-flex align-items-center w-100 ms-3 ms-lg-5 me-3 pt-3 pt-lg-0">
+            {{form.hidden_tag()}}
             <input
               class="form-control me-2 top-search"
               type="search"
@@ -45,6 +48,7 @@
             />
             <button class="btn search-button" type="submit">🔍︎</button>
           </form>
+
           <ul class="navbar-nav ms-auto align-items-center pt-3 pt-lg-0">
             <li class="nav-item">
               {% if current_user.is_anonymous %}

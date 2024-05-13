@@ -114,6 +114,25 @@ def postview(post_id):
         return redirect(url_for('postview', post_id=post_id))
     return render_template('post-view.html', title='Post View', post=post, form=form, comments=commentdb, commentNumber=commentNumber)
 
+# Pass Stuff to Navbar
+@app.context_processor
+def base():
+    form = SearchForm()
+    return dict(form=form)
+
+#Create a Search function
+@app.route('/search', methods=['POST'])
+def search():
+    form = SearchForm()
+    posts = Post.query
+    if form.validate_on_submit():
+        #Get data from submitted form
+        posts.searched = form.searched.data
+        #Query the database
+        posts = posts.filter(Post.body.like('%' + posts.searched + '%'))
+
+        posts = posts.order_by(Post.title).all()
+        return render_template("search.html", form=form, searched = posts.searched, posts = posts)
 
 
 @app.route('/logout')

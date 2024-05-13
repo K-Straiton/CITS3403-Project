@@ -6,6 +6,7 @@ from flask_login import LoginManager
 from flask_moment import Moment
 
 
+
 app = Flask(__name__, static_url_path='/static')
 app.config['SECRET_KEY'] = Config.SECRET_KEY
 app.config.from_object(Config)
