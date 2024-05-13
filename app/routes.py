@@ -54,6 +54,7 @@ def index():
             db.session.commit()
             return redirect(url_for('index'))
         else:
+            flash("Please sign in to create a post.", 'error')
             return redirect(url_for('loginPage'))
     posts = db.session.scalars(sa.select(Post).order_by(Post.timestamp.desc())).all()
     length = len(posts)+1
@@ -109,6 +110,7 @@ def postview(post_id):
     form = newComment()
     if form.validate_on_submit():
         if not current_user.is_authenticated:
+            flash("Please log in to post a comment.", 'error')
             return redirect(url_for('loginPage'))
         comment = Comments(body=form.commentBody.data, post_id=post_id, user_id=current_user.id)
         db.session.add(comment)
