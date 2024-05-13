@@ -70,12 +70,40 @@
     </nav>
     <!-- Navbar -->
 
-    <div class="alert alert-danger alert-dismissible mx-auto mt-4" role="alert">
-      <div>
-        A simple danger alert—check it out!
-      </div>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+    <!-- {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class=flashes>
+        {% for category, message in messages %}
+          <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %} -->
+
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="position-absolute z-1 w-100">
+          {% for category, message in messages %}
+            {% if category == 'error' %}
+              <div class="alert alert-danger alert-dismissible mx-auto mt-4" role="alert">
+                <div>
+                  {{ message }}
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {% else %}
+              <div class="alert alert-success alert-dismissible mx-auto mt-4" role="alert">
+                <div>
+                  {{ message }}
+                </div>
+                <buttom type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></buttom>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
     
     {% block body_content %}{% endblock %}
 

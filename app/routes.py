@@ -1,4 +1,4 @@
-from flask import render_template, redirect, session, url_for, request
+from flask import render_template, redirect, session, url_for, request, flash
 from app import app
 from app.forms import *
 #from werkzeug.security import generate_password_hash, check_password_hash
@@ -32,6 +32,7 @@ def loginPage():
     if form.validate_on_submit():
         user = db.session.scalar(sa.select(User).where(User.username == form.username.data))
         if user is None or not user.check_password(form.password.data):
+            flash("Incorrect username or password.", 'error')
             return redirect(url_for('loginPage'))
         login_user(user, remember=form.remember_me.data)
         return redirect(url_for('index'))
@@ -72,6 +73,7 @@ def signUpPage():
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
+        flash("Sign up successful! Please log in.", 'success')
         return redirect(url_for('loginPage'))
 
     return render_template("sign-up.html", title="Sign Up", form=form)
