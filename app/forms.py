@@ -16,7 +16,7 @@ class SignUpForm(FlaskForm):
 	username = StringField("Username",validators=[DataRequired()])
 	email = StringField('Email', validators=[DataRequired(), Email()])
 	password = PasswordField("Password",validators=[DataRequired()])
-	password2 = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password')])
+	password2 = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password', "Passwords must match.")])
 	signUp = SubmitField("Sign Up")
 	pronouns = RadioField("Pronouns:", validators=[InputRequired(message=None)], choices=[("She/Her", "She/Her"), ("He/Him", "He/Him"), ("They/Them","They/Them")])
 	
@@ -24,14 +24,14 @@ class SignUpForm(FlaskForm):
 		user = db.session.scalar(sa.select(User).where(
 			User.username == username.data))
 		if user is not None:
-			raise ValidationError('Please use a different username.')
+			raise ValidationError('Username already in use.')
 
 	def validate_email(self, email):
 		user = db.session.scalar(sa.select(User).where(
 			User.email == email.data))
 		
 		if user is not None:
-			raise ValidationError('Please use a different email address.')
+			raise ValidationError('Email already in use.')
 
 class newPost(FlaskForm):
     title = TextAreaField('Write Title', validators=[DataRequired(), Length(min=1, max=140)])
