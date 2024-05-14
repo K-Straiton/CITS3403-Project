@@ -7,7 +7,7 @@
             <a href="#" class="rounded-pill X220-badge btn btn-primary ">X220</a>
             <a href="#" class="rounded-pill Arch-badge btn btn-primary">Arch</a>
             <a href="#" class="rounded-pill Hardware-badge btn btn-primary">Hardware Issue</a>
-            <p class="align-self-center mt-2"> > {{ post.author.username }} > {{moment(post.timestamp).fromNow()}} > {{comments[post.id]}} Replies </p>   
+        <p class="align-self-center mt-2"> >  <a href="{{ url_for('userview', username= post.author.username)}}" >{{ post.author.username }}</a>> {{moment(post.timestamp).fromNow()}} > {{comments[post.id]}} Replies </p>   
         </div>
     </div>
 
