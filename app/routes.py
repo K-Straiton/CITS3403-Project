@@ -89,7 +89,7 @@ def profilePage():
         form = editThinkPads()
         
         if form.validate_on_submit():
-            current_user.ThinkPads = form.number.data
+            current_user.ThinkPads = int(form.number.data)
             db.session.commit()
             return redirect(url_for('profilePage'))
     else:

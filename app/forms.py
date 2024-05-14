@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, BooleanField, PasswordField, SubmitField, RadioField, TextAreaField, IntegerField
-from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, InputRequired, Length
+from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, InputRequired, Length, NumberRange
 import sqlalchemy as sa
 from app import db
 from app.models import User
@@ -43,6 +43,6 @@ class newComment(FlaskForm):
 	submit = SubmitField('Reply!')
 
 class editThinkPads(FlaskForm):
-    number = IntegerField('Number of ThinkPads', validators=[DataRequired()])
+    number = IntegerField('Number of ThinkPads', validators=[DataRequired(), NumberRange(min=0, max=9000000)])
     submit = SubmitField('Submit')
     
