@@ -47,6 +47,6 @@ class SearchForm(FlaskForm):
 	submitSearch = SubmitField('🔍︎')
 
 class editThinkPads(FlaskForm):
-    number = IntegerField('Number of ThinkPads', validators=[DataRequired(), NumberRange(min=0, max=9000000)])
+    number = IntegerField('Number of ThinkPads', validators=[NumberRange(min=0, max=9000000)])
     submit = SubmitField('Submit')
     
