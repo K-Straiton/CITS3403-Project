@@ -251,3 +251,7 @@ hr {
     background-color: var(--tokyoNight-background);
     border-top: 2px solid var(--tokyoNight-accent);
 }
+
+.footer-margin {
+    margin-bottom: 120px;
+}
