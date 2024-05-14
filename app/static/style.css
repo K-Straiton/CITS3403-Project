@@ -247,3 +247,7 @@ hr {
     width: 80%;
 }
 
+.comment-footer {
+    background-color: var(--tokyoNight-background);
+    border-top: 2px solid var(--tokyoNight-accent);
+}

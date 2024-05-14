@@ -34,14 +34,14 @@ class SignUpForm(FlaskForm):
 			raise ValidationError('Please use a different email address.')
 
 class newPost(FlaskForm):
-    title = TextAreaField('Write Title Placeholder', validators=[DataRequired(), Length(min=1, max=140)])
-    post = TextAreaField('Write Post Placeholder', validators=[DataRequired(), Length(min=1, max=1400)])
+    title = TextAreaField('Write Title', validators=[DataRequired(), Length(min=1, max=140)])
+    post = TextAreaField('Write Post', validators=[DataRequired(), Length(min=1, max=1400)])
     submit = SubmitField('Post!')
 
 class newComment(FlaskForm):
-	commentBody = TextAreaField('Write comment placeholder', validators=[DataRequired(), Length(min=1, max=1400)])
+	commentBody = TextAreaField('Write comment', validators=[DataRequired(), Length(min=1, max=1400)])
 	submit = SubmitField('Reply!')
 
 class SearchForm(FlaskForm):
-	textToSearch = StringField('Search Field Placeholder', validators=[DataRequired(), Length(min=1, max=1400)])
+	textToSearch = StringField('Search', validators=[DataRequired(), Length(min=1, max=1400)])
 	submitSearch = SubmitField('🔍︎')
