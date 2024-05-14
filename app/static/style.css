@@ -402,3 +402,8 @@ input + label {
 hr {
     width: 80%;
 }
+
+
+.alert {
+    width: 65%;
+}

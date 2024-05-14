@@ -1,4 +1,4 @@
-from flask import render_template, redirect, session, url_for, request
+from flask import render_template, redirect, session, url_for, request, flash
 from app import app
 from app.forms import *
 #from werkzeug.security import generate_password_hash, check_password_hash
@@ -32,6 +32,7 @@ def loginPage():
     if form.validate_on_submit():
         user = db.session.scalar(sa.select(User).where(User.username == form.username.data))
         if user is None or not user.check_password(form.password.data):
+            flash("Incorrect username or password.", 'error')
             return redirect(url_for('loginPage'))
         login_user(user, remember=form.remember_me.data)
         return redirect(url_for('index'))
@@ -53,6 +54,7 @@ def index():
             db.session.commit()
             return redirect(url_for('index'))
         else:
+            flash("Please sign in to create a post.", 'error')
             return redirect(url_for('loginPage'))
     posts = db.session.scalars(sa.select(Post).order_by(Post.timestamp.desc())).all()
     length = len(posts)+1
@@ -84,6 +86,7 @@ def signUpPage():
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
+        flash("Sign up successful! Please log in.", 'success')
         return redirect(url_for('loginPage'))
 
     return render_template("sign-up.html", title="Sign Up", form=form)
@@ -119,6 +122,7 @@ def postview(post_id):
     form = newComment()
     if form.validate_on_submit():
         if not current_user.is_authenticated:
+            flash("Please log in to post a comment.", 'error')
             return redirect(url_for('loginPage'))
         comment = Comments(body=form.commentBody.data, post_id=post_id, user_id=current_user.id)
         db.session.add(comment)
