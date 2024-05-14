@@ -229,29 +229,12 @@ body {
     size: 20px;
 }
 
-
 .btn-primary:hover, .btn-primary:focus,
 .btn-primary:active, .btn-primary:active:focus {
     background-color: var(--IBM-red-active);
     color: white;
     size: 20px;
 }
-
-
-.btn-tertiary {
-    background-color: var(--tokyoNight-backgroundAccent);
-    border: 2px solid var(--tokyoNight-accent);
-    color: white;
-}
-
-
-.btn-tertiary:hover, .btn-tertiary:focus,
-.btn-tertiary:active, .btn-tertiary:active:focus {
-    background-color: var(--tokyoNight-background);
-    border: 2px solid var(--tokyoNight-accent);
-    color: white;
-}
-
 
 .link-underline-red{
     color: var(--IBM-red);
@@ -378,9 +361,6 @@ body {
     color: white;
     size: 20px;
 }
-
-
-
 
 .btn-primary:hover, .btn-primary:focus,
 .btn-primary:active, .btn-primary:active:focus {
@@ -563,14 +543,10 @@ input + label {
 
 }
 
-hr {
-    width: 80%;
-}
-
-
 .alert {
     width: 65%;
 }
+
 .comment-footer {
 
     background-color: var(--tokyoNight-background);
@@ -583,4 +559,18 @@ hr {
 hr {
     border-top: 2px solid var(--tokyoNight-accent) ;
     opacity: 1;
+}
+
+.btn-tertiary {
+    background-color: var(--tokyoNight-backgroundAccent);
+    border: 1px solid var(--tokyoNight-accent);
+    color: white;
+}
+
+
+.btn-tertiary:hover, .btn-tertiary:focus,
+.btn-tertiary:active, .btn-tertiary:active:focus {
+    background-color: var(--tokyoNight-background);
+    border: 1px solid var(--tokyoNight-accent);
+    color: white;
 }
