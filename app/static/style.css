@@ -81,8 +81,6 @@ body {
 }
 
 
-
-
 .btn-primary:hover, .btn-primary:focus,
 .btn-primary:active, .btn-primary:active:focus {
     background-color: var(--IBM-red-active);
@@ -243,18 +241,19 @@ input + label {
 
 }
 
-hr {
-    width: 80%;
-}
-
 .alert {
     width: 65%;
 }
 .comment-footer {
+
     background-color: var(--tokyoNight-background);
-    border-top: 2px solid var(--tokyoNight-accent);
 }
 
 .footer-margin {
     margin-bottom: 120px;
+}
+
+hr {
+    border-top: 2px solid var(--tokyoNight-accent) ;
+    opacity: 1;
 }
