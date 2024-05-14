@@ -41,7 +41,7 @@ endblock %} {% block body_content %}
           {{form.commentBody(cols=32, rows="1", placeholder="Write a Comment...",id="commentBodyInput", type="text", class="form-control
           me-3") }} {% for error in form.commentBody.errors %}
           <p style="color: red">[{{ error }}]</p>
-          {% endfor %} {{ form.submit(class="btn btn-primary") }}
+          {% endfor %} {{ form.submit(class="btn btn-tertiary") }}
         </form>
       </div>
     </row>
