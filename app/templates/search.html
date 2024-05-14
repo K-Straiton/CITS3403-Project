@@ -1,5 +1,5 @@
 {% extends "default.html" %}
-{% block page_title %}ThinkMad Home{% endblock %}
+{% block page_title %}ThinkMad Search{% endblock %}
 {% block body_content %}
 
 <div id="post-scrollable-content" class="container-xl  align-self-center" style="height: 100vh; ">
@@ -7,8 +7,11 @@
         {% for post in posts2 %}
             {% include '_post.html' %}
         {% endfor %} 
+        <div class="mt-5 d-flex justify-content-center">
+            <div>
+                <p>End of search</p>
+            </div>
+        </div>
     {% endblock %}  
 </div>
 {%  endblock %}
-
-

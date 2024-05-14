@@ -101,10 +101,10 @@ def profilePage():
         thinkpads = current_user.ThinkPads
         postsNum = db.session.scalars(sa.select((func.count())).select_from(Post).where(Post.user_id==current_user.id)).first()
         commentsNum = db.session.scalars(sa.select((func.count())).select_from(Comments).where(Comments.user_id==current_user.id)).first()
-        form = newPost()
+        form = editThinkPads()
+        
         if form.validate_on_submit():
-            post = Post(title=form.title.data, body=form.post.data, author=current_user)
-            db.session.add(post)
+            current_user.ThinkPads = form.number.data
             db.session.commit()
             return redirect(url_for('profilePage'))
     else:
