@@ -133,7 +133,163 @@ body {
 .form-floating > input + label:after {
     background: transparent !important;
 }
+oot {
+    --tokyoNight-red: #f7768e;
+    --tokyoNight-orange: #ff9e64;
+    --tokyoNight-yellow: #e0af68;
+    --tokyoNight-green: #9ece6a;
+    --tokyoNight-blue: #2ac3de;
+    --tokyoNight-p:urple: #bb9af7;
+    --tokyoNight-darkBlue: #7aa2f7;
+    --tokyoNight-backgroundAccent: #24283b;
+    --tokyoNight-background: #1a1b26;
+    --tokyoNight-accent: #c0caf5;
+    --tokyoNight-comments: #565f89;
+    --IBM-red: #ED4C4C;
+    --IBM-red-active: #b83333;
+    --IBM-blue: #4086F0;
+    --IBM-green: #1FC156;
+}
 
+body {
+    background-color: var(--tokyoNight-background);
+    font-family: "Fira Code", monospace;
+    color: white;
+    padding-top: 50px;
+}
+
+
+.text-muted {
+    color: var(--tokyoNight-accent) !important;
+}
+
+.text-red {
+    color: var(--IBM-red)
+}
+
+.text-green {
+    color: var(--IBM-green)
+}
+
+.text-blue {
+    color: var(--IBM-blue)
+}
+
+.list-heading {
+    color: white;
+    font-size: 24px;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.info-text {
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+
+.accent-box-light {
+    background-color: var(--tokyoNight-backgroundAccent);
+    border: var(--tokyoNight-accent) 2px solid;
+    border-radius: 10px;
+}
+
+.accent-box-dark {
+    background-color: var(--tokyoNight-background);
+    border: var(--tokyoNight-comments) 2px solid;
+    border-radius: 10px;
+}
+
+
+.body-text {
+    size: 20px;
+
+}
+
+.btn-primary {
+    background-color: var(--IBM-red);
+    border: none;
+    color: white;
+    size: 20px;
+}
+
+
+
+
+.btn-primary:hover, .btn-primary:focus,
+.btn-primary:active, .btn-primary:active:focus {
+    background-color: var(--IBM-red-active);
+    color: white;
+    size: 20px;
+}
+
+.link-underline-red{
+    color: var(--IBM-red);
+    text-decoration-color: var(--IBM-red);
+}
+
+.link-underline-red:hover, .link-underline-red:focus,
+.link-underline-red:active, .link-underline-red:active:focus {
+    color: var(--IBM-red-active);
+}
+
+.form-control {
+    background-color: var(--tokyoNight-background);
+    border: solid var(--tokyoNight-comments) 1px;
+    color: white;
+}
+
+.form-control::placeholder {
+    color: var(--tokyoNight-comments);
+}
+
+.form-control:focus {
+    color: white;
+    border-color: var(--tokyoNight-accent);
+    background-color: var(--tokyoNight-background);
+    box-shadow: none;
+}
+
+.profileTabs .nav-link {
+    border: 2px solid var(--tokyoNight-comments);
+    color: white;
+}
+
+.profileTabs .nav-link.active {
+    border: 2px solid var(--tokyoNight-comments);
+    background-color: var(--tokyoNight-comments);
+    background-color: var(--tokyoNight-comments);
+    color: white;
+}
+
+.modal-content {
+    background-color: var(--tokyoNight-background);
+    color: white;
+}
+
+.form-floating > input + label:after {
+    background: transparent !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-text-fill-color: white;
+    background-color: transparent !important;
+    -webkit-box-shadow: 0 0 0 50px var(--tokyoNight-comments) inset;
+    transition: background-color 0s ease-in-out 0s;
+}
+
+input:focus + label {
+  color: white !important;
+}
+
+input + label {
+    color: white !important;
+}
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -246,6 +402,7 @@ input + label {
 hr {
     width: 80%;
 }
+
 
 .alert {
     width: 65%;

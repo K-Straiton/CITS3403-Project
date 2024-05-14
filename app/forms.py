@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, BooleanField, PasswordField, SubmitField, RadioField, TextAreaField
-from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, InputRequired, Length
+from wtforms import StringField, BooleanField, PasswordField, SubmitField, RadioField, TextAreaField, IntegerField
+from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, InputRequired, Length, NumberRange
 import sqlalchemy as sa
 from app import db
 from app.models import User
@@ -45,3 +45,8 @@ class newComment(FlaskForm):
 class SearchForm(FlaskForm):
 	textToSearch = StringField('Search Field Placeholder', validators=[DataRequired(), Length(min=1, max=1400)])
 	submitSearch = SubmitField('🔍︎')
+
+class editThinkPads(FlaskForm):
+    number = IntegerField('Number of ThinkPads', validators=[NumberRange(min=0, max=9000000)])
+    submit = SubmitField('Submit')
+    
