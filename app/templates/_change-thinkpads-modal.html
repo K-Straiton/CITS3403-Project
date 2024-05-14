@@ -1,0 +1,29 @@
+<div class="modal fade" id="changeThinkPads" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" data-bs-theme="dark">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">
+          Edit number of ThinkPads
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-theme="dark"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form action="" method="post">
+          {{ form.hidden_tag() }}
+          <label class="form-label visually-hidden" for="thinkPadNumberInput"
+            >Number of ThinkPads</label
+          >
+          {{form.number(placeholder="Number of ThinkPads", class="form-control
+          ", id="thinkPadNumberInput")}} {{form.submit(class="btn btn-primary
+          w-100 mt-3 mb-2")}}
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

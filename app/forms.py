@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, BooleanField, PasswordField, SubmitField, RadioField, TextAreaField
+from wtforms import StringField, BooleanField, PasswordField, SubmitField, RadioField, TextAreaField, IntegerField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, InputRequired, Length
 import sqlalchemy as sa
 from app import db
@@ -41,3 +41,8 @@ class newPost(FlaskForm):
 class newComment(FlaskForm):
 	commentBody = TextAreaField('Write comment placeholder', validators=[DataRequired(), Length(min=1, max=1400)])
 	submit = SubmitField('Reply!')
+
+class editThinkPads(FlaskForm):
+    number = IntegerField('Number of ThinkPads', validators=[DataRequired()])
+    submit = SubmitField('Submit')
+    
