@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, BooleanField, PasswordField, SubmitField, RadioField, TextAreaField
+from wtforms import StringField, BooleanField, PasswordField, SubmitField, RadioField, TextAreaField, SelectField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, InputRequired, Length
 import sqlalchemy as sa
 from app import db
@@ -34,9 +34,11 @@ class SignUpForm(FlaskForm):
 			raise ValidationError('Please use a different email address.')
 
 class newPost(FlaskForm):
-    title = TextAreaField('Write Title Placeholder', validators=[DataRequired(), Length(min=1, max=140)])
-    post = TextAreaField('Write Post Placeholder', validators=[DataRequired(), Length(min=1, max=1400)])
-    submit = SubmitField('Post!')
+	title = TextAreaField('Write Title Placeholder', validators=[DataRequired(), Length(min=1, max=140)])
+	post = TextAreaField('Write Post Placeholder', validators=[DataRequired(), Length(min=1, max=1400)])
+	reason = SelectField('Post Category', choices=[("Buying Advice", "Buying Advice"), ("Tech Support", "Tech Support")])
+	model = SelectField('ThinkPad Model', choices=[("X220", "X220")])
+	submit = SubmitField('Post!')
 
 class newComment(FlaskForm):
 	commentBody = TextAreaField('Write comment placeholder', validators=[DataRequired(), Length(min=1, max=1400)])
