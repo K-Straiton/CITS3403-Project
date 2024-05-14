@@ -35,16 +35,24 @@
           aria-label="Toggle navigation"
         >☰</i>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <form class="d-flex align-items-center w-100 ms-3 ms-lg-5 me-3 pt-3 pt-lg-0">
-            <input
+
+          <form method="post" action="{{ url_for('index')}}"  class="d-flex align-items-center w-100 ms-3 ms-lg-5 me-3 pt-3 pt-lg-0">
+            {{searchform.hidden_tag()}}
+            {{searchform.textToSearch(placeholder="Search", size=8,
+              class="form-control me-2 top-search", type="text")}}
+  
+            <!-- <input
               class="form-control me-2 top-search"
               type="search"
               placeholder="Search"
               aria-label="Search"
-            />
-            <button class="btn search-button" type="submit">🔍︎</button>
+            /> -->
+            {{searchform.submitSearch(type="submit", class="btn search-button fs-4 my-0")}}
+            <!-- <button class="btn search-button" type="submit">🔍︎</button> -->
           </form>
+
           <ul class="navbar-nav ms-auto align-items-center pt-3 pt-lg-0">
             <li class="nav-item">
               {% if current_user.is_anonymous %}
