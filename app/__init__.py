@@ -23,3 +23,17 @@ from .helper import add_dummy_data
 @app.cli.command("add_data")
 def add_data():
     add_dummy_data()
+
+def create_app(config):
+    flaskApp = Flask(__name__)
+    flaskApp.config.from_object(config)
+
+    db.init_app(flaskApp)
+
+    from app.blueprints import main
+    flaskApp.register_blueprint(main)
+
+    #initialise routes
+
+    return flaskApp
+
