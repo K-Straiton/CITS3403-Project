@@ -46,15 +46,18 @@ class UserModelCase(unittest.TestCase):
         self.assertIn(post, posts)
     
 
-    # def test_addComment(self):
-    #     u = User(username='sersangy', email='sersang@isawesome.com', pronouns="she/her", ThinkPads=0)
-    #     db.session.add(u)
-    #     db.session.commit()
-    #     post = Post(id = 1, title="test title", body="test body", author=u, user_id=u.id)
-    #     db.session.add(post)
-    #     db.session.commit()
-    #     comment = Comments(        post = Post(id = 1, title="test title", body="test body", author=u, user_id=u.id)
-
+    def test_addComment(self):
+        u = User(username='sersangy', email='sersang@isawesome.com', pronouns="she/her", ThinkPads=0)
+        db.session.add(u)
+        db.session.commit()
+        post = Post(title="test title", body="test body", author=u)
+        db.session.add(post)
+        db.session.commit()       
+        comment = Comments(body="test comment", post_id=post.id, user_id=u.id)
+        db.session.add(comment)
+        db.session.commit()
+        comments = db.session.scalars(sa.select(Comments).select_from(Comments)).all()
+        self.assertIn(comment, comments)
 
 if __name__ == '__main__':
     unittest.main(verbosity=5)
