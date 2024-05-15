@@ -557,7 +557,7 @@ input + label {
 }
 
 hr {
-    border-top: 2px solid var(--tokyoNight-accent) ;
+    border-top: 2px solid var(--tokyoNight-comments) ;
     opacity: 1;
 }
 
