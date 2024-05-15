@@ -12,6 +12,7 @@ from app.models import *
 class UserModelCase(unittest.TestCase):
     
     def setUp(self):
+        self.app = app.test_client()
         self.app_context = app.app_context()
         self.app_context.push()
         db.create_all()
@@ -58,6 +59,17 @@ class UserModelCase(unittest.TestCase):
         db.session.commit()
         comments = db.session.scalars(sa.select(Comments).select_from(Comments)).all()
         self.assertIn(comment, comments)
+
+    def test_login(self):
+        u = User(username='sersangy', email='sersang@isawesome.com', pronouns="she/her", ThinkPads=0)
+        u.set_password('cat')
+        db.session.add(u)
+        db.session.commit()
+        response = self.app.post('/login', data={
+            'username': u.username,
+            'password': 'dog'
+        })
+        self.assertEqual(response.status_code, 200)  # Expect a redirect
 
 if __name__ == '__main__':
     unittest.main(verbosity=5)
