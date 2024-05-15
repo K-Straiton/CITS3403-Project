@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, BooleanField, PasswordField, SubmitField, RadioField, TextAreaField
-from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, InputRequired, Length
+from wtforms import StringField, BooleanField, PasswordField, SubmitField, RadioField, TextAreaField, IntegerField
+from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, InputRequired, Length, NumberRange
 import sqlalchemy as sa
 from app import db
 from app.models import User
@@ -34,14 +34,19 @@ class SignUpForm(FlaskForm):
 			raise ValidationError('Email already in use.')
 
 class newPost(FlaskForm):
-    title = TextAreaField('Write Title Placeholder', validators=[DataRequired(), Length(min=1, max=140)])
-    post = TextAreaField('Write Post Placeholder', validators=[DataRequired(), Length(min=1, max=1400)])
+    title = TextAreaField('Write Title', validators=[DataRequired(), Length(min=1, max=140)])
+    post = TextAreaField('Write Post', validators=[DataRequired(), Length(min=1, max=1400)])
     submit = SubmitField('Post!')
 
 class newComment(FlaskForm):
-	commentBody = TextAreaField('Write comment placeholder', validators=[DataRequired(), Length(min=1, max=1400)])
+	commentBody = TextAreaField('Write comment', validators=[DataRequired(), Length(min=1, max=1400)])
 	submit = SubmitField('Reply!')
 
 class SearchForm(FlaskForm):
 	textToSearch = StringField('Search Field Placeholder', validators=[DataRequired(), Length(min=1, max=1400)])
 	submitSearch = SubmitField('🔍︎')
+
+class editThinkPads(FlaskForm):
+    number = IntegerField('Number of ThinkPads', validators=[NumberRange(min=0, max=9000000)])
+    submit = SubmitField('Submit')
+    

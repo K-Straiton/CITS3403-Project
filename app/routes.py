@@ -92,6 +92,7 @@ def signUpPage():
     return render_template("sign-up.html", title="Sign Up", form=form)
 
 
+
 @app.route('/profile', methods=['GET', 'POST'])
 def profilePage():
     if current_user.is_authenticated:
@@ -101,10 +102,10 @@ def profilePage():
         thinkpads = current_user.ThinkPads
         postsNum = db.session.scalars(sa.select((func.count())).select_from(Post).where(Post.user_id==current_user.id)).first()
         commentsNum = db.session.scalars(sa.select((func.count())).select_from(Comments).where(Comments.user_id==current_user.id)).first()
-        form = newPost()
+        form = editThinkPads()
+        
         if form.validate_on_submit():
-            post = Post(title=form.title.data, body=form.post.data, author=current_user)
-            db.session.add(post)
+            current_user.ThinkPads = form.number.data
             db.session.commit()
             return redirect(url_for('profilePage'))
     else:
@@ -129,6 +130,22 @@ def postview(post_id):
         db.session.commit()
         return redirect(url_for('postview', post_id=post_id))
     return render_template('post-view.html', title='Post View', post=post, form=form, comments=commentdb, commentNumber=commentNumber)
+
+@app.route('/user/<username>', methods=['GET'])
+def userview(username):
+    if current_user.is_authenticated:
+        user = db.session.scalars(sa.select(User).where(User.username==username)).first()
+        if(user.id == current_user.id):
+            return redirect(url_for('profilePage'))
+    user = db.session.scalars(sa.select(User).where(User.username==username)).first()
+    name = user.username
+    pronouns = user.pronouns
+    thinkpads = user.ThinkPads
+    postsNum = db.session.scalars(sa.select((func.count())).select_from(Post).where(Post.user_id==user.id)).first()
+    commentsNum = db.session.scalars(sa.select((func.count())).select_from(Comments).where(Comments.user_id==user.id)).first()
+    posts = db.session.scalars(sa.select(Post).select_from(Post).where(Post.user_id==user.id).order_by(Post.timestamp.desc())).all()
+    comments = db.session.scalars(sa.select(Comments).select_from(Comments).where(Comments.user_id==user.id).order_by(Comments.timestamp.desc())).all()
+    return render_template("userview.html", name=name, postsNum=postsNum, commentsNum=commentsNum, pronouns=pronouns, thinkpads=thinkpads, posts=posts, comments=comments)
 
 @app.route('/logout')
 def logout():
