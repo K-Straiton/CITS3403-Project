@@ -33,20 +33,27 @@ class UserModelCase(unittest.TestCase):
         db.session.commit()
         users =  db.session.scalars(sa.select(User).select_from(User)).all()
         self.assertIn(user, users)
-        
+    
     def test_createPost(self):
         # u =  db.session.scalars(sa.select(User).select_from(User)).first()
         u = User(username='sersangy', email='sersang@isawesome.com', pronouns="she/her", ThinkPads=0)
         db.session.add(u)
         db.session.commit()
-        post = Post(id = 1, title="test title", body="test body", author=u, user_id=u.id)
+        post = Post(title="test title", body="test body", author=u)
         db.session.add(post)
         db.session.commit()
         posts = db.session.scalars(sa.select(Post).select_from(Post)).all()
         self.assertIn(post, posts)
     
+
     # def test_addComment(self):
-    #     u = db.session.scalar(sa.select(Comments).select_from(User)).first()
+    #     u = User(username='sersangy', email='sersang@isawesome.com', pronouns="she/her", ThinkPads=0)
+    #     db.session.add(u)
+    #     db.session.commit()
+    #     post = Post(id = 1, title="test title", body="test body", author=u, user_id=u.id)
+    #     db.session.add(post)
+    #     db.session.commit()
+    #     comment = Comments(        post = Post(id = 1, title="test title", body="test body", author=u, user_id=u.id)
 
 
 if __name__ == '__main__':
