@@ -133,6 +133,10 @@ def postview(post_id):
 
 @app.route('/user/<username>', methods=['GET'])
 def userview(username):
+    if current_user.is_authenticated:
+        user = db.session.scalars(sa.select(User).where(User.username==username)).first()
+        if(user.id == current_user.id):
+            return redirect(url_for('profilePage'))
     user = db.session.scalars(sa.select(User).where(User.username==username)).first()
     name = user.username
     pronouns = user.pronouns
