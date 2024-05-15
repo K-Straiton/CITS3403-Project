@@ -1,0 +1,102 @@
+{% extends "default.html" %} {% block page_title %}ThinkMad Profile - {{name}}{%
+    endblock %} {% block body_content %}
+    <div class="container-fluid">
+        <div class="row d-flex justify-content-center h-100 mt-5">
+        <div class="col-sm-10 col-lg-8">
+            <div class="rounded">
+            <div class="row">
+                <div>
+                <h1 class="text-center" id="profileUsername">
+                    {{name}}
+                    <small class="text-muted" id="profilePronouns"
+                    >({{pronouns}})</small
+                    >
+                </h1>
+            </div>
+            </div>
+            <div class="mt-4 row justify-content-center">
+                <div class="col align">
+                <p class="text-center text-blue fs-4 fw-bolder">{{postsNum}}</p>
+                <p class="text-center">Questions</p>
+                </div>
+                <div class="col">
+                <p class="text-center text-green fs-4 fw-bolder">{{commentsNum}}</p>
+                <p class="text-center">Responses</p>
+                </div>
+                <div class="col">
+                <p class="text-center text-red fs-4 fw-bolder">
+                    {% if thinkpads > 99 %}
+                    99+ 
+                    {% else %}
+                    {{thinkpads}}
+                    {% endif %}
+                </p>
+                <p class="text-center">ThinkPads</p>
+                </div>
+            </div>
+    
+            <div class="profileTabs">
+                <ul
+                class="nav nav-pills nav-fill my-4 flex-column flex-sm-row"
+                id="pills-tab"
+                role="tablist"
+                >
+                <li class="nav-item pe-sm-2" role="presentation">
+                    <button
+                    class="nav-link active"
+                    id="profileQestionsTab"
+                    data-bs-toggle="pill"
+                    data-bs-target="#profileQuestionsContent"
+                    type="button"
+                    role="tab"
+                    aria-controls="pills-questions"
+                    aria-selected="true"
+                    >
+                    Their Questions
+                    </button>
+                </li>
+                <li class="nav-item ps-sm-2" role="presentation">
+                    <button
+                    class="nav-link"
+                    id="profileResponsesTab"
+                    data-bs-toggle="pill"
+                    data-bs-target="#profileResponsesContent"
+                    type="button"
+                    role="tab"
+                    aria-controls="pills-prof"
+                    aria-selected="false"
+                    >
+                    Their Responses
+                </button>
+                </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+                <div
+                    class="tab-pane fade show active"
+                    id="profileQuestionsContent"
+                    role="tabpanel"
+                >
+                    {% for post in posts %}
+                    <p>{{ post.author.username }} says: <b>{{ post.body }}</b></p>
+                    {% endfor %}
+                </div>
+                <div
+                    class="tab-pane fade"
+                    id="profileResponsesContent"
+                    role="tabpanel"
+                >
+                    {% for comment in comments %}
+                    <p>
+                    {{ comment.commentPoster.username }} says:
+                    <b>{{ comment.body }}</b>
+                    </p>
+                    {% endfor %}
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    {% endblock %}
+    
