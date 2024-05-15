@@ -250,3 +250,12 @@ hr {
 .alert {
     width: 65%;
 }
+
+.comment-card {
+    border: none !important;
+    background-color: transparent !important;
+}
+
+.comment {
+    color: var(--tokyoNight-accent);
+}
