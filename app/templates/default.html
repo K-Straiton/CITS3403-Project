@@ -56,19 +56,19 @@
           <ul class="navbar-nav ms-auto align-items-center pt-3 pt-lg-0">
             <li class="nav-item">
               {% if current_user.is_anonymous %}
-              <a class="nav-link dash-link mx-2 text-nowrap" href="{{ url_for('loginPage') }}"
+              <a class="nav-link dash-link mx-2 text-nowrap" href="{{ url_for('main.loginPage') }}"
                 >Log In</a>
               {% else %}
-              <a class="nav-link dash-link mx-2 text-nowrap" href="{{ url_for('profilePage') }}"
+              <a class="nav-link dash-link mx-2 text-nowrap" href="{{ url_for('main.profilePage') }}"
                 >Profile</a>
               {% endif %} 
             </li>
             <li class="nav-item">
               {% if current_user.is_anonymous %}
-              <a class="nav-link profile-link mx-2 text-nowrap" href="{{ url_for('signUpPage') }}"
+              <a class="nav-link profile-link mx-2 text-nowrap" href="{{ url_for('main.signUpPage') }}"
                 >Sign Up</a>
               {% else %}
-              <a class="nav-link profile-link mx-2 text-nowrap" href="{{ url_for('logout') }}"
+              <a class="nav-link profile-link mx-2 text-nowrap" href="{{ url_for('main.logout') }}"
                 >Sign Out</a>
               {% endif %} 
             </li>

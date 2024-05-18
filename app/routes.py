@@ -71,11 +71,6 @@ def index():
         return render_template("search.html", searchform=searchform, searched=searched, posts2=posts2, title='Home Page', posts=posts, comments=commentsList, form=form)
     return render_template('index.html', title='Home Page', posts=posts, comments=commentsList, form=form)
 
-# Pass Stuff to Navbar
-@app.context_processor
-def base():
-    searchform = SearchForm()
-    return dict(searchform=searchform)
 
 @main.route('/sign-up', methods=['GET', 'POST'])
 def signUpPage():
