@@ -297,6 +297,6 @@ hr {
     background-color: transparent !important;
 }
 
-.comment {
+.text-accent {
     color: var(--tokyoNight-accent);
 }
