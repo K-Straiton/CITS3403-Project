@@ -5,10 +5,12 @@
     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newPostModal">New Post +</button>
 </div>
 {% include '_new-post-modal.html' %}
-<div id="post-scrollable-content" class="container-xl  align-self-center">
+<div id="post-scrollable-content" class="container-xl align-self-center px-auto">
     {% block content %}
         {% for post in posts %}
+        <div class="col-sm-10 col-md-8 col-lg-8 mx-auto">
             {% include '_post.html' %}
+        </div>
         {% endfor %}
     {% endblock %}  
 </div>

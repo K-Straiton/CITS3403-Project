@@ -1,8 +1,7 @@
 {% extends "default.html" %} {% block page_title %}ThinkMad Profile - {{name}}{%
 endblock %} {% block body_content %}
-<div class="container-fluid">
-  <div class="row d-flex justify-content-center h-100">
-    <div class="col-sm-10 col-lg-8">
+<div class="container-xl col-sm-10">
+    <div class="col-sm-10 col-md-8 col-lg-8 mx-auto">
       <div class="rounded">
         <div class="row">
           <div>
@@ -88,7 +87,11 @@ endblock %} {% block body_content %}
               role="tabpanel"
             >
               {% for post in posts %}
-              <p>{{ post.author.username }} says: <b>{{ post.body }}</b></p>
+              <!-- <p>{{ post.author.username }} says: <b>{{ post.body }}</b></p> -->
+              <div>
+                {% include '_post.html' %}
+
+              </div>
               {% endfor %}
             </div>
             <div
@@ -112,6 +115,5 @@ endblock %} {% block body_content %}
         </div>
       </div>
     </div>
-  </div>
 </div>
 {% endblock %}
