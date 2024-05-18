@@ -315,24 +315,39 @@ hr {
 .link-red {
     color: var(--tokyoNight-red);
     text-decoration: none;
+    size: 20px;
+    font-weight: 500;
 }
 
 .link-orange {
     color: var(--tokyoNight-orange);
     text-decoration: none;
+    size: 20px;
+    font-weight: 500;
 }
 
 .link-yellow {
     color: var(--tokyoNight-yellow);
     text-decoration: none;
+    size: 20px;
+    font-weight: 500;
 }
 
 .link-green {
     color: var(--tokyoNight-green);
     text-decoration: none;
+    size: 20px;
+    font-weight: 500;
 }
 
 .link-blue {
     color: var(--tokyoNight-darkBlue);
     text-decoration: none;
+    size: 20px;
+    font-weight: 500;
+}
+
+.poster-info {
+    color: var(--tokyoNight-accent);
+    font-size: 14px;
 }
