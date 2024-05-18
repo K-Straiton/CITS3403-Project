@@ -11,15 +11,26 @@
         </div>
   <hr class="mx-auto align-self-center" />
 
-  <div class="container fixed-bottom comment-footer">
+  <div>
+    {% block content %} {% for comment in comments %} {% include
+    '_comments.html' %} {% endfor %} {% endblock %}
+  </div>
+
+  <button id="testbutton" onclick="myFunction()">Click Me</button>
+
+<div id="test" class="test">
+  <p>test</p>
+</div>
+
+  <div class="container fixed-bottom comment-footer testClass2" id="myDiv">
     <row>
       <div class="col-sm-10 mx-auto">
         <hr />
       </div>
     </row>
     <row>
-      <div class="col-sm-9 mx-auto align-self-center">
-        <form action="" method="post" class="d-flex mt-3 mb-4">
+      <div class="col-sm-9 mx-auto align-self-center testClass">
+        <form action="" method="post" class="d-flex mt-3 mb-4" id="regForm">
           {{ form.hidden_tag() }}
           <label class="form-label visually-hidden" for="commentBodyInput"
             >Write a comment</label
@@ -33,10 +44,19 @@
     </row>
   </div>
 
-  <div>
-    {% block content %} {% for comment in comments %} {% include
-    '_comments.html' %} {% endfor %} {% endblock %}
-  </div>
+  <script>
+    //toggle button from https://stackoverflow.com/questions/15603390/toggle-between-2-functions
+    // document.onload = myFunction()
+    function myFunction() {
+      "use strict";
+  
+      document.getElementById("myDiv").style.display = 'none';
+        };
+    function myFunction2() {
+    "use strict";
 
+    document.getElementById("myDiv").style.display = 'initial';
+    };
+  </script>
   {% endblock %}
 </div>
