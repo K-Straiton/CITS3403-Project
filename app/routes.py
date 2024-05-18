@@ -12,7 +12,6 @@ from flask_login import logout_user
 from sqlalchemy.orm import Session
 from sqlalchemy.orm import sessionmaker
 from app.blueprints import main
-import flaskApp
 
 from flask import request
 from urllib.parse import urlsplit
@@ -73,7 +72,7 @@ def index():
     return render_template('index.html', title='Home Page', posts=posts, comments=commentsList, form=form)
 
 # Pass Stuff to Navbar
-@flaskApp.context_processor
+@app.context_processor
 def base():
     searchform = SearchForm()
     return dict(searchform=searchform)
