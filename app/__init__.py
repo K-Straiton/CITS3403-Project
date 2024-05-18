@@ -35,6 +35,7 @@ def create_app(config):
     def add_data():
         from app.helper import add_dummy_data
         add_dummy_data()
+    
     # Pass Stuff to Navbar
     @app.context_processor
     def base():
@@ -42,8 +43,6 @@ def create_app(config):
         return dict(searchform=searchform)
     
     return app
-
-    
 
 from app import routes, models, forms
 

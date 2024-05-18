@@ -74,7 +74,7 @@ class UserModelCase(unittest.TestCase):
             'username': u.username,
             'password': 'dog'
         })
-        self.assertEqual(response.status_code, 500)  # Expect a redirect
+        self.assertEqual(response.status_code, 200)  # Expect a redirect
 
 if __name__ == '__main__':
     unittest.main(verbosity=5)
