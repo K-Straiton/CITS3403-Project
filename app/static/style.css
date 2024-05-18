@@ -23,6 +23,10 @@ body {
     padding-top: 50px;
 }
 
+.body-content {
+    margin-top: 15px;
+}
+
 
 .text-muted {
     color: var(--tokyoNight-accent) !important;
