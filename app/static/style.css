@@ -23,6 +23,11 @@ body {
     padding-top: 50px;
 }
 
+.body-content {
+    margin-top: 15px;
+    margin-bottom: 78px;
+}
+
 
 .text-muted {
     color: var(--tokyoNight-accent) !important;
@@ -278,7 +283,7 @@ input+label {
 }
 
 hr {
-    border-top: 2px solid var(--tokyoNight-accent);
+    border-top: 2px solid var(--tokyoNight-comments);
     opacity: 1;
 }
 
@@ -298,6 +303,14 @@ hr {
     color: white;
 }
 
+.comment-card {
+    border: none !important;
+    background-color: transparent !important;
+}
+
+.text-accent {
+    color: var(--tokyoNight-accent);
+}
 
 .link-red {
     color: var(--tokyoNight-red);

@@ -1,14 +1,16 @@
 {% extends "default.html" %}
 {% block page_title %}ThinkMad Home{% endblock %}
 {% block body_content %}
-<div class="d-flex justify-content-center mt-5">
+<div class="d-flex justify-content-center">
     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newPostModal">New Post +</button>
 </div>
 {% include '_new-post-modal.html' %}
-<div id="post-scrollable-content" class="container-xl  align-self-center" style="height: 100vh; ">
+<div id="post-scrollable-content" class="container-xl align-self-center px-auto">
     {% block content %}
         {% for post in posts %}
+        <div class="col-sm-10 col-md-9 col-lg-8 mx-auto">
             {% include '_post.html' %}
+        </div>
         {% endfor %}
     {% endblock %}  
 </div>
