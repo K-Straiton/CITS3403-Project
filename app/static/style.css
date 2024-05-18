@@ -351,3 +351,7 @@ hr {
     color: var(--tokyoNight-accent);
     font-size: 14px;
 }
+
+.post-body {
+    overflow-wrap: break-word;
+}
