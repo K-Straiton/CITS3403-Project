@@ -25,6 +25,7 @@ body {
 
 .body-content {
     margin-top: 15px;
+    margin-bottom: 78px;
 }
 
 
@@ -274,7 +275,7 @@ input + label {
 }
 
 hr {
-    border-top: 2px solid var(--tokyoNight-accent) ;
+    border-top: 2px solid var(--tokyoNight-comments) ;
     opacity: 1;
 }
 
@@ -290,4 +291,13 @@ hr {
     background-color: var(--tokyoNight-background);
     border: 1px solid var(--tokyoNight-accent);
     color: white;
+}
+
+.comment-card {
+    border: none !important;
+    background-color: transparent !important;
+}
+
+.text-accent {
+    color: var(--tokyoNight-accent);
 }
