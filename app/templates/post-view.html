@@ -34,8 +34,11 @@
   </div>
 
   <div>
-    {% block content %} {% for comment in comments %} {% include
-    '_comments.html' %} {% endfor %} {% endblock %}
+    {% block content %}
+      {% for comment in comments %} 
+        {% include '_comments.html' %} 
+      {% endfor %} 
+    {% endblock %}
   </div>
 
   {% endblock %}
