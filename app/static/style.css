@@ -347,6 +347,13 @@ hr {
     font-weight: 500;
 }
 
+.link-title {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+
 .poster-info {
     color: var(--tokyoNight-accent);
     font-size: 14px;
