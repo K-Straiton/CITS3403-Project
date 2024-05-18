@@ -81,8 +81,10 @@ body {
 }
 
 
-.btn-primary:hover, .btn-primary:focus,
-.btn-primary:active, .btn-primary:active:focus {
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:active:focus {
     background-color: var(--IBM-red-active);
     color: white;
     size: 20px;
@@ -96,21 +98,25 @@ body {
 }
 
 
-.btn-tertiary:hover, .btn-tertiary:focus,
-.btn-tertiary:active, .btn-tertiary:active:focus {
+.btn-tertiary:hover,
+.btn-tertiary:focus,
+.btn-tertiary:active,
+.btn-tertiary:active:focus {
     background-color: var(--tokyoNight-background);
     border: 2px solid var(--tokyoNight-accent);
     color: white;
 }
 
 
-.link-underline-red{
+.link-underline-red {
     color: var(--IBM-red);
     text-decoration-color: var(--IBM-red);
 }
 
-.link-underline-red:hover, .link-underline-red:focus,
-.link-underline-red:active, .link-underline-red:active:focus {
+.link-underline-red:hover,
+.link-underline-red:focus,
+.link-underline-red:active,
+.link-underline-red:active:focus {
     color: var(--IBM-red-active);
 }
 
@@ -153,15 +159,15 @@ input:-webkit-autofill:active {
     transition: background-color 0s ease-in-out 0s;
 }
 
-.form-floating > input + label:after {
+.form-floating>input+label:after {
     background: transparent !important;
 }
 
-input:focus + label {
-  color: white !important;
+input:focus+label {
+    color: white !important;
 }
 
-input + label {
+input+label {
     color: white !important;
 }
 
@@ -245,10 +251,12 @@ input + label {
     color: var(--IBM-red);
 }
 
-.search-button:hover, .search-button:active, .search-button:active:focus {
+.search-button:hover,
+.search-button:active,
+.search-button:active:focus {
     color: var(--IBM-red-active);
 
-} 
+}
 
 .card {
     border: solid var(--tokyoNight-comments) 1px;
@@ -270,7 +278,7 @@ input + label {
 }
 
 hr {
-    border-top: 2px solid var(--tokyoNight-accent) ;
+    border-top: 2px solid var(--tokyoNight-accent);
     opacity: 1;
 }
 
@@ -281,9 +289,17 @@ hr {
 }
 
 
-.btn-tertiary:hover, .btn-tertiary:focus,
-.btn-tertiary:active, .btn-tertiary:active:focus {
+.btn-tertiary:hover,
+.btn-tertiary:focus,
+.btn-tertiary:active,
+.btn-tertiary:active:focus {
     background-color: var(--tokyoNight-background);
     border: 1px solid var(--tokyoNight-accent);
     color: white;
+}
+
+a .link-blue {
+    color: var(--tokyoNight-darkBlue);
+    text-decoration: none;
+    /* Optional: remove underline */
 }

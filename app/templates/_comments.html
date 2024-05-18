@@ -1,11 +1,20 @@
 <div>
-    {{ moment.include_moment() }} <!--This will always need to be added to any file that uses it - maybe move it into navbar or something-->
-    <div class="card posts-homepage mt-5 border rounded w-75 mx-auto align-self-center">
-        <div class="card-body">
-            <p class="align-self-center mt-2"> ╭─  <a href="{{ url_for('userview', username= comment.commentPoster.username)}}" >{{ comment.commentPoster.username }}</a> > {{moment(comment.timestamp).fromNow()}} </p>   
-            <!-- <p class="align-self-center mt-2"> ╰───></p> -->
-            <p class="align-self-center mt-2">╰───> {{comment.body}}</p>
-        </div>
+  {{ moment.include_moment() }}
+  <!--This will always need to be added to any file that uses it - maybe move it into navbar or something-->
+  <div
+    class="card posts-homepage mt-5 border rounded w-75 mx-auto align-self-center"
+  >
+    <div class="card-body">
+      <p class="align-self-center mt-2 comment">
+        ╭─
+        <a
+          href="{{ url_for('userview', username= comment.commentPoster.username)}}"
+          >{{ comment.commentPoster.username }}</a
+        >
+        > {{moment(comment.timestamp).fromNow()}}
+      </p>
+      <!-- <p class="align-self-center mt-2"> ╰───></p> -->
+      <p class="align-self-center mt-2">╰───> {{comment.body}}</p>
     </div>
+  </div>
 </div>
-
