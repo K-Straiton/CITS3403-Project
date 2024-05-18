@@ -298,8 +298,28 @@ hr {
     color: white;
 }
 
-a .link-blue {
+
+.link-red {
+    color: var(--tokyoNight-red);
+    text-decoration: none;
+}
+
+.link-orange {
+    color: var(--tokyoNight-orange);
+    text-decoration: none;
+}
+
+.link-yellow {
+    color: var(--tokyoNight-yellow);
+    text-decoration: none;
+}
+
+.link-green {
+    color: var(--tokyoNight-green);
+    text-decoration: none;
+}
+
+.link-blue {
     color: var(--tokyoNight-darkBlue);
     text-decoration: none;
-    /* Optional: remove underline */
 }

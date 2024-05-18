@@ -11,7 +11,11 @@ function appendCardTitlesToList() {
   //   }
   Comments.forEach((Comments) => {
     Comments.style.color = "red";
-    Comments.classList.toggle("link-blue");
+    const Links = Comments.querySelectorAll("a");
+    Links.forEach((Links) => {
+      alert(Links.textContent);
+      Links.classList.toggle("link-blue");
+    });
   });
 }
 // Call the function to execute the logic
