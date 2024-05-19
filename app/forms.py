@@ -5,6 +5,9 @@ import sqlalchemy as sa
 from app import db
 from app.models import User
 
+
+## We used code from https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iii-web-forms to understand what our forms should look like
+
 #User log in/sign in form
 class SignInForm(FlaskForm):
 	username = StringField("Username",validators=[DataRequired()])
