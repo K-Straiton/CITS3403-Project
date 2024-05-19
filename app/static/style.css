@@ -92,7 +92,7 @@ body {
 .btn-primary:active:focus {
     background-color: var(--IBM-red-active);
     color: white;
-    font-size: 20px;
+    font-size: 1.1em;
 }
 
 
