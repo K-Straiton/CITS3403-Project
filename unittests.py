@@ -1,15 +1,8 @@
-import os
-os.environ['DATABASE_URL'] = 'sqlite://'
-
-from datetime import datetime, timezone, timedelta
 import unittest
 from app import create_app, db
 import sqlalchemy as sa
-
 from unittest import TestCase
-
 from app.config import TestConfig
-
 from app.models import *
 
 
