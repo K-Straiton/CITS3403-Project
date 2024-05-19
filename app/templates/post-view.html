@@ -9,7 +9,7 @@ endblock %} {% block body_content %}
           <h4 class="card-title mb-1">{{ post.title }}</h4>
           <div class="align-self-center mt-0 poster-info">
             >
-            <a class="link-blue" href="{{ url_for('userview', username= post.author.username)}}">{{
+            <a class="link-blue" href="{{ url_for('main.userview', username= post.author.username)}}">{{
               post.author.username }}</a>
             > ({{ post.author.pronouns }}) >
             {{moment(post.timestamp).format('MMMM Do YYYY h:mm a')}} >
@@ -45,6 +45,12 @@ endblock %} {% block body_content %}
     </div>
 
     <script src="../static/colourchangs.js"></script>
+  <div>
+    {% block content %}
+      {% for comment in comments %} 
+        {% include '_comments.html' %} 
+      {% endfor %} 
+    {% endblock %}
   </div>
 </div>
 {% endblock %}
