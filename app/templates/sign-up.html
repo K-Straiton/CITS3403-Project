@@ -29,7 +29,6 @@
               {{ error }}
             </div>
             {% endfor %}
-            <!-- <input class="form-control" type="text" id="signUpUsername" placeholder="Username"><br> -->
             <div class="form-floating {% if form.password.errors %}is-invalid{% endif %}">
               {{form.password(placeholder="Password", size=8,
               class="form-control mb-2" ~ (' is-invalid' if form.password.errors else ''), id="signUpPassword",
@@ -41,7 +40,6 @@
               {{ error }}
             </div>
             {% endfor %}
-            <!-- <input class="form-control" type="password" id="signUpPassword" placeholder="Password"><br> -->
             <div class="form-floating {% if form.password2.errors %}is-invalid{% endif %}">
               {{form.password2(placeholder="Confirm password", size=8,
               class="form-control mb-2" ~ (' is-invalid' if form.password2.errors else ''), id="signUpConfirmPassword",
@@ -53,10 +51,8 @@
               {{ error }}
             </div>
             {% endfor %}
-            <!-- <input class="form-control" type="password" id="signUpConfirmPassword" placeholder="Confirm password"><br> -->
 
             <p class="p-0 m-0">Pronouns:</p>
-            <!-- STILL NEED TO ADD PRONOUNS TO FORM FOR SIGNUP-->
             <div class="form-check d-flex flex-wrap justify-content-around">
               {% for subfield in form.pronouns %}
               <div class="me-3">
