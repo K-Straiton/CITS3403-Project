@@ -46,6 +46,8 @@ class newComment(FlaskForm):
 
 #Search form
 class SearchForm(FlaskForm):
+	class Meta:
+		csrf = False
 	textToSearch = StringField('Search Field Placeholder', validators=[DataRequired(), Length(min=1, max=1400)])
 	submitSearch = SubmitField('🔍︎')
 
