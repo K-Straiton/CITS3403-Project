@@ -3,11 +3,6 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config:
     # ...
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SECRET_KEY = os.environ.get('FLASK_SECRET_KEY')
-
-class DeploymentConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
         'sqlite:///' + os.path.join(basedir, 'app.db')
-class TestConfig(Config):
-    SQLALCHEMY_DATABASE_URI = "sqlite:///:memory"
+    SECRET_KEY = os.environ.get('FLASK_SECRET_KEY')
