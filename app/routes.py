@@ -1,37 +1,38 @@
-from flask import render_template, redirect, session, url_for, request, flash
-from app import app
-from app.forms import *
+from flask import render_template, redirect, url_for, flash
+from flask import render_template, redirect, url_for, flash
+from app.forms import SignInForm, newPost, newComment, SearchForm, SignUpForm, editThinkPads
 from flask_login import current_user, login_user
 import sqlalchemy as sa
 import sqlalchemy.orm as so
 from app import db
 from app.models import User, Post, Comments
-from sqlalchemy import func, select
+from sqlalchemy import func
 from flask_login import logout_user
 from sqlalchemy.orm import Session
 from sqlalchemy.orm import sessionmaker
 from urllib.parse import urlsplit
+from app.blueprints import main
 
 ## We used this https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-ii-templates as a learning resource, as well as for insight into how to write a correct route function, although all functions were written by us
 
 #Route for login page
-@app.route('/login', methods=['GET', 'POST'])   
+@main.route('/login', methods=['GET', 'POST'])   
 def loginPage():
     if current_user.is_authenticated:	#Checks if current user is already authenticated
-        return redirect(url_for('profilePage'))
+        return redirect(url_for('main.profilePage'))
     form = SignInForm()
     if form.validate_on_submit():	#Checks if login form is valid
         user = db.session.scalar(sa.select(User).where(User.username == form.username.data))
         if user is None or not user.check_password(form.password.data): #Checks if user/username exists and if the password is correct if that user exists
             flash("Incorrect username or password.", 'error')
-            return redirect(url_for('loginPage'))
+            return redirect(url_for('main.loginPage'))
         login_user(user, remember=form.remember_me.data)
-        return redirect(url_for('index'))	#Redirects to home page
+        return redirect(url_for('main.index'))	#Redirects to home page
     return render_template("login.html", title='Log In', form=form)
 
 #Route for index (the home page)
-@app.route('/', methods=['GET', 'POST'])
-@app.route('/index', methods=['GET', 'POST'])
+@main.route('/', methods=['GET', 'POST'])
+@main.route('/index', methods=['GET', 'POST'])
 def index():
     form=newPost()
     if form.validate_on_submit():	#Checks if the new post form is valid (has been filled out correctly)
@@ -39,10 +40,10 @@ def index():
             post = Post(title=form.title.data, body=form.post.data, author=current_user)
             db.session.add(post)
             db.session.commit()
-            return redirect(url_for('index'))
+            return redirect(url_for('main.index'))
         else:
             flash("Please sign in to create a post.", 'error')	#If person was not signed in when making a post redirect the user to the login page, and flash a message asking them to log in
-            return redirect(url_for('loginPage'))
+            return redirect(url_for('main.loginPage'))
     posts = db.session.scalars(sa.select(Post).order_by(Post.timestamp.desc())).all()	#Query the database for the posts
     length = len(posts)+1
     commentsList = [0]*length	#make a list for number of comments that is the same length as the posts query result
@@ -56,16 +57,16 @@ def index():
     return render_template('index.html', title='Home Page', posts=posts, comments=commentsList, form=form)	#Else return the home page
 
 #Pass Stuff to Navbar
-@app.context_processor
+@main.context_processor
 def base():
     searchform = SearchForm()
     return dict(searchform=searchform)
 
 #Route for the sign up page
-@app.route('/sign-up', methods=['GET', 'POST'])
+@main.route('/sign-up', methods=['GET', 'POST'])
 def signUpPage():
     if current_user.is_authenticated:	#if a user that is already logged in tries to resignup, redirect them to the profile page
-        return redirect(url_for('profilePage'))
+        return redirect(url_for('main.profilePage'))
     form = SignUpForm()
     if form.validate_on_submit():	#Check that the data submitted is valid
         user = User(username=form.username.data, email=form.email.data, pronouns=form.pronouns.data, ThinkPads=0) #If valid submission, create a user (inital thinkpad count is set to zero)
@@ -73,12 +74,12 @@ def signUpPage():
         db.session.add(user)	#Add user to the database
         db.session.commit()
         flash("Sign up successful! Please log in.", 'success')	#Flash a success message and redirect user to the login page
-        return redirect(url_for('loginPage'))
+        return redirect(url_for('main.loginPage'))
     return render_template("sign-up.html", title="Sign Up", form=form)
 
 
 #Route for the profile page
-@app.route('/profile', methods=['GET', 'POST'])
+@main.route('/profile', methods=['GET', 'POST'])
 def profilePage():
     if current_user.is_authenticated:	#If user is logged in
         user = db.session.scalars(sa.select(User).where(User.id == current_user.id)).first()
@@ -91,15 +92,15 @@ def profilePage():
         if form.validate_on_submit():	#Checks if the new thinkpad number is valid
             current_user.ThinkPads = form.number.data
             db.session.commit()	#Updates number of thinkpad user has in the database
-            return redirect(url_for('profilePage'))
+            return redirect(url_for('main.profilePage'))
     else:
-        return redirect(url_for('loginPage'))
+        return redirect(url_for('main.loginPage'))
     posts = db.session.scalars(sa.select(Post).select_from(Post).where(Post.user_id==user.id).order_by(Post.timestamp.desc())).all()	#Selects the posts made by the user
     comments = db.session.scalars(sa.select(Comments).select_from(Comments).where(Comments.user_id==user.id).order_by(Comments.timestamp.desc())).all()	#Selects the comments made by the user
     return render_template("profile.html", user=user, postsNum=postsNum, commentsNum=commentsNum, form=form, posts=posts, comments=comments)
 
 #Route for veiwing a post
-@app.route('/post/<post_id>', methods=['GET', 'POST'])
+@main.route('/post/<post_id>', methods=['GET', 'POST'])
 def postview(post_id):
     post = db.session.scalars(sa.select(Post).where(Post.id==post_id)).first()	#Selects the post
     commentdb = db.session.scalars(sa.select(Comments).select_from(Comments).where(Comments.post_id==post_id).order_by(Comments.timestamp.desc())).all()	#Selects the comments from the post
@@ -108,20 +109,20 @@ def postview(post_id):
     if form.validate_on_submit():	#Checks that the new comment form is valid
         if not current_user.is_authenticated:	#Checks that the user making the comment is valid
             flash("Please log in to post a comment.", 'error')	#If user is not logged in flash alert message and redirect to login page
-            return redirect(url_for('loginPage'))
+            return redirect(url_for('main.loginPage'))
         comment = Comments(body=form.commentBody.data, post_id=post_id, user_id=current_user.id)	#If user is logged in, create the comment
         db.session.add(comment)	#Add the comment to the database
         db.session.commit()
-        return redirect(url_for('postview', post_id=post_id))
+        return redirect(url_for('main.postview', post_id=post_id))
     return render_template('post-view.html', title='Post View', post=post, form=form, comments=commentdb, commentNumber=commentNumber)
 
 #Route for viewing another users profile
-@app.route('/user/<username>', methods=['GET'])
+@main.route('/user/<username>', methods=['GET'])
 def userview(username):
     if current_user.is_authenticated:	#Checks to see if user is currently logged in
         user = db.session.scalars(sa.select(User).where(User.username==username)).first()
         if(user.id == current_user.id):	#If user is logged in, and are trying to visit their own userview, redirect them to profile page
-            return redirect(url_for('profilePage'))
+            return redirect(url_for('main.profilePage'))
     user = db.session.scalars(sa.select(User).where(User.username==username)).first() #Get user data from username
     name = user.username	#get username and other variables, without passing the entire user model to the frontend for secruity
     pronouns = user.pronouns
@@ -133,8 +134,8 @@ def userview(username):
     return render_template("userview.html", name=name, postsNum=postsNum, commentsNum=commentsNum, pronouns=pronouns, thinkpads=thinkpads, posts=posts, comments=comments)
 
 #Route for logout function
-@app.route('/logout')
+@main.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('loginPage'))
+    return redirect(url_for('main.loginPage'))
 
