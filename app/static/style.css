@@ -322,28 +322,28 @@ hr {
 .link-orange {
     color: var(--tokyoNight-orange);
     text-decoration: none;
-    size: 20px;
+    size: 1.1em;
     font-weight: 500;
 }
 
 .link-yellow {
     color: var(--tokyoNight-yellow);
     text-decoration: none;
-    size: 20px;
+    size: 1.1em;
     font-weight: 500;
 }
 
 .link-green {
     color: var(--tokyoNight-green);
     text-decoration: none;
-    size: 20px;
+    size: 1.1em;
     font-weight: 500;
 }
 
 .link-blue {
     color: var(--tokyoNight-darkBlue);
     text-decoration: none;
-    size: 20px;
+    size: 1.1em;
     font-weight: 500;
 }
 
@@ -360,7 +360,7 @@ hr {
 
 .poster-info {
     color: var(--tokyoNight-accent);
-    font-size: 14px;
+    font-size: 0.9em;
 }
 
 .post-body {
