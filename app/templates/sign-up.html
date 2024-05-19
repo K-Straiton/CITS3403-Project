@@ -6,8 +6,8 @@
         <div class="col-10 col-sm-7 col-md-5 col-lg-4 align-self-center">
           <div class="row">
             <div class="col my-3 pb-1 accent-box-light">
-              <img src="/static/ThinkMad.svg" class="d-block mx-auto my-4" />
-              <form name="signUp" , action="" , method="post">
+              <img src="/static/ThinkMad.svg" class="d-block mx-auto my-4" alt"ThinkMad logo"/>
+              <form name="signUp" , action="#" , method="post">
                 {{form.hidden_tag()}}
                 <div class="form-floating {% if form.username.errors %}is-invalid{% endif %}">
                   {{form.username(placeholder="Username", size=8,
@@ -83,7 +83,7 @@
                 </div>
                 <div class="col align-self-center">
                   <a href="/login">
-                    <button class="btn btn-secondary my-2 w-100">Log in</button>
+                    <button class="btn btn-secondary my-2 w-100" onclick="location.href = '/login';">Log in</button>
                   </a>
                 </div>
               </div>
