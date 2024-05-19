@@ -1,16 +1,18 @@
 #Imports from the lecture
-from lib2to3.pgen2 import driver
-from operator import index
-from selenium.webdriver.support.ui import Select
-from selenium.webdriver import ActionChains
+import multiprocessing
+import time
 from selenium import webdriver
-
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from unittest import TestCase
 #Imports for unittests
 import os
+
+from app.config import TestConfig
 os.environ['DATABASE_URL'] = 'sqlite://'
 from datetime import datetime, timezone, timedelta
 import unittest
-from app import app, db
+from app import create_app, db
 import sqlalchemy as sa
 
 from app.models import *
@@ -20,29 +22,26 @@ localHost = "http://localhost:5000/"
 class SeleniumTests(unittest.TestCase):
 
     def setUp(self):
-        self.app = app.test_client()
-        self.app_context = app.app_context()
+        self.testApp = create_app(TestConfig)
+        self.app_context = self.testApp.app_context()
         self.app_context.push()
         db.create_all()
-        #add_test_data_to_db()
 
-        self.server_thread = multiprocessing.Process(target=self.testApp.run)
-        self.server_thread.start()
-        self.driver = webdriver.Chrome()
-        self.driver.get(localHost)
+        self.server_process = multiprocessing.Process(target=self.testApp.run)
+        self.server_process.start()
 
-        #Setting it as headless
         options = webdriver.ChromeOptions()
         options.add_argument("--headless=new")
         self.driver = webdriver.Chrome(options=options)
-    
+        self.driver.get(localHost)
+
     def tearDown(self):
-        self.server_thread.terminate()
-        self.driver.close()
         db.session.remove()
         db.drop_all()
         self.app_context.pop()
 
+        self.server_process.terminate()
+        self.driver.close()
 
     
 if __name__ == '__main__':

@@ -29,7 +29,6 @@ def create_app(config):
     moment.init_app(app)
     app.register_blueprint(main)
 
-
     # CLI command to add dummy data
     @app.cli.command("add_data")
     def add_data():
@@ -41,6 +40,10 @@ def create_app(config):
     def base():
         searchform = forms.SearchForm()
         return dict(searchform=searchform)
+    
+    # Ensure tables are created before the first request
+    with app.app_context():
+        db.create_all()
     
     return app
 
