@@ -34,7 +34,7 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-          <form method="post" action="{{ url_for('main.index')}}"  class="d-flex align-items-center w-100 ms-3 ms-lg-5 me-3 pt-3 pt-lg-0">
+          <form method="post" action="{{ url_for('index')}}"  class="d-flex align-items-center w-100 ms-3 ms-lg-5 me-3 pt-3 pt-lg-0">
             {{searchform.textToSearch(placeholder="Search", size=8,
               class="form-control me-2 top-search", type="text")}}
             {{searchform.submitSearch(type="submit", class="btn search-button fs-4 my-0")}}
@@ -43,19 +43,19 @@
           <ul class="navbar-nav ms-auto align-items-center pt-3 pt-lg-0">
             <li class="nav-item">
               {% if current_user.is_anonymous %}
-              <a id = "loginlink" class="nav-link dash-link mx-2 text-nowrap" href="{{ url_for('main.loginPage') }}"
+              <a class="nav-link dash-link mx-2 text-nowrap" href="{{ url_for('loginPage') }}"
                 >Log In</a>
               {% else %}
-              <a class="nav-link dash-link mx-2 text-nowrap" href="{{ url_for('main.profilePage') }}"
+              <a class="nav-link dash-link mx-2 text-nowrap" href="{{ url_for('profilePage') }}"
                 >Profile</a>
               {% endif %} 
             </li>
             <li class="nav-item">
               {% if current_user.is_anonymous %}
-              <a id="signuplink" class="nav-link profile-link mx-2 text-nowrap" href="{{ url_for('main.signUpPage') }}"
+              <a class="nav-link profile-link mx-2 text-nowrap" href="{{ url_for('signUpPage') }}"
                 >Sign Up</a>
               {% else %}
-              <a class="nav-link profile-link mx-2 text-nowrap" href="{{ url_for('main.logout') }}"
+              <a class="nav-link profile-link mx-2 text-nowrap" href="{{ url_for('logout') }}"
                 >Sign Out</a>
               {% endif %} 
             </li>
