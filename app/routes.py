@@ -12,6 +12,8 @@ from sqlalchemy.orm import Session
 from sqlalchemy.orm import sessionmaker
 from urllib.parse import urlsplit
 
+## We used this https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-ii-templates as a learning resource, as well as for insight into how to write a correct route function, although all functions were written by us
+
 #Route for login page
 @app.route('/login', methods=['GET', 'POST'])   
 def loginPage():

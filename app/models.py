@@ -7,7 +7,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from app import login
 
-## Lots of the table models were inspired by https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database however they were modified/more tables made to suit our needs
+## Lots of the table models were inspired by https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database however they were modified/more tables made to suit our specific needs
 
 #User table
 class User(UserMixin, db.Model):
