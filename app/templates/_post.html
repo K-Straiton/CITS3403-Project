@@ -5,7 +5,7 @@
                 <h5 class="card-title"><a class="link-title" , href="{{ url_for('postview', post_id=post.id)}}"> {{
                         post.title }}
                     </a> </h5>
-                <p>{{ post.body[0:70] }}...</p>
+                <a class="link-post", href="{{ url_for('postview', post_id=post.id)}}">{{ post.body[0:70] }}...</a>
                 <p class="align-self-center mt-2 mb-1 poster-info">
                     > <a class="link-blue", href="{{ url_for('userview', username= post.author.username)}}">{{post.author.username }}</a>
                     > {{moment(post.timestamp).fromNow()}} > {{comments[post.id]}} Replies </p>

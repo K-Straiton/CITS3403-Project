@@ -353,6 +353,10 @@ hr {
     font-weight: 500;
 }
 
+.link-post {
+    color: white;
+    text-decoration: none;
+}
 
 .poster-info {
     color: var(--tokyoNight-accent);
