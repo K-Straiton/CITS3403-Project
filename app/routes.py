@@ -119,8 +119,8 @@ def userview(username):
         user = db.session.scalars(sa.select(User).where(User.username==username)).first()
         if(user.id == current_user.id):	#If user is logged in, and are trying to visit their own userview, redirect them to profile page
             return redirect(url_for('profilePage'))
-    user = db.session.scalars(sa.select(User).where(User.username==username)).first()
-    name = user.username
+    user = db.session.scalars(sa.select(User).where(User.username==username)).first() #Get user data from username
+    name = user.username	#get username and other variables, without passing the entire user model to the frontend for secruity
     pronouns = user.pronouns
     thinkpads = user.ThinkPads
     postsNum = db.session.scalars(sa.select((func.count())).select_from(Post).where(Post.user_id==user.id)).first()
@@ -129,6 +129,7 @@ def userview(username):
     comments = db.session.scalars(sa.select(Comments).select_from(Comments).where(Comments.user_id==user.id).order_by(Comments.timestamp.desc())).all()
     return render_template("userview.html", name=name, postsNum=postsNum, commentsNum=commentsNum, pronouns=pronouns, thinkpads=thinkpads, posts=posts, comments=comments)
 
+#Route for logout function
 @app.route('/logout')
 def logout():
     logout_user()
