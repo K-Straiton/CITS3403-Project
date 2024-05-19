@@ -87,7 +87,6 @@ endblock %} {% block body_content %}
               role="tabpanel"
             >
               {% for post in posts %}
-              <!-- <p>{{ post.author.username }} says: <b>{{ post.body }}</b></p> -->
               <div>
                 {% include '_post.html' %}
 
@@ -100,13 +99,10 @@ endblock %} {% block body_content %}
               role="tabpanel"
             >
               {% for comment in comments %}
-              <!-- <p>
-                {{ comment.commentPoster.username }} says:
-                {{ comment.body }}
-              </p> -->
+
               <div class="text-break">
-                <p class="align-self-center mt-2 mb-0 pb-0"> <span class="text-accent">╭─</span> <a href="{{ url_for('userview', username= comment.commentPoster.username)}}" >{{ comment.commentPoster.username }}</a> > ({{ comment.commentPoster.pronouns }}) > {{moment(comment.timestamp).fromNow()}} </p>   
-                <!-- <p class="align-self-center mt-2"> ╰───></p> -->
+                <p class="align-self-center mt-2 mb-0 pb-0"> <span class="text-accent">╭─</span> <a class="link-blue", href="{{ url_for('userview', username= comment.commentPoster.username)}}" >{{ comment.commentPoster.username }}</a> > ({{ comment.commentPoster.pronouns }}) > {{moment(comment.timestamp).fromNow()}} </p>   
+
                 <p class="align-self-center text-accent">╰───> {{comment.body}}</p>
             </div>
               {% endfor %}
