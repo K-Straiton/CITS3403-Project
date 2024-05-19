@@ -79,11 +79,12 @@ def signUpPage():
 @app.route('/profile', methods=['GET', 'POST'])
 def profilePage():
     if current_user.is_authenticated:	#If user is logged in
-        name = current_user.username
-        pronouns = current_user.pronouns
-        thinkpads = current_user.ThinkPads
-        postsNum = db.session.scalars(sa.select((func.count())).select_from(Post).where(Post.user_id==current_user.id)).first()	#Collect number of posts made by the user
-        commentsNum = db.session.scalars(sa.select((func.count())).select_from(Comments).where(Comments.user_id==current_user.id)).first()	#Collect number of comments/responses made by the user
+        user = db.session.scalars(sa.select(User).where(User.id == current_user.id)).first()
+        # name = current_user.username
+        # pronouns = current_user.pronouns
+        # thinkpads = current_user.ThinkPads
+        postsNum = db.session.scalars(sa.select((func.count())).select_from(Post).where(Post.user_id==user.id)).first()	#Collect number of posts made by the user
+        commentsNum = db.session.scalars(sa.select((func.count())).select_from(Comments).where(Comments.user_id==user.id)).first()	#Collect number of comments/responses made by the user
         form = editThinkPads()
         if form.validate_on_submit():	#Checks if the new thinkpad number is valid
             current_user.ThinkPads = form.number.data
@@ -91,9 +92,9 @@ def profilePage():
             return redirect(url_for('profilePage'))
     else:
         return redirect(url_for('loginPage'))
-    posts = db.session.scalars(sa.select(Post).select_from(Post).where(Post.user_id==current_user.id).order_by(Post.timestamp.desc())).all()	#Selects the posts made by the user
-    comments = db.session.scalars(sa.select(Comments).select_from(Comments).where(Comments.user_id==current_user.id).order_by(Comments.timestamp.desc())).all()	#Selects the comments made by the user
-    return render_template("profile.html", name=name, postsNum=postsNum, commentsNum=commentsNum, pronouns=pronouns, thinkpads=thinkpads, form=form, posts=posts, comments=comments)
+    posts = db.session.scalars(sa.select(Post).select_from(Post).where(Post.user_id==user.id).order_by(Post.timestamp.desc())).all()	#Selects the posts made by the user
+    comments = db.session.scalars(sa.select(Comments).select_from(Comments).where(Comments.user_id==user.id).order_by(Comments.timestamp.desc())).all()	#Selects the comments made by the user
+    return render_template("profile.html", user=user, postsNum=postsNum, commentsNum=commentsNum, form=form, posts=posts, comments=comments)
 
 #Route for veiwing a post
 @app.route('/post/<post_id>', methods=['GET', 'POST'])
