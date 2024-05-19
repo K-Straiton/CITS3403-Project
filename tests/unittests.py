@@ -3,7 +3,7 @@ from app import create_app, db
 import sqlalchemy as sa
 from unittest import TestCase
 from app.config import TestConfig
-from app.models import *
+from app.models import User, Post, Comments
 
 
 class UnitTests(TestCase):
