@@ -13,7 +13,7 @@ from app.config import TestConfig
 from app.models import *
 
 
-class UserModelCase(unittest.TestCase):
+class UnitTests(TestCase):
     
     def setUp(self):
         testApp = create_app(TestConfig)

@@ -1,29 +1,14 @@
-from flask import app, render_template, redirect, session, url_for, request, flash
-# from app import flaskApp
+from flask import render_template, redirect, url_for, flash
 from app.forms import *
-#from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import current_user, login_user
 import sqlalchemy as sa
-import sqlalchemy.orm as so
 from app import db
 from app.models import User, Post, Comments
-from sqlalchemy import func, select
+from sqlalchemy import func
 from flask_login import logout_user
-from sqlalchemy.orm import Session
-from sqlalchemy.orm import sessionmaker
 from app.blueprints import main
 
-from flask import request
-from urllib.parse import urlsplit
 
-#@app.route('/')
-#@app.route('/index')
-#def index():
-#	return render_template("index.html")
-# @app.route('/index', methods=['GET', 'POST'])
-# @app.route('/', methods=['GET', 'POST'])
-# def indexPage():
-#     return render_template("index.html")
 
 @main.route('/login', methods=['GET', 'POST'])
 def loginPage():
@@ -37,11 +22,6 @@ def loginPage():
             return redirect(url_for('main.loginPage'))
         login_user(user, remember=form.remember_me.data)
         return redirect(url_for('main.index'))
-#    if form.validate_on_submit():
-#        # hashedPassword = generate_password_hash('form.username.data')
-#        # password = generate_password_hash('test')
-#        # if(check_password_hash(password, form.password.data)):
-#        return redirect('/index')
     return render_template("login.html", title='Log In', form=form)
 
 @main.route('/', methods=['GET', 'POST'])
@@ -147,18 +127,3 @@ def userview(username):
 def logout():
     logout_user()
     return redirect(url_for('main.loginPage'))
-
-# @app.route('/login', methods=['GET', 'POST'])
-# def login():
-#     # ...
-#     if form.validate_on_submit():
-#         user = db.session.scalar(
-#             sa.select(User).where(User.username == form.username.data))
-#         if user is None or not user.check_password(form.password.data):
-#             return redirect(url_for('login'))
-#         login_user(user, remember=form.remember_me.data)
-#         next_page = request.args.get('next')
-#         if not next_page or urlsplit(next_page).netloc != '':
-#             next_page = url_for('index')
-#         return redirect(next_page)
-#     # ...
