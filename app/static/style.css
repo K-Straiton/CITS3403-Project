@@ -86,8 +86,10 @@ body {
 }
 
 
-.btn-primary:hover, .btn-primary:focus,
-.btn-primary:active, .btn-primary:active:focus {
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:active:focus {
     background-color: var(--IBM-red-active);
     color: white;
     size: 20px;
@@ -101,21 +103,25 @@ body {
 }
 
 
-.btn-tertiary:hover, .btn-tertiary:focus,
-.btn-tertiary:active, .btn-tertiary:active:focus {
+.btn-tertiary:hover,
+.btn-tertiary:focus,
+.btn-tertiary:active,
+.btn-tertiary:active:focus {
     background-color: var(--tokyoNight-background);
     border: 2px solid var(--tokyoNight-accent);
     color: white;
 }
 
 
-.link-underline-red{
+.link-underline-red {
     color: var(--IBM-red);
     text-decoration-color: var(--IBM-red);
 }
 
-.link-underline-red:hover, .link-underline-red:focus,
-.link-underline-red:active, .link-underline-red:active:focus {
+.link-underline-red:hover,
+.link-underline-red:focus,
+.link-underline-red:active,
+.link-underline-red:active:focus {
     color: var(--IBM-red-active);
 }
 
@@ -158,15 +164,15 @@ input:-webkit-autofill:active {
     transition: background-color 0s ease-in-out 0s;
 }
 
-.form-floating > input + label:after {
+.form-floating>input+label:after {
     background: transparent !important;
 }
 
-input:focus + label {
-  color: white !important;
+input:focus+label {
+    color: white !important;
 }
 
-input + label {
+input+label {
     color: white !important;
 }
 
@@ -250,10 +256,12 @@ input + label {
     color: var(--IBM-red);
 }
 
-.search-button:hover, .search-button:active, .search-button:active:focus {
+.search-button:hover,
+.search-button:active,
+.search-button:active:focus {
     color: var(--IBM-red-active);
 
-} 
+}
 
 .card {
     border: solid var(--tokyoNight-comments) 1px;
@@ -275,7 +283,7 @@ input + label {
 }
 
 hr {
-    border-top: 2px solid var(--tokyoNight-comments) ;
+    border-top: 2px solid var(--tokyoNight-comments);
     opacity: 1;
 }
 
@@ -286,8 +294,10 @@ hr {
 }
 
 
-.btn-tertiary:hover, .btn-tertiary:focus,
-.btn-tertiary:active, .btn-tertiary:active:focus {
+.btn-tertiary:hover,
+.btn-tertiary:focus,
+.btn-tertiary:active,
+.btn-tertiary:active:focus {
     background-color: var(--tokyoNight-background);
     border: 1px solid var(--tokyoNight-accent);
     color: white;
@@ -300,4 +310,59 @@ hr {
 
 .text-accent {
     color: var(--tokyoNight-accent);
+}
+
+.link-red {
+    color: var(--tokyoNight-red);
+    text-decoration: none;
+    size: 20px;
+    font-weight: 500;
+}
+
+.link-orange {
+    color: var(--tokyoNight-orange);
+    text-decoration: none;
+    size: 20px;
+    font-weight: 500;
+}
+
+.link-yellow {
+    color: var(--tokyoNight-yellow);
+    text-decoration: none;
+    size: 20px;
+    font-weight: 500;
+}
+
+.link-green {
+    color: var(--tokyoNight-green);
+    text-decoration: none;
+    size: 20px;
+    font-weight: 500;
+}
+
+.link-blue {
+    color: var(--tokyoNight-darkBlue);
+    text-decoration: none;
+    size: 20px;
+    font-weight: 500;
+}
+
+.link-title {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.link-post {
+    color: white;
+    text-decoration: none;
+}
+
+.poster-info {
+    color: var(--tokyoNight-accent);
+    font-size: 14px;
+}
+
+.post-body {
+    overflow-wrap: break-word;
 }
