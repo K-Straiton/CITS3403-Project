@@ -7,7 +7,7 @@
           <div class="row">
             <div class="col my-3 pb-1 accent-box-light">
               <img src="/static/ThinkMad.svg" class="d-block mx-auto my-4" />
-              <form name="signUp" , action="" , method="post">
+              <form name="signUp", id="signUpForm" action="{{ url_for('signUpPage') }}" , method="post">
                 {{form.hidden_tag()}}
                 <div class="form-floating {% if form.username.errors %}is-invalid{% endif %}">
                   {{form.username(placeholder="Username", size=8,
