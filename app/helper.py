@@ -1,8 +1,7 @@
 from app import db
 from app.models import User, Post, Comments
 
-def add_dummy_data():
-    
+def add_dummy_data():	#Create dummy/test data
     # Dummy data
     users = [
         User(id=1, username='sebagabones', email='seb@thinkmad.com', password_hash='scrypt:32768:8:1$vVPhlv7T4ExbWSTL$b52adb1d150a46a32d79a2ce88073d756ca48fba8e978de6791f37e65f09691dd6c745e1caa60ca10b10ace09cbd883f72e6bedd9396398830340d48ab789b03', ThinkPads=6, pronouns='They/Them'),
@@ -17,8 +16,13 @@ def add_dummy_data():
         Post(id=3, title="X13 battery life is terrible", body="My new ThinkPad X13 Gen 2 AMD is only one year old however ever since I got it, its battery has only lasted a maximum of two hours. I am not sure if it's something to do with settings or if there is something wrong with the battery itself. I have run Windows, Ubuntu, and Arch on it but the result is the same. Has anyone else had the same experience with this model?", user_id=3)
     ]
 
+    comments = [
+        Comments(id=1, post_id=3, body="You should look into getting an x270 - I have one and the battery life on it was amazing", user_id=1),
+        Comments(id=2, post_id=3, body="I can attest to that - I borrowed their x270 for ages and fell in love with it's battery life", user_id=2)
+    ]
     db.session.add_all(users)
     db.session.add_all(posts)
+    db.session.add_all(comments)
 
     db.session.commit()
 
