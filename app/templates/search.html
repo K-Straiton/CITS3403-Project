@@ -2,16 +2,18 @@
 {% block page_title %}ThinkMad Search{% endblock %}
 {% block body_content %}
 
-<div id="post-scrollable-content" class="container-xl  align-self-center" style="height: 100vh; ">
-    {% block content %}
-        {% for post in posts2 %}
-            {% include '_post.html' %}
-        {% endfor %} 
-        <div class="mt-5 d-flex justify-content-center">
-            <div>
-                <p>End of search</p>
+<div id="post-scrollable-content" class="container-xl">
+    <div class="col-sm-10 col-md-9 col-lg-8 mx-auto align-self-center">
+        {% block content %}
+            {% for post in posts2 %}
+                {% include '_post.html' %}
+            {% endfor %} 
+            <div class="mt-5 d-flex justify-content-center">
+                <div>
+                    <p>End of search</p>
+                </div>
             </div>
-        </div>
-    {% endblock %}  
+        {% endblock %}  
+    </div>
 </div>
 {%  endblock %}
