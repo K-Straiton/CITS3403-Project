@@ -46,10 +46,13 @@ class SeleniumTestCase(TestCase):
         db.session.add(user)
         db.session.commit()
         user.set_password('cat')
+        self.driver.get("http://localhost:5000/login")
         usernameElement = self.driver.find_element(By.ID, "usernameInput")
         usernameElement.send_keys("sersangy")
         passwordElement = self.driver.find_element(By.ID, "passwordInput")
         passwordElement.send_keys("cat")
+        submitElement = self.driver.find_element(By.ID, "passwordInput")
+
 
 
 
