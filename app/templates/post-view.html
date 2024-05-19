@@ -2,14 +2,14 @@
 endblock %} {% block body_content %}
 <div class="align-self-center container-xl mx-auto">
   <div class="col-sm-10 col-md-9 col-lg-8 mx-auto align-self-center">
-    <row>
+    <div class="row">
       <div class="card posts-homepage">
         <!-- card to display title and info of poster -->
         <div class="card-body">
           <h4 class="card-title mb-1">{{ post.title }}</h4>
           <div class="align-self-center mt-0 poster-info">
             >
-            <a class="link-blue" , href="{{ url_for('userview', username= post.author.username)}}">{{
+            <a class="link-blue" href="{{ url_for('userview', username= post.author.username)}}">{{
               post.author.username }}</a>
             > ({{ post.author.pronouns }}) >
             {{moment(post.timestamp).format('MMMM Do YYYY h:mm a')}} >
@@ -17,26 +17,25 @@ endblock %} {% block body_content %}
           </div>
         </div>
       </div>
-    </row>
-    <row>
+    </div>
+    <div class="row">
       <p class="align-self-center mt-2 mb-1 post-body">{{post.body}}</p>
       <hr>
-    </row>
+    </div>
     <!-- display comments -->
-    <row>
+    <div>
       {% block content %} {% for comment in comments %} {% include
       '_comments.html' %} {% endfor %} {% endblock %}
-    </row>
+    </div>
     <!-- form to write and submit comments -->
     <div class="container fixed-bottom comment-footer mx-auto">
       <div class="col-sm-12 col-md-10 mx-auto"></div>
-      </row>
 
       <div class="col-sm-10 col-md-9 col-lg-8 mx-auto align-self-center">
-        <form action="" method="post" class="d-flex mt-3 mb-4">
+        <form action="#" method="post" class="d-flex mt-3 mb-4">
           {{ form.hidden_tag() }}
           <label class="form-label visually-hidden" for="commentBodyInput">Write a comment</label>
-          {{form.commentBody(cols=32, rows="1", placeholder="Write a Comment...",id="commentBodyInput", type="text",
+          {{form.commentBody(cols=32, rows="1", placeholder="Write a Comment...",id="commentBodyInput",
           class="form-control
           me-3") }} {% for error in form.commentBody.errors %}
           <p style="color: red">[{{ error }}]</p>
@@ -45,7 +44,7 @@ endblock %} {% block body_content %}
       </div>
     </div>
 
-    <script type="text/javascript" src="../static/colourchangs.js"></script>
-    {% endblock %}
+    <script src="../static/colourchangs.js"></script>
   </div>
 </div>
+{% endblock %}
