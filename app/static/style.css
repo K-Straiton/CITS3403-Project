@@ -23,6 +23,11 @@ body {
     padding-top: 50px;
 }
 
+.body-content {
+    margin-top: 15px;
+    margin-bottom: 78px;
+}
+
 
 .text-muted {
     color: var(--tokyoNight-accent) !important;
@@ -69,7 +74,7 @@ body {
 
 
 .body-text {
-    size: 20px;
+    font-size: 1.1em;
 
 }
 
@@ -77,15 +82,17 @@ body {
     background-color: var(--IBM-red);
     border: none;
     color: white;
-    size: 20px;
+    font-size: 1.1em;
 }
 
 
-.btn-primary:hover, .btn-primary:focus,
-.btn-primary:active, .btn-primary:active:focus {
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:active:focus {
     background-color: var(--IBM-red-active);
     color: white;
-    size: 20px;
+    font-size: 1.1em;
 }
 
 
@@ -96,21 +103,25 @@ body {
 }
 
 
-.btn-tertiary:hover, .btn-tertiary:focus,
-.btn-tertiary:active, .btn-tertiary:active:focus {
+.btn-tertiary:hover,
+.btn-tertiary:focus,
+.btn-tertiary:active,
+.btn-tertiary:active:focus {
     background-color: var(--tokyoNight-background);
     border: 2px solid var(--tokyoNight-accent);
     color: white;
 }
 
 
-.link-underline-red{
+.link-underline-red {
     color: var(--IBM-red);
     text-decoration-color: var(--IBM-red);
 }
 
-.link-underline-red:hover, .link-underline-red:focus,
-.link-underline-red:active, .link-underline-red:active:focus {
+.link-underline-red:hover,
+.link-underline-red:focus,
+.link-underline-red:active,
+.link-underline-red:active:focus {
     color: var(--IBM-red-active);
 }
 
@@ -142,280 +153,6 @@ body {
     color: white;
 }
 
-
-
-.form-floating > input + label:after {
-    background: transparent !important;
-}
-oot {
-    --tokyoNight-red: #f7768e;
-    --tokyoNight-orange: #ff9e64;
-    --tokyoNight-yellow: #e0af68;
-    --tokyoNight-green: #9ece6a;
-    --tokyoNight-blue: #2ac3de;
-    --tokyoNight-p:urple: #bb9af7;
-    --tokyoNight-darkBlue: #7aa2f7;
-    --tokyoNight-backgroundAccent: #24283b;
-    --tokyoNight-background: #1a1b26;
-    --tokyoNight-accent: #c0caf5;
-    --tokyoNight-comments: #565f89;
-    --IBM-red: #ED4C4C;
-    --IBM-red-active: #b83333;
-    --IBM-blue: #4086F0;
-    --IBM-green: #1FC156;
-}
-
-body {
-    background-color: var(--tokyoNight-background);
-    font-family: "Fira Code", monospace;
-    color: white;
-    padding-top: 50px;
-}
-
-
-.text-muted {
-    color: var(--tokyoNight-accent) !important;
-}
-
-.text-red {
-    color: var(--IBM-red)
-}
-
-.text-green {
-    color: var(--IBM-green)
-}
-
-.text-blue {
-    color: var(--IBM-blue)
-}
-
-.list-heading {
-    color: white;
-    font-size: 24px;
-    font-weight: 500;
-    text-decoration: underline;
-}
-
-.info-text {
-    color: white;
-    font-size: 20px;
-    font-weight: 500;
-    text-decoration: underline;
-}
-
-
-.accent-box-light {
-    background-color: var(--tokyoNight-backgroundAccent);
-    border: var(--tokyoNight-accent) 2px solid;
-    border-radius: 10px;
-}
-
-.accent-box-dark {
-    background-color: var(--tokyoNight-background);
-    border: var(--tokyoNight-comments) 2px solid;
-    border-radius: 10px;
-}
-
-
-.body-text {
-    size: 20px;
-
-}
-
-.btn-primary {
-    background-color: var(--IBM-red);
-    border: none;
-    color: white;
-    size: 20px;
-}
-
-.btn-primary:hover, .btn-primary:focus,
-.btn-primary:active, .btn-primary:active:focus {
-    background-color: var(--IBM-red-active);
-    color: white;
-    size: 20px;
-}
-
-.link-underline-red{
-    color: var(--IBM-red);
-    text-decoration-color: var(--IBM-red);
-}
-
-.link-underline-red:hover, .link-underline-red:focus,
-.link-underline-red:active, .link-underline-red:active:focus {
-    color: var(--IBM-red-active);
-}
-
-.form-control {
-    background-color: var(--tokyoNight-background);
-    border: solid var(--tokyoNight-comments) 1px;
-    color: white;
-}
-
-.form-control::placeholder {
-    color: var(--tokyoNight-comments);
-}
-
-.form-control:focus {
-    color: white;
-    border-color: var(--tokyoNight-accent);
-    background-color: var(--tokyoNight-background);
-    box-shadow: none;
-}
-
-.profileTabs .nav-link {
-    border: 2px solid var(--tokyoNight-comments);
-    color: white;
-}
-
-.profileTabs .nav-link.active {
-    border: 2px solid var(--tokyoNight-comments);
-    background-color: var(--tokyoNight-comments);
-    background-color: var(--tokyoNight-comments);
-    color: white;
-}
-
-
-
-.form-floating > input + label:after {
-    background: transparent !important;
-}
-oot {
-    --tokyoNight-red: #f7768e;
-    --tokyoNight-orange: #ff9e64;
-    --tokyoNight-yellow: #e0af68;
-    --tokyoNight-green: #9ece6a;
-    --tokyoNight-blue: #2ac3de;
-    --tokyoNight-p:urple: #bb9af7;
-    --tokyoNight-darkBlue: #7aa2f7;
-    --tokyoNight-backgroundAccent: #24283b;
-    --tokyoNight-background: #1a1b26;
-    --tokyoNight-accent: #c0caf5;
-    --tokyoNight-comments: #565f89;
-    --IBM-red: #ED4C4C;
-    --IBM-red-active: #b83333;
-    --IBM-blue: #4086F0;
-    --IBM-green: #1FC156;
-}
-
-body {
-    background-color: var(--tokyoNight-background);
-    font-family: "Fira Code", monospace;
-    color: white;
-    padding-top: 50px;
-}
-
-
-.text-muted {
-    color: var(--tokyoNight-accent) !important;
-}
-
-.text-red {
-    color: var(--IBM-red)
-}
-
-.text-green {
-    color: var(--IBM-green)
-}
-
-.text-blue {
-    color: var(--IBM-blue)
-}
-
-.list-heading {
-    color: white;
-    font-size: 24px;
-    font-weight: 500;
-    text-decoration: underline;
-}
-
-.info-text {
-    color: white;
-    font-size: 20px;
-    font-weight: 500;
-    text-decoration: underline;
-}
-
-
-.accent-box-light {
-    background-color: var(--tokyoNight-backgroundAccent);
-    border: var(--tokyoNight-accent) 2px solid;
-    border-radius: 10px;
-}
-
-.accent-box-dark {
-    background-color: var(--tokyoNight-background);
-    border: var(--tokyoNight-comments) 2px solid;
-    border-radius: 10px;
-}
-
-
-.body-text {
-    size: 20px;
-
-}
-
-.btn-primary {
-    background-color: var(--IBM-red);
-    border: none;
-    color: white;
-    size: 20px;
-}
-
-.btn-primary:hover, .btn-primary:focus,
-.btn-primary:active, .btn-primary:active:focus {
-    background-color: var(--IBM-red-active);
-    color: white;
-    size: 20px;
-}
-
-.link-underline-red{
-    color: var(--IBM-red);
-    text-decoration-color: var(--IBM-red);
-}
-
-.link-underline-red:hover, .link-underline-red:focus,
-.link-underline-red:active, .link-underline-red:active:focus {
-    color: var(--IBM-red-active);
-}
-
-.form-control {
-    background-color: var(--tokyoNight-background);
-    border: solid var(--tokyoNight-comments) 1px;
-    color: white;
-}
-
-.form-control::placeholder {
-    color: var(--tokyoNight-comments);
-}
-
-.form-control:focus {
-    color: white;
-    border-color: var(--tokyoNight-accent);
-    background-color: var(--tokyoNight-background);
-    box-shadow: none;
-}
-
-.profileTabs .nav-link {
-    border: 2px solid var(--tokyoNight-comments);
-    color: white;
-}
-
-.profileTabs .nav-link.active {
-    border: 2px solid var(--tokyoNight-comments);
-    background-color: var(--tokyoNight-comments);
-    background-color: var(--tokyoNight-comments);
-    color: white;
-}
-
-.modal-content {
-    background-color: var(--tokyoNight-background);
-    color: white;
-}
-
-.form-floating > input + label:after {
-    background: transparent !important;
-}
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -427,28 +164,15 @@ input:-webkit-autofill:active {
     transition: background-color 0s ease-in-out 0s;
 }
 
-input:focus + label {
-  color: white !important;
+.form-floating>input+label:after {
+    background: transparent !important;
 }
 
-input + label {
+input:focus+label {
     color: white !important;
 }
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-    -webkit-text-fill-color: white;
-    background-color: transparent !important;
-    -webkit-box-shadow: 0 0 0 50px var(--tokyoNight-comments) inset;
-    transition: background-color 0s ease-in-out 0s;
-}
 
-input:focus + label {
-  color: white !important;
-}
-
-input + label {
+input+label {
     color: white !important;
 }
 
@@ -462,7 +186,7 @@ input + label {
     background: var(--IBM-red) !important;
     color: white;
     font-family: "Fira Code", monospace;
-    size: 20px;
+    font-size: 1.1em;
 
 }
 
@@ -470,14 +194,14 @@ input + label {
     background: var(--tokyoNight-darkBlue) !important;
     color: white;
     font-family: "Fira Code", monospace;
-    size: 20px;
+    font-size: 1.1em;
 }
 
 .Hardware-badge {
     background: var(--tokyoNight-yellow) !important;
     color: white;
     font-family: "Fira Code", monospace;
-    size: 20px;
+    font-size: 1.1em;
 
 }
 
@@ -532,10 +256,12 @@ input + label {
     color: var(--IBM-red);
 }
 
-.search-button:hover, .search-button:active, .search-button:active:focus {
+.search-button:hover,
+.search-button:active,
+.search-button:active:focus {
     color: var(--IBM-red-active);
 
-} 
+}
 
 .card {
     border: solid var(--tokyoNight-comments) 1px;
@@ -557,7 +283,7 @@ input + label {
 }
 
 hr {
-    border-top: 2px solid var(--tokyoNight-accent) ;
+    border-top: 2px solid var(--tokyoNight-comments);
     opacity: 1;
 }
 
@@ -568,9 +294,75 @@ hr {
 }
 
 
-.btn-tertiary:hover, .btn-tertiary:focus,
-.btn-tertiary:active, .btn-tertiary:active:focus {
+.btn-tertiary:hover,
+.btn-tertiary:focus,
+.btn-tertiary:active,
+.btn-tertiary:active:focus {
     background-color: var(--tokyoNight-background);
     border: 1px solid var(--tokyoNight-accent);
     color: white;
+}
+
+.comment-card {
+    border: none !important;
+    background-color: transparent !important;
+}
+
+.text-accent {
+    color: var(--tokyoNight-accent);
+}
+
+.link-red {
+    color: var(--tokyoNight-red);
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.link-orange {
+    color: var(--tokyoNight-orange);
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.link-yellow {
+    color: var(--tokyoNight-yellow);
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.link-green {
+    color: var(--tokyoNight-green);
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.link-blue {
+    color: var(--tokyoNight-darkBlue);
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.link-title {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.link-post {
+    color: white;
+    text-decoration: none;
+}
+
+.poster-info {
+    color: var(--tokyoNight-accent);
+    font-size: 0.9em;
+}
+
+.post-body {
+    overflow-wrap: break-word;
 }

@@ -1,15 +1,14 @@
-{% extends "default.html" %} {% block page_title %}ThinkMad Profile - {{name}}{%
+{% extends "default.html" %} {% block page_title %}ThinkMad Profile - {{user.username}}{%
 endblock %} {% block body_content %}
-<div class="container-fluid">
-  <div class="row d-flex justify-content-center h-100 mt-5">
-    <div class="col-sm-10 col-lg-8">
+<div class="container-xl col-sm-10">
+    <div class="col-sm-10 col-md-8 col-lg-8 mx-auto">
       <div class="rounded">
         <div class="row">
           <div>
             <h1 class="text-center" id="profileUsername">
-              {{name}}
+              {{user.username}}
               <small class="text-muted" id="profilePronouns"
-                >({{pronouns}})</small
+                >({{user.pronouns}})</small
               >
             </h1>
           </div>
@@ -25,17 +24,17 @@ endblock %} {% block body_content %}
           </div>
           <div class="col">
             <p class="text-center text-red fs-4 fw-bolder">
-              {% if thinkpads > 99 %}
+              {% if user.ThinkPads > 99 %}
               99+ 
               {% else %}
-              {{thinkpads}}
+              {{user.ThinkPads}}
               {% endif %}
             </p>
             <p class="text-center">ThinkPads</p>
 
             <div class="d-flex justify-content-center mb-4">
               <button
-                class="btn btn-primary"
+                class="btn btn-tertiary"
                 data-bs-toggle="modal"
                 data-bs-target="#changeThinkPads"
               >
@@ -60,8 +59,6 @@ endblock %} {% block body_content %}
                 data-bs-target="#profileQuestionsContent"
                 type="button"
                 role="tab"
-                aria-controls="pills-questions"
-                aria-selected="true"
               >
                 Your Questions
               </button>
@@ -74,8 +71,6 @@ endblock %} {% block body_content %}
                 data-bs-target="#profileResponsesContent"
                 type="button"
                 role="tab"
-                aria-controls="pills-prof"
-                aria-selected="false"
               >
                 Your Responses
               </button>
@@ -88,7 +83,10 @@ endblock %} {% block body_content %}
               role="tabpanel"
             >
               {% for post in posts %}
-              <p>{{ post.author.username }} says: <b>{{ post.body }}</b></p>
+              <div>
+                {% include '_post.html' %}
+
+              </div>
               {% endfor %}
             </div>
             <div
@@ -97,16 +95,17 @@ endblock %} {% block body_content %}
               role="tabpanel"
             >
               {% for comment in comments %}
-              <p>
-                {{ comment.commentPoster.username }} says:
-                <b>{{ comment.body }}</b>
-              </p>
+
+              <div class="text-break">
+                <p class="align-self-center mt-2 mb-0 pb-0"> <span class="text-accent">╭─</span> <a class="link-blue" href="{{ url_for('userview', username= comment.commentPoster.username)}}" >{{ comment.commentPoster.username }}</a> > ({{ comment.commentPoster.pronouns }}) > {{moment(comment.timestamp).fromNow()}} </p>   
+
+                <p class="align-self-center text-accent">╰───> {{comment.body}}</p>
+            </div>
               {% endfor %}
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 </div>
 {% endblock %}

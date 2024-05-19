@@ -1,20 +1,18 @@
-{% extends "default.html" %} 
+{% extends "default.html" %}
 {% block page_title %}ThinkMad Login{% endblock %}
 {% block body_content %}
-<div class="container-fluid vh-100">
+<div class="container-fluid">
   <div class="row h-100 p-0">
     <div class="col-10 col-sm-7 col-md-5 col-lg-4 mx-auto align-self-center">
       <div class="row">
         <div class="col my-3 pb-1 accent-box-light">
-          <img src="/static/ThinkMad.svg" class="d-block mx-auto my-4" />
-          <form name="login" , action="" , method="post">
+          <img src="/static/ThinkMad.svg" class="d-block mx-auto my-4" alt="ThinkMad logo">
+          <form name="login" action="#" method="post">
             {{form.hidden_tag()}}
             <div class="form-floating">
               {{form.username(placeholder="Username", size=8,
               class="form-control my-2", id="usernameInput", type="text")}}
-              <label class="form-label my-0" for="usernameInput"
-                >Username</label
-              >
+              <label class="form-label my-0" for="usernameInput">Username</label>
             </div>
             {% for error in form.username.errors %}
             <span style="color: red">[{{ error}}</span>
@@ -23,9 +21,7 @@
             <div class="form-floating">
               {{form.password(placeholder="Password", size=8,
               class="form-control my-2", id="passwordInput", type="password")}}
-              <label class="form-label my-0" for="passwordInput"
-                >Password</label
-              >
+              <label class="form-label my-0" for="passwordInput">Password</label>
             </div>
 
             {% for error in form.password.errors %}
@@ -43,17 +39,17 @@
               <p class="text-center my-0">New Here?</p>
             </div>
             <div class="col">
-              <a href="/sign-up">
-                <button type="submit" class="btn btn-secondary w-100 my-2">
-                  Sign Up
-                </button>
-              </a>
+              <button type="submit" class="btn btn-secondary w-100 my-2" onclick="location.href = '/sign-up';">
+                Sign Up
+              </button>
             </div>
           </div>
         </div>
-        <row>
-          <img src="/static/cowsay.svg" class="d-block mx-auto" />
-        </row>
+      </div>
+      <div class="row">
+        <div class="col-6 mx-auto align-self-center">
+          <img src="/static/cowsay.svg" class="d-block mx-auto" alt="cowsay">
+        </div>
       </div>
     </div>
   </div>

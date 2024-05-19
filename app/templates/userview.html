@@ -1,8 +1,7 @@
 {% extends "default.html" %} {% block page_title %}ThinkMad Profile - {{name}}{%
     endblock %} {% block body_content %}
-    <div class="container-fluid">
-        <div class="row d-flex justify-content-center h-100 mt-5">
-        <div class="col-sm-10 col-lg-8">
+    <div class="container-xl col-sm-10">
+        <div class="col-sm-10 col-md-8 col-lg-8 mx-auto">
             <div class="rounded">
             <div class="row">
                 <div>
@@ -49,8 +48,6 @@
                     data-bs-target="#profileQuestionsContent"
                     type="button"
                     role="tab"
-                    aria-controls="pills-questions"
-                    aria-selected="true"
                     >
                     Their Questions
                     </button>
@@ -63,8 +60,6 @@
                     data-bs-target="#profileResponsesContent"
                     type="button"
                     role="tab"
-                    aria-controls="pills-prof"
-                    aria-selected="false"
                     >
                     Their Responses
                 </button>
@@ -77,7 +72,9 @@
                     role="tabpanel"
                 >
                     {% for post in posts %}
-                    <p>{{ post.author.username }} says: <b>{{ post.body }}</b></p>
+                    <div>
+                        {% include '_post.html' %}
+                    </div>
                     {% endfor %}
                 </div>
                 <div
@@ -86,16 +83,15 @@
                     role="tabpanel"
                 >
                     {% for comment in comments %}
-                    <p>
-                    {{ comment.commentPoster.username }} says:
-                    <b>{{ comment.body }}</b>
-                    </p>
+                    <div class="text-break">
+                        <p class="align-self-center mt-2 mb-0 pb-0"> <span class="text-accent">╭─</span> <a class="link-blue" href="{{ url_for('userview', username= comment.commentPoster.username)}}" >{{ comment.commentPoster.username }}</a> > ({{ comment.commentPoster.pronouns }}) > {{moment(comment.timestamp).fromNow()}} </p>   
+                        <p class="align-self-center text-accent">╰───> {{comment.body}}</p>
+                    </div>
                     {% endfor %}
                 </div>
                 </div>
             </div>
             </div>
-        </div>
         </div>
     </div>
     {% endblock %}
