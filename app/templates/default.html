@@ -43,7 +43,7 @@
           <ul class="navbar-nav ms-auto align-items-center pt-3 pt-lg-0">
             <li class="nav-item">
               {% if current_user.is_anonymous %}
-              <a class="id = "loginlink" nav-link dash-link mx-2 text-nowrap" href="{{ url_for('main.loginPage') }}"
+              <a id = "loginlink" class="nav-link dash-link mx-2 text-nowrap" href="{{ url_for('main.loginPage') }}"
                 >Log In</a>
               {% else %}
               <a class="nav-link dash-link mx-2 text-nowrap" href="{{ url_for('main.profilePage') }}"
