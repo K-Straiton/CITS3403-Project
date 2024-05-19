@@ -27,29 +27,25 @@ class SeleniumTestCase(TestCase):
 
         self.server_process = multiprocessing.Process(target=self.testApp.run)
         self.server_process.start()
-        time.sleep(3)
-        options = webdriver.ChromeOptions()
-        options.add_argument("--headless=new")
-        self.driver = webdriver.Chrome(options=options)
-        # self.driver = webdriver.Chrome()
+        # options = webdriver.ChromeOptions()
+        # options.add_argument("--headless=new")
+        # self.driver = webdriver.Chrome(options=options)
+        self.driver = webdriver.Chrome()
         self.driver.get(localHost)
 
     def tearDown(self):
         db.session.remove()
         db.drop_all()
         self.app_context.pop()
-
         self.server_process.terminate()
         self.driver.close()
 
-    def test_login(self):
-        time.sleep(10)
+    def test_login_page(self):
+        time.sleep(10) 
         self.assertTrue(True)
 
     
-if __name__ == '__main__':
-    unittest.main(verbosity=5)
-    
+
     
 
 

@@ -69,7 +69,3 @@ class UnitTests(TestCase):
         })
         self.assertEqual(response.status_code, 200)  # Expect a redirect
 
-if __name__ == '__main__':
-    unittest.main(verbosity=5)
-    
-    
