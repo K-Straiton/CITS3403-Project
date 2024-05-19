@@ -1,7 +1,3 @@
-function validateConfirmPassword()
-{
-    const form = document.getElementById
-}
 
 const form = document.getElementById('signUpForm');
 
@@ -20,20 +16,14 @@ form.addEventListener("submit", function (event) {
     }
     else {
 
-
         password.classList.add('is-invalid');
         confirmPassword.classList.add('is-invalid');
         let errorField = document.createElement('div');
         errorField.classList.add('invalid-feedback');
         errorField.classList.add('mb-1');
-        let errormsg = document.createElement('p');
-        errormsg.textContent = "aslkjdlkdsajd";
+        errorField.textContent = "Passwords do not match.";
         let parentNode = confirmPassword.parentNode.parentNode;
-        console.log(parentNode);
-        console.log(errorField);
-        console.log(confirmPassword.parentNode.nextSibling);
-        console.log(confirmPassword.parentNode);
         parentNode.insertBefore(errorField, confirmPassword.parentNode.nextSibling);
-        errorField.append(errormsg);
+        errorField.style.display="block";
     }
 })
