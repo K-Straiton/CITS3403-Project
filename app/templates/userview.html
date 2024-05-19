@@ -84,7 +84,7 @@
                 >
                     {% for comment in comments %}
                     <div class="text-break">
-                        <p class="align-self-center mt-2 mb-0 pb-0"> <span class="text-accent">╭─</span> <a class="link-blue" href="{{ url_for('userview', username= comment.commentPoster.username)}}" >{{ comment.commentPoster.username }}</a> > ({{ comment.commentPoster.pronouns }}) > {{moment(comment.timestamp).fromNow()}} </p>   
+                        <p class="align-self-center mt-2 mb-0 pb-0"> <span class="text-accent">╭─</span> <a class="link-blue" href="{{ url_for('main.userview', username= comment.commentPoster.username)}}" >{{ comment.commentPoster.username }}</a> > ({{ comment.commentPoster.pronouns }}) > {{moment(comment.timestamp).fromNow()}} </p>   
                         <p class="align-self-center text-accent">╰───> {{comment.body}}</p>
                     </div>
                     {% endfor %}
