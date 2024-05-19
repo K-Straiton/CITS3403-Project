@@ -74,7 +74,7 @@ body {
 
 
 .body-text {
-    size: 20px;
+    font-size: 1.1em;
 
 }
 
@@ -82,7 +82,7 @@ body {
     background-color: var(--IBM-red);
     border: none;
     color: white;
-    size: 20px;
+    font-size: 1.1em;
 }
 
 
@@ -92,7 +92,7 @@ body {
 .btn-primary:active:focus {
     background-color: var(--IBM-red-active);
     color: white;
-    size: 20px;
+    font-size: 20px;
 }
 
 
@@ -186,7 +186,7 @@ input+label {
     background: var(--IBM-red) !important;
     color: white;
     font-family: "Fira Code", monospace;
-    size: 20px;
+    font-size: 1.1em;
 
 }
 
@@ -194,14 +194,14 @@ input+label {
     background: var(--tokyoNight-darkBlue) !important;
     color: white;
     font-family: "Fira Code", monospace;
-    size: 20px;
+    font-size: 1.1em;
 }
 
 .Hardware-badge {
     background: var(--tokyoNight-yellow) !important;
     color: white;
     font-family: "Fira Code", monospace;
-    size: 20px;
+    font-size: 1.1em;
 
 }
 
@@ -315,35 +315,35 @@ hr {
 .link-red {
     color: var(--tokyoNight-red);
     text-decoration: none;
-    size: 20px;
+    font-size: 1.1em;
     font-weight: 500;
 }
 
 .link-orange {
     color: var(--tokyoNight-orange);
     text-decoration: none;
-    size: 1.1em;
+    font-size: 1.1em;
     font-weight: 500;
 }
 
 .link-yellow {
     color: var(--tokyoNight-yellow);
     text-decoration: none;
-    size: 1.1em;
+    font-size: 1.1em;
     font-weight: 500;
 }
 
 .link-green {
     color: var(--tokyoNight-green);
     text-decoration: none;
-    size: 1.1em;
+    font-size: 1.1em;
     font-weight: 500;
 }
 
 .link-blue {
     color: var(--tokyoNight-darkBlue);
     text-decoration: none;
-    size: 1.1em;
+    font-size: 1.1em;
     font-weight: 500;
 }
 
