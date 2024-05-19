@@ -2,7 +2,7 @@
 import multiprocessing
 import time
 from selenium import webdriver
-# from selenium.webdriver.common.by import By
+from selenium.webdriver.common.by import By
 # from selenium.webdriver.support.wait import WebDriverWait
 from unittest import TestCase
 
@@ -41,9 +41,19 @@ class SeleniumTestCase(TestCase):
         self.driver.close()
 
     def test_login_page(self):
-        time.sleep(10) 
-        self.assertTrue(True)
+        #create user
+        user = User(username='sersangy', email='sersang@isawesome.com', pronouns="she/her", ThinkPads=0)
+        db.session.add(user)
+        db.session.commit()
+        user.set_password('cat')
+        usernameElement = self.driver.find_element(By.ID, "usernameInput")
+        usernameElement.send_keys("sersangy")
+        passwordElement = self.driver.find_element(By.ID, "passwordInput")
+        passwordElement.send_keys("cat")
 
+
+
+ 
     
 
     
