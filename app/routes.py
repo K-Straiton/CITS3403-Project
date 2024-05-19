@@ -12,6 +12,8 @@ from urllib.parse import urlsplit
 from app.blueprints import main
 
 
+## We used this https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-ii-templates as a learning resource, as well as for insight into how to write a correct route function, although all functions were written by us
+
 #Route for login page
 @main.route('/login', methods=['GET', 'POST'])   
 def loginPage():

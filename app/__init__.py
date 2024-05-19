@@ -5,10 +5,14 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_moment import Moment
 
-# Initialize extensions
-db = SQLAlchemy()
-migrate = Migrate()
-login = LoginManager()
+## The format of __init__.py was inspired by https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world but modified to suit our use case
+
+app = Flask(__name__, static_url_path='/static')
+app.config['SECRET_KEY'] = Config.SECRET_KEY
+app.config.from_object(Config)
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+login = LoginManager(app)
 login.login_view = 'login'
 moment = Moment()
 
