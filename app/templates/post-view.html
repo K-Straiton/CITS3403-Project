@@ -45,12 +45,5 @@ endblock %} {% block body_content %}
     </div>
 
     <script src="../static/colourchangs.js"></script>
-  <div>
-    {% block content %}
-      {% for comment in comments %} 
-        {% include '_comments.html' %} 
-      {% endfor %} 
-    {% endblock %}
-  </div>
 </div>
 {% endblock %}
