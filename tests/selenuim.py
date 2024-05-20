@@ -30,10 +30,15 @@ class SeleniumTestCase(TestCase):
 
         self.server_process = multiprocessing.Process(target=self.testApp.run)
         self.server_process.start()
-        time.sleep(1) 
+        # time.sleep(1) 
         options = webdriver.ChromeOptions()
+        options.add_argument("--window-size=1920,1080")
+        options.add_argument("--start-maximized")
         options.add_argument("--headless=new")
+        
+    # chrome_options.add_argument("--headless")
         self.driver = webdriver.Chrome(options=options)
+        # self.driver = webdriver.Chrome()
         self.driver.get(homepage)
 
     def tearDown(self):
@@ -42,44 +47,39 @@ class SeleniumTestCase(TestCase):
         self.app_context.pop()
         self.server_process.terminate()
         self.driver.close()
-        self.driver.quit()
 
     #Test wrong nonexistant test
     def test_nonexistant_user(self):
         #create user
         self.driver.get(loginurl)
-        time.sleep(3)
         usernameElement = self.driver.find_element(By.ID, "usernameInput")
         usernameElement.send_keys("test1")
         passwordElement = self.driver.find_element(By.ID, "passwordInput")
         passwordElement.send_keys("cat")
-        time.sleep(3)
         submitElement = self.driver.find_element(By.ID, "logIn")
         submitElement.click()
         self.assertEqual(self.driver.current_url, "http://localhost:5000/login")
-        time.sleep(3)
 
-    # def test_search(self):
-    #     self.driver.get(homepage)
-    #     time.sleep(5)
-    #     searchbox = self.driver.find_element(By.ID, "textToSearch")
-    #     searchbox.send_keys("X13")
-    #     searchbutton = self.driver.find_element(By.ID, "submitSearch")
-    #     searchbutton.click()
-    #     endofsearchtext = self.driver.find_element(By.ID, "endofsearch")
-    #     self.assertNotNull(endofsearchtext)
+    def test_search(self):
+        self.driver.get(homepage)
+        searchbox = self.driver.find_element(By.ID, "textToSearch")
+        searchbox.send_keys("X13")
+        searchbutton = self.driver.find_element(By.ID, "submitSearch")
+        searchbutton.click()
+        endofsearchtext = self.driver.find_element(By.ID, "endofsearch")
+        self.assertTrue(endofsearchtext!=None)
 
-    # def test_signuplink(self):
-    #     self.driver.get(homepage)
-    #     signup = self.driver.find_element(By.ID, "signuplink")
-    #     signup.click()
-    #     self.assertEqual(self.driver.current_url, "http://localhost:5000/sign-up")
+    def test_signuplink(self):
+        self.driver.get(homepage)
+        signup = self.driver.find_element(By.ID, "signuplink")
+        signup.click()
+        self.assertEqual(self.driver.current_url, "http://localhost:5000/sign-up")
 
-    # def test_loginlink(self):
-    #     self.driver.get(homepage)
-    #     login = self.driver.find_element(By.ID, "loginlink")
-    #     login.click()
-    #     self.assertEqual(self.driver.current_url, "http://localhost:5000/login")
+    def test_loginlink(self):
+        self.driver.get(homepage)
+        login = self.driver.find_element(By.ID, "loginlink")
+        login.click()
+        self.assertEqual(self.driver.current_url, "http://localhost:5000/login")
 
     def test_thinkmadhome(self):
         self.driver.get(homepage)
@@ -87,45 +87,45 @@ class SeleniumTestCase(TestCase):
         thinkmad.click()
         self.assertEqual(self.driver.current_url, "http://localhost:5000/")
 
-    # def test_signup_button(self):
-    #     self.driver.get(homepage)
-    #     signupbutton = self.driver.find_element(By.ID, "signuplink")
-    #     signupbutton.click()
-    #     self.assertEqual(self.driver.current_url, "http://localhost:5000/sign-up")
+    def test_signup_button(self):
+        self.driver.get(homepage)
+        signupbutton = self.driver.find_element(By.ID, "signuplink")
+        signupbutton.click()
+        self.assertEqual(self.driver.current_url, "http://localhost:5000/sign-up")
 
-    # def test_wrong_email_signup(self):
-    #     self.driver.get(signuppage)
-    #     usernamefield = self.driver.find_element(By.ID, "signUpUsername")
-    #     usernamefield.send_keys("sersangy")
-    #     emailfield = self.driver.find_element(By.ID, "signUpEmail")
-    #     emailfield.send_keys("sersanggmail.com")
-    #     passwordfield = self.driver.find_element(By.ID, "signUpPassword")
-    #     passwordfield.send_keys("password")
-    #     confirmpasswordfield = self.driver.find_element(By.ID, "signUpConfirmPassword")
-    #     confirmpasswordfield.send_keys("password")
-    #     pronouns = self.driver.find_element(By.ID, "pronouns-0")
-    #     pronouns.click()
-    #     time.sleep(4)
-    #     signupbutton = self.driver.find_element(By.ID, "signUp")
-    #     signupbutton.click()
+    def test_wrong_email_signup(self):
+        self.driver.get(signuppage)
+        usernamefield = self.driver.find_element(By.ID, "signUpUsername")
+        usernamefield.send_keys("sersangy")
+        emailfield = self.driver.find_element(By.ID, "signUpEmail")
+        emailfield.send_keys("sersanggmail.com")
+        passwordfield = self.driver.find_element(By.ID, "signUpPassword")
+        passwordfield.send_keys("password")
+        confirmpasswordfield = self.driver.find_element(By.ID, "signUpConfirmPassword")
+        confirmpasswordfield.send_keys("password")
+        pronouns = self.driver.find_element(By.ID, "pronouns-0")
+        pronouns.click()
+        time.sleep(4)
+        signupbutton = self.driver.find_element(By.ID, "signUp")
+        signupbutton.click()
 
-    #     self.assertEqual(self.driver.current_url, "http://localhost:5000/sign-up")
+        self.assertEqual(self.driver.current_url, "http://localhost:5000/sign-up")
 
-    # def test_wrong_confirmpassword_signup(self):
-    #     self.driver.get(signuppage)
-    #     usernamefield = self.driver.find_element(By.ID, "signUpUsername")
-    #     usernamefield.send_keys("sersangy")
-    #     emailfield = self.driver.find_element(By.ID, "signUpEmail")
-    #     emailfield.send_keys("sersang@gmail.com")
-    #     passwordfield = self.driver.find_element(By.ID, "signUpPassword")
-    #     passwordfield.send_keys("password")
-    #     confirmpasswordfield = self.driver.find_element(By.ID, "signUpConfirmPassword")
-    #     confirmpasswordfield.send_keys("wrongconfirmpassword")
-    #     pronouns = self.driver.find_element(By.ID, "pronouns-0")
-    #     pronouns.click()
-    #     time.sleep(4)
-    #     signupbutton = self.driver.find_element(By.ID, "signUp")
-    #     signupbutton.click()
+    def test_wrong_confirmpassword_signup(self):
+        self.driver.get(signuppage)
+        usernamefield = self.driver.find_element(By.ID, "signUpUsername")
+        usernamefield.send_keys("sersangy")
+        emailfield = self.driver.find_element(By.ID, "signUpEmail")
+        emailfield.send_keys("sersang@gmail.com")
+        passwordfield = self.driver.find_element(By.ID, "signUpPassword")
+        passwordfield.send_keys("password")
+        confirmpasswordfield = self.driver.find_element(By.ID, "signUpConfirmPassword")
+        confirmpasswordfield.send_keys("wrongconfirmpassword")
+        pronouns = self.driver.find_element(By.ID, "pronouns-0")
+        pronouns.click()
+        time.sleep(4)
+        signupbutton = self.driver.find_element(By.ID, "signUp")
+        signupbutton.click()
 
-    #     self.assertEqual(self.driver.current_url, "http://localhost:5000/sign-up")
+        self.assertEqual(self.driver.current_url, "http://localhost:5000/sign-up")
 
