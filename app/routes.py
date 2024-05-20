@@ -52,7 +52,7 @@ def index():
     searchform = SearchForm()
     if searchform.validate_on_submit():	#Get data from submitted form
         searched = searchform.textToSearch.data
-        posts2 = Post.query.filter(Post.body.contains(searched))	#Query the database
+        posts2 = Post.query.filter(Post.body.contains(searched)|Post.title.contains(searched))	#Query the database
         return render_template("search.html", searchform=searchform, searched=searched, posts2=posts2, title='Home Page', posts=posts, comments=commentsList, form=form)	#If a user searched, return the search results
     return render_template('index.html', title='Home Page', posts=posts, comments=commentsList, form=form)	#Else return the home page
 
