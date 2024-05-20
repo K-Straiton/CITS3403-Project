@@ -1,20 +1,14 @@
 #Imports from the lecture
 import multiprocessing
-import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-# from selenium.webdriver.support.wait import WebDriverWait
 from unittest import TestCase
-from app.helper import add_dummy_data
 
 #Imports for unittests
-import unittest
 from app import create_app, db
 import sqlalchemy as sa
 from unittest import TestCase
 from app.config import TestConfig
-from app.models import User, Post, Comments
-
 
 loginurl = "http://localhost:5000/login"
 homepage = "http://localhost:5000"
@@ -30,15 +24,11 @@ class SeleniumTestCase(TestCase):
 
         self.server_process = multiprocessing.Process(target=self.testApp.run)
         self.server_process.start()
-        # time.sleep(1) 
         options = webdriver.ChromeOptions()
         options.add_argument("--window-size=1920,1080")
         options.add_argument("--start-maximized")
         options.add_argument("--headless=new")
-        
-    # chrome_options.add_argument("--headless")
         self.driver = webdriver.Chrome(options=options)
-        # self.driver = webdriver.Chrome()
         self.driver.get(homepage)
 
     def tearDown(self):
@@ -50,7 +40,6 @@ class SeleniumTestCase(TestCase):
 
     #Test wrong nonexistant test
     def test_nonexistant_user(self):
-        #create user
         self.driver.get(loginurl)
         usernameElement = self.driver.find_element(By.ID, "usernameInput")
         usernameElement.send_keys("test1")
@@ -105,7 +94,6 @@ class SeleniumTestCase(TestCase):
         confirmpasswordfield.send_keys("password")
         pronouns = self.driver.find_element(By.ID, "pronouns-0")
         pronouns.click()
-        time.sleep(4)
         signupbutton = self.driver.find_element(By.ID, "signUp")
         signupbutton.click()
 
@@ -123,7 +111,6 @@ class SeleniumTestCase(TestCase):
         confirmpasswordfield.send_keys("wrongconfirmpassword")
         pronouns = self.driver.find_element(By.ID, "pronouns-0")
         pronouns.click()
-        time.sleep(4)
         signupbutton = self.driver.find_element(By.ID, "signUp")
         signupbutton.click()
 
