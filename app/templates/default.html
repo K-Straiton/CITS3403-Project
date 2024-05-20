@@ -36,8 +36,8 @@
 
           <form method="post" action="{{ url_for('main.index')}}"  class="d-flex align-items-center w-100 ms-3 ms-lg-5 me-3 pt-3 pt-lg-0">
             {{searchform.textToSearch(placeholder="Search", size=8,
-              class="form-control me-2 top-search", type="text")}}
-            {{searchform.submitSearch(type="submit", class="btn search-button fs-4 my-0")}}
+              class="form-control me-2 top-search", id="textToSearch", type="text")}}
+            {{searchform.submitSearch(type="submit", id="submitSearch", class="btn search-button fs-4 my-0")}}
           </form>
 
           <ul class="navbar-nav ms-auto align-items-center pt-3 pt-lg-0">
