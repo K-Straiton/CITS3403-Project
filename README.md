@@ -60,3 +60,18 @@ flask run
 flask add_data
 ```
 ## How to Run Tests
+
+### Unit tests
+1. Activate the virtual environment and export secret key (as shown in the steps above)
+2. Run 
+```
+python3 -m unittest tests/unittest 
+```
+
+### Selenium
+1. Have Chrome installed and ready to launch
+2. Activate the virtual environment and export secret key (as shown in the steps above)
+3. Run
+``` 
+python3 -m unittest tests/selenium
+```
