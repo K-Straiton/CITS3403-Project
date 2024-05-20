@@ -22,7 +22,7 @@ For the following steps make sure you are in the root directory of the repositor
 
 1. Create a python virtual environment
 ```
-python -m venv .venv
+python3 -m venv .venv
 ```
 2. Activate the environment
 ```
@@ -65,7 +65,7 @@ flask add_data
 1. Activate the virtual environment and export secret key (as shown in the steps above)
 2. Run 
 ```
-python3 -m unittest tests/unittest.py 
+python3 -m unittest tests/unittests.py 
 ```
 
 ### Selenium
