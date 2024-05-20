@@ -65,7 +65,7 @@ flask add_data
 1. Activate the virtual environment and export secret key (as shown in the steps above)
 2. Run 
 ```
-python3 -m unittest tests/unittest 
+python3 -m unittest tests/unittest.py 
 ```
 
 ### Selenium
@@ -73,5 +73,5 @@ python3 -m unittest tests/unittest
 2. Activate the virtual environment and export secret key (as shown in the steps above)
 3. Run
 ``` 
-python3 -m unittest tests/selenium
+python3 -m unittest tests/selenium.py
 ```
